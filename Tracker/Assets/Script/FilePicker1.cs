@@ -7,8 +7,7 @@ public class FilePicker1 : MonoBehaviour
 {
     private string Finalpath;
     // Start is called before the first frame update
-    void Start()
-    {
+    void Import(){
         string FileType = NativeFilePicker.ConvertExtensionToFileType("mp4");
 
         NativeFilePicker.Permission permission = NativeFilePicker.PickFile((path) =>
@@ -21,6 +20,9 @@ public class FilePicker1 : MonoBehaviour
                 Debug.Log("Picked file: " + Finalpath);
             }
         }, new string[] {FileType});
+    }
+    void Start(){
+        
     }
 
     // Update is called once per frame
