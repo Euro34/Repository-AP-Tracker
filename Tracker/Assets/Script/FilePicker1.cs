@@ -2,27 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using TMPro;
 
 public class FilePicker1 : MonoBehaviour
 {
-    private string Finalpath;
+    public string Finalpath;
+    public TextMeshProUGUI FinalpathUI;
+    public string Output;
     // Start is called before the first frame update
-    void Import(){
+    public void Import(){
         string FileType = NativeFilePicker.ConvertExtensionToFileType("mp4");
 
         NativeFilePicker.Permission permission = NativeFilePicker.PickFile((path) =>
         {
-            if (path == null)
-                Debug.Log("Operation cancelled");
+            if (path == null){
+                Output = "Cancelled";
+            }
             else
             {
                 Finalpath = path;
-                Debug.Log("Picked file: " + Finalpath);
+                Output = "Picked file: " + Finalpath;
             }
         }, new string[] {FileType});
+        FinalpathUI.text = Finalpath.ToString();
     }
     void Start(){
-        
+        FinalpathUI.text = "Test";
     }
 
     // Update is called once per frame
