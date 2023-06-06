@@ -11,12 +11,12 @@ public class FilePicker1 : MonoBehaviour
     public string Output;
     // Start is called before the first frame update
     public void Import(){
-        string FileType = NativeFilePicker.ConvertExtensionToFileType("mp4");
+        string FileType = NativeFilePicker.ConvertExtensionToFileType("video/*");
 
         NativeFilePicker.Permission permission = NativeFilePicker.PickFile((path) =>
         {
             if (path == null){
-                Output = "Cancelled";
+                Output = "+";
             }
             else
             {
@@ -24,10 +24,10 @@ public class FilePicker1 : MonoBehaviour
                 Output = "Picked file: " + Finalpath;
             }
         }, new string[] {FileType});
-        FinalpathUI.text = Finalpath.ToString();
+        FinalpathUI.text = Output.ToString();
     }
     void Start(){
-        FinalpathUI.text = "Test";
+        FinalpathUI.text = "+";
     }
 
     // Update is called once per frame
