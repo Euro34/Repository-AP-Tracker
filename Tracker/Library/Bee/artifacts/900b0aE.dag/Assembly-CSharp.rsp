@@ -358,6 +358,7 @@
 -r:"Library/Bee/artifacts/900b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/900b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/Script/FilePicker.cs"
+"Assets/Script/Test.cs"
 "Assets/TutorialInfo/Scripts/Readme.cs"
 -langversion:9.0
 
