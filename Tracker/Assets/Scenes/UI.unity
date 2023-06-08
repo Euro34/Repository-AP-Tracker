@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 56752519}
   - component: {fileID: 56752523}
   - component: {fileID: 56752524}
+  - component: {fileID: 56752525}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -217,6 +218,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1137377589}
   - {fileID: 569204641}
   - {fileID: 719974590}
   m_Father: {fileID: 0}
@@ -239,6 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 521181c104217c647978c11c15d37a0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  videoPlayer: {fileID: 1137377588}
   Vid1_name: {fileID: 1178558121}
   Vid2_name: {fileID: 1477642549}
   Vid1_path: 
@@ -256,6 +259,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   renderTexture: {fileID: 8400000, guid: 5600c7f217ec271408cc7cce4c262d44, type: 2}
+  vid_Ended: {fileID: 56752525}
+--- !u!114 &56752525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56752518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f77bf2503b0ec04483a3f7bb9195641, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Check: 0
+  videoPlayerObject: {fileID: 1137377587}
+  isVideoPlaying: 0
 --- !u!1 &101182384
 GameObject:
   m_ObjectHideFlags: 0
@@ -449,7 +468,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 56752522}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -590,6 +609,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 56752524}
+        m_TargetAssemblyTypeName: Frame_ext, Assembly-CSharp
+        m_MethodName: button2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &656066904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -661,7 +692,7 @@ RectTransform:
   - {fileID: 1124049186}
   - {fileID: 656066902}
   m_Father: {fileID: 56752522}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -886,6 +917,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 56752524}
+        m_TargetAssemblyTypeName: Frame_ext, Assembly-CSharp
+        m_MethodName: button1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1124049188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -961,12 +1004,12 @@ VideoPlayer:
   m_AspectRatio: 2
   m_DataSource: 1
   m_PlaybackSpeed: 1
-  m_AudioOutputMode: 0
+  m_AudioOutputMode: 2
   m_TargetAudioSources:
   - {fileID: 0}
   m_DirectAudioVolumes:
   - 1
-  m_Url: file://C:/Users/User/Downloads/IMG_5835.MOV
+  m_Url: 
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
@@ -984,12 +1027,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1137377587}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 161.1675, y: 279.455, z: -85}
-  m_LocalScale: {x: 427.5, y: 427.5, z: 0.4275}
+  m_LocalPosition: {x: -3.2800102, y: -22.880032, z: -209.23076}
+  m_LocalScale: {x: 1052.3076, y: 1052.3076, z: 1.0523076}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 56752522}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1178558119
 GameObject:
