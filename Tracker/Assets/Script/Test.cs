@@ -18,7 +18,7 @@ public class Test : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //videoPlayer.prepareCompleted += VideoPlayerPrepareCompleted;
+    
     }
 
     // Update is called once per frame
@@ -45,6 +45,7 @@ public class Test : MonoBehaviour
 
         // Prepare the video player to get frame count
         videoPlayer.Prepare();
+        videoPlayer.prepareCompleted += VideoPlayerPrepareCompleted;
     }
 
     private void VideoPlayerPrepareCompleted(VideoPlayer vp)
@@ -53,7 +54,7 @@ public class Test : MonoBehaviour
         long totalFrames = (long)vp.frameCount;
 
         // Extract each frame
-        for (long frame = 0; frame < totalFrames; frame++)
+        for (long frame = 1; frame <= totalFrames; frame++)
         {
             // Set the current frame to extract
             vp.frame = frame;
@@ -66,7 +67,7 @@ public class Test : MonoBehaviour
 
             // Capture the current frame
             Texture2D texture = new Texture2D(frameWidth, frameHeight, TextureFormat.RGB24, false);
-            RenderTexture.active = (UnityEngine.RenderTexture)vp.texture;
+            //RenderTexture.active = (UnityEngine.RenderTexture)vp.texture;
             texture.ReadPixels(new Rect(0, 0, frameWidth, frameHeight), 0, 0);
             texture.Apply();
 
