@@ -252,14 +252,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 56752518}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6aff305c5c9e3d54d881cadf7974f80b, type: 3}
+  m_Script: {fileID: 11500000, guid: 84958ac7ec7864440959f76cc5c625e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  videoPlayer: {fileID: 1137377588}
-  frameWidth: 640
-  frameHeight: 480
-  outputFolder: C:\\Users\\User\\Documents\\GitHub\\Repository-Tracker\\Tracker\\Assets\\Frames
-  Script: {fileID: 56752523}
+  renderTexture: {fileID: 8400000, guid: 5600c7f217ec271408cc7cce4c262d44, type: 2}
 --- !u!1 &101182384
 GameObject:
   m_ObjectHideFlags: 0
@@ -965,12 +961,12 @@ VideoPlayer:
   m_AspectRatio: 2
   m_DataSource: 1
   m_PlaybackSpeed: 1
-  m_AudioOutputMode: 2
+  m_AudioOutputMode: 0
   m_TargetAudioSources:
   - {fileID: 0}
   m_DirectAudioVolumes:
   - 1
-  m_Url: 
+  m_Url: file://C:/Users/User/Downloads/IMG_5835.MOV
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
