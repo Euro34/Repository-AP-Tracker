@@ -63,9 +63,9 @@ public class Frame_ext : MonoBehaviour
                     {
                         byte[] bytes = byteslist[i];
                         // Save the image to a file (optional)
-                        string path = Path.Combine(Application.dataPath, @"Frames/Img_" + button + "_" + (i - 1).ToString() + ".png");
-                        File.WriteAllBytes(path, bytes);
-                        Debug.Log("Image saved to: " + path);
+                        //string path = Path.Combine(Application.dataPath, @"Frames/Img_" + button + "_" + (i - 1).ToString() + ".png");
+                        //File.WriteAllBytes(path, bytes);
+                        //Debug.Log("Image saved to: " + path);
                     }
                     i = 0;
                 }
