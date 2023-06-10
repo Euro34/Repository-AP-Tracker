@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System.IO;
 using System.Threading;
 using Unity.VisualScripting;
@@ -14,6 +15,7 @@ public class Frame_ext : MonoBehaviour
     private int i = 0;
     private short button;
     public List<byte[]> byteslist = new List<byte[]>();
+
     public void button1()
     {
         button = 1;
@@ -36,21 +38,21 @@ public class Frame_ext : MonoBehaviour
             {
                 if (i > 1)
                 {
-                    Texture2D texture = new Texture2D(480, 270, TextureFormat.RGB24, false);
+                    Texture2D texturein = new Texture2D(480, 270, TextureFormat.RGB24, false);
 
                     // Read the pixel data from the Render Texture into the Texture2D
                     RenderTexture.active = renderTexture;
-                    texture.ReadPixels(new Rect(0, 0, 480, 270), 0, 0);
-                    texture.Apply();
+                    texturein.ReadPixels(new Rect(0, 0, 480, 270), 0, 0);
+                    texturein.Apply();
 
                     // Convert the Texture2D to a byte array
-                    byte[] bytes = texture.EncodeToPNG();
+                    byte[] bytes = texturein.EncodeToPNG();
 
                     byteslist.Add(bytes);
 
                     // Don't forget to clean up
                     RenderTexture.active = null;
-                    Destroy(texture);
+                    Destroy(texturein);
                     Debug.Log(byteslist.Count);
                 }
                 i++;
@@ -61,12 +63,28 @@ public class Frame_ext : MonoBehaviour
                 {
                     for(i = 0; i < byteslist.Count; i++)
                     {
-                        byte[] bytes = byteslist[i];
+                        //byte[] bytes = byteslist[i];
                         // Save the image to a file (optional)
                         //string path = Path.Combine(Application.dataPath, @"Frames/Img_" + button + "_" + (i - 1).ToString() + ".png");
                         //File.WriteAllBytes(path, bytes);
                         //Debug.Log("Image saved to: " + path);
                     }
+                    //string path = Path.Combine(Application.dataPath, @"Frames/vid" + button + "_thumbnail.png");
+                    //File.WriteAllBytes(path, byteslist[10]);
+                    //Debug.Log("Image saved to: " + path);
+
+                    // Find the game object with RawImage component
+                    GameObject myGameObject = GameObject.Find("RawImage_vid1");
+
+                    // Get the RawImage component
+                    RawImage rawImage = myGameObject.GetComponent<RawImage>();
+
+                    // Load the image into a Texture2D
+                    Texture2D texture = new Texture2D(300, 100);
+                    texture.LoadImage(byteslist[10]);
+
+                    // Assign the Texture2D to the RawImage component
+                    rawImage.texture = texture;
                     i = 0;
                 }
             }
