@@ -54,6 +54,15 @@ public class Frame_ext : MonoBehaviour
                     RenderTexture.active = null;
                     Destroy(texturein);
                     Debug.Log(byteslist.Count);
+
+                    if (i == 12)
+                    {
+                        GameObject myGameObject = GameObject.Find("RawImage_vid1");
+                        RawImage rawImage = myGameObject.GetComponent<RawImage>();
+                        Texture2D texture = new Texture2D(300, 100);
+                        texture.LoadImage(byteslist[10]);
+                        rawImage.texture = texture;
+                    }
                 }
                 i++;
             }
@@ -69,22 +78,6 @@ public class Frame_ext : MonoBehaviour
                         //File.WriteAllBytes(path, bytes);
                         //Debug.Log("Image saved to: " + path);
                     }
-                    //string path = Path.Combine(Application.dataPath, @"Frames/vid" + button + "_thumbnail.png");
-                    //File.WriteAllBytes(path, byteslist[10]);
-                    //Debug.Log("Image saved to: " + path);
-
-                    // Find the game object with RawImage component
-                    GameObject myGameObject = GameObject.Find("RawImage_vid1");
-
-                    // Get the RawImage component
-                    RawImage rawImage = myGameObject.GetComponent<RawImage>();
-
-                    // Load the image into a Texture2D
-                    Texture2D texture = new Texture2D(300, 100);
-                    texture.LoadImage(byteslist[10]);
-
-                    // Assign the Texture2D to the RawImage component
-                    rawImage.texture = texture;
                     i = 0;
                 }
             }
