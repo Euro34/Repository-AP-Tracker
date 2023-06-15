@@ -13,112 +13,143 @@ public class Frame_ext : MonoBehaviour
     // Start is called before the first frame update
     public RenderTexture renderTexture1;
     public RenderTexture renderTexture2;
-    private RenderTexture renderTexture;
     public VideoPlayer videoPlayer1;
     public VideoPlayer videoPlayer2;
-    private VideoPlayer videoPlayer;
-    public GameObject myGameObject;
-    private List<byte[]> byteslist = new List<byte[]>();
+    public GameObject myGameObject1;
+    public GameObject myGameObject2;
     public List<byte[]> byteslist1 = new List<byte[]>();
     public List<byte[]> byteslist2 = new List<byte[]>();
-    private bool started;
-    private int i = 0;
+    private bool started1;
+    private bool started2;
+    private int i1 = 0;
+    private int i2 = 0;
     private short button;
-    private int n = 10000;
-    private int skip;
+    private int n1 = 1;
+    private int n2 = 1;
+    private double skip1;
+    private double skip2;
     public int fps = 20;
-    private double vid_lenght;
+    private double vid_lenght1;
+    private double vid_lenght2;
 
     public void button1()
     {
         button = 1;
-        i = 0;
-        byteslist = new List<byte[]>();
-        renderTexture = renderTexture1;
-        videoPlayer = videoPlayer1;
-        myGameObject = GameObject.Find("RawImage_vid1");
-        StartCoroutine(ExtractFramesCoroutine());
-        byteslist1 = byteslist;
+        i1 = 0;
+        byteslist2.Clear();
+        myGameObject1 = GameObject.Find("RawImage_vid1");
+        StartCoroutine(ExtractFramesCoroutine1());
     }
     
     public void button2()
     {
         button = 2;
-        i = 0;
-        byteslist = new List<byte[]>();
-        renderTexture = renderTexture2;
-        videoPlayer = videoPlayer2;
-        myGameObject = GameObject.Find("RawImage_vid2");
-        StartCoroutine(ExtractFramesCoroutine());
-        byteslist2 = byteslist;
+        i2 = 0;
+        byteslist2.Clear();
+        myGameObject2 = GameObject.Find("RawImage_vid2");
+        StartCoroutine(ExtractFramesCoroutine2());
     }
 
-    private void VideoPreparationComplete(VideoPlayer source)
+    private void VideoPreparationComplete1(VideoPlayer source)
     {
-        started = true;
-        vid_lenght = videoPlayer.length;
-        n = (int)(vid_lenght * fps);
-        skip = (int)(1000 / fps);
+        started1 = true;
+        vid_lenght1 = videoPlayer1.length;
+        n1 = (int)(vid_lenght1 * fps);
+        skip1 = (1000 / fps);
+    }
+    private void VideoPreparationComplete2(VideoPlayer source)
+    {
+        started2 = true;
+        vid_lenght2 = videoPlayer2.length;
+        n2 = (int)(vid_lenght2 * fps);
+        skip2 = (1000 / fps);
     }
 
     // Update is called once per frame
-    private IEnumerator ExtractFramesCoroutine()
+    private IEnumerator ExtractFramesCoroutine1()
     {
-        videoPlayer.Pause();
-        started = false;
-        videoPlayer.prepareCompleted += VideoPreparationComplete;
-        while (i < n)
+        videoPlayer1.Pause();
+        started1 = false;
+        videoPlayer1.prepareCompleted += VideoPreparationComplete1;
+        while (i1 < n1)
         {
-            if (started)
+            if (started1)
             {
-                i++;
+                i1++;
             }
-            if (started == true && i > 1)
+            if (started1 == true && i1 > 1)
             {
-                videoPlayer.time += skip / 1000;
-                Texture2D texturein = new Texture2D(480, 270, TextureFormat.RGB24, false);
+                videoPlayer1.time += (double)skip1 / 1000;
+                Texture2D texturein1 = new Texture2D(480, 270, TextureFormat.RGB24, false);
 
                 // Read the pixel data from the Render Texture into the Texture2D
-                RenderTexture.active = renderTexture;
-                texturein.ReadPixels(new Rect(0, 0, 480, 270), 0, 0);
-                texturein.Apply();
+                RenderTexture.active = renderTexture1;
+                texturein1.ReadPixels(new Rect(0, 0, 480, 270), 0, 0);
+                texturein1.Apply();
 
                 // Convert the Texture2D to a byte array
-                byte[] bytes = texturein.EncodeToJPG();
+                byte[] bytes = texturein1.EncodeToJPG();
 
-                byteslist.Add(bytes);
+                byteslist1.Add(bytes);
 
                 // Don't forget to clean up
                 RenderTexture.active = null;
-                Destroy(texturein);
-                Debug.Log(byteslist.Count);
+                Destroy(texturein1);
+                Debug.Log(byteslist1.Count);
 
-                if (i == 12)
+                if (i1 == 12)
                 {
-                    RawImage rawImage = myGameObject.GetComponent<RawImage>();
-                    Texture2D texture = new Texture2D(300, 100);
-                    texture.LoadImage(byteslist[10]);
-                    rawImage.texture = texture;
+                    RawImage rawImage1 = myGameObject1.GetComponent<RawImage>();
+                    Texture2D texture1 = new Texture2D(300, 100);
+                    texture1.ReadPixels(new Rect(0, 0, 300, 100), 0, 0);
+                    texture1.Apply();
+                    rawImage1.texture = texture1;
                 }
             }
             yield return null;
         }
-        //if (i > 1)
-        //{
-        //    for (i = 0; i < byteslist.Count; i++)
-        //    {
-        //        //byte[] bytes = byteslist[i];
-        //        // Save the image to a file (optional)
-        //        //string path = Path.Combine(Application.dataPath, @"Frames/Img_" + button + "_" + (i - 1).ToString() + ".png");
-        //        //File.WriteAllBytes(path, bytes);
-        //        //Debug.Log("Image saved to: " + path);
-        //    }
-        //    i = 0;
-        //}
     }
-
-    void Update()
+    private IEnumerator ExtractFramesCoroutine2()
     {
+        videoPlayer2.Pause();
+        started2 = false;
+        videoPlayer2.prepareCompleted += VideoPreparationComplete2;
+        while (i2 < n2)
+        {
+            if (started2)
+            {
+                i2++;
+            }
+            if (started2 == true && i2 > 1)
+            {
+                videoPlayer2.time += (double)skip2 / 1000;
+                Texture2D texturein2 = new Texture2D(480, 270, TextureFormat.RGB24, false);
 
+                // Read the pixel data from the Render Texture into the Texture2D
+                RenderTexture.active = renderTexture2;
+                texturein2.ReadPixels(new Rect(0, 0, 480, 270), 0, 0);
+                texturein2.Apply();
+
+                // Convert the Texture2D to a byte array
+                byte[] bytes = texturein2.EncodeToJPG();
+
+                byteslist2.Add(bytes);
+
+                // Don't forget to clean up
+                Destroy(texturein2);
+                Debug.Log(byteslist2.Count);
+
+                if (i2 == 12)
+                {
+                    RawImage rawImage2 = myGameObject2.GetComponent<RawImage>();
+                    Texture2D texture2 = new Texture2D(300, 100);
+                    texture2.ReadPixels(new Rect(0, 0, 300, 100), 0, 0);
+                    texture2.Apply();
+                    rawImage2.texture = texture2;
+                }
+                RenderTexture.active = null;
+            }
+            yield return null;
+        }
     }
 }
