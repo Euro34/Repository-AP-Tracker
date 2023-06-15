@@ -137,7 +137,6 @@ GameObject:
   - component: {fileID: 56752519}
   - component: {fileID: 56752523}
   - component: {fileID: 56752524}
-  - component: {fileID: 56752525}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -264,25 +263,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   renderTexture1: {fileID: 8400000, guid: 5600c7f217ec271408cc7cce4c262d44, type: 2}
   renderTexture2: {fileID: 8400000, guid: 82245cafa1a9e418c97df0694771460b, type: 2}
-  vid_Ended: {fileID: 56752525}
-  myGameObject: {fileID: 0}
   videoPlayer1: {fileID: 1137377588}
   videoPlayer2: {fileID: 652978241}
---- !u!114 &56752525
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 56752518}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f77bf2503b0ec04483a3f7bb9195641, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Check: 0
-  videoPlayerObject: {fileID: 1137377587}
-  isVideoPlaying: 0
+  myGameObject: {fileID: 0}
+  fps: 20
 --- !u!1 &101182384
 GameObject:
   m_ObjectHideFlags: 0

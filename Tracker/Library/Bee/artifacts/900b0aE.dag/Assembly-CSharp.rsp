@@ -359,7 +359,6 @@
 -r:"Library/Bee/artifacts/900b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/Script/FilePicker.cs"
 "Assets/Script/Frame_ext.cs"
-"Assets/Script/Vid_Ended.cs"
 "Assets/TutorialInfo/Scripts/Readme.cs"
 -langversion:9.0
 
