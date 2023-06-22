@@ -10,7 +10,6 @@ using System;
 
 public class Frame_ext : MonoBehaviour
 {
-    // Start is called before the first frame update
     public RenderTexture renderTexture1;
     public RenderTexture renderTexture2;
     public VideoPlayer videoPlayer1;
@@ -26,9 +25,9 @@ public class Frame_ext : MonoBehaviour
     private short button;
     private int n1 = 1;
     private int n2 = 1;
-    private double skip1;
-    private double skip2;
-    public int fps = 20;
+    private float skip1;
+    private float skip2;
+    public int fps = 2;
     private double vid_lenght1;
     private double vid_lenght2;
 
@@ -36,11 +35,11 @@ public class Frame_ext : MonoBehaviour
     {
         button = 1;
         i1 = 0;
-        byteslist2.Clear();
+        byteslist1.Clear();
         myGameObject1 = GameObject.Find("RawImage_vid1");
         StartCoroutine(ExtractFramesCoroutine1());
     }
-    
+
     public void button2()
     {
         button = 2;
@@ -55,101 +54,120 @@ public class Frame_ext : MonoBehaviour
         started1 = true;
         vid_lenght1 = videoPlayer1.length;
         n1 = (int)(vid_lenght1 * fps);
-        skip1 = (1000 / fps);
+        skip1 = (float)(1000 / fps);
     }
+
     private void VideoPreparationComplete2(VideoPlayer source)
     {
         started2 = true;
         vid_lenght2 = videoPlayer2.length;
         n2 = (int)(vid_lenght2 * fps);
-        skip2 = (1000 / fps);
+        skip2 = (float)(1000 / fps);
     }
 
-    // Update is called once per frame
     private IEnumerator ExtractFramesCoroutine1()
     {
         videoPlayer1.Pause();
         started1 = false;
         videoPlayer1.prepareCompleted += VideoPreparationComplete1;
+        float time1 = 0f;
         while (i1 < n1)
         {
             if (started1)
             {
                 i1++;
             }
-            if (started1 == true && i1 > 1)
+            if (started1 && i1 > 1)
             {
-                videoPlayer1.time += (double)skip1 / 1000;
-                Texture2D texturein1 = new Texture2D(480, 270, TextureFormat.RGB24, false);
+                videoPlayer1.time = time1;
+                time1 += skip1 / 1000;
 
-                // Read the pixel data from the Render Texture into the Texture2D
+                yield return new WaitForSeconds(0.1f); 
+
+                Texture2D texturein1 = new Texture2D(480, 270, TextureFormat.RGB24, false);
                 RenderTexture.active = renderTexture1;
                 texturein1.ReadPixels(new Rect(0, 0, 480, 270), 0, 0);
                 texturein1.Apply();
 
-                // Convert the Texture2D to a byte array
                 byte[] bytes = texturein1.EncodeToJPG();
-
                 byteslist1.Add(bytes);
 
-                // Don't forget to clean up
-                RenderTexture.active = null;
-                Destroy(texturein1);
-                Debug.Log(byteslist1.Count);
 
-                if (i1 == 12)
+                if (i1 == 2)
                 {
+                    Debug.Log(time1);
+                    Debug.Log(i1);
                     RawImage rawImage1 = myGameObject1.GetComponent<RawImage>();
                     Texture2D texture1 = new Texture2D(300, 100);
-                    texture1.ReadPixels(new Rect(0, 0, 300, 100), 0, 0);
+                    texture1.ReadPixels(new Rect(90, 85, 300, 100), 0, 0);
                     texture1.Apply();
                     rawImage1.texture = texture1;
                 }
+                RenderTexture.active = null;
+                Destroy(texturein1);
             }
+
             yield return null;
         }
+        //for (int i = 1; i < byteslist1.Count; i++)
+        //{
+        //    byte[] bytes = byteslist1[i - 0];
+        //    string path = Path.Combine(Application.dataPath, @"Frames/Img" + i.ToString() + "_1.png");
+        //    File.WriteAllBytes(path, bytes);
+        //    Debug.Log("Image saved to: " + path + "_1");
+        //}
+        i1 = 0;
     }
+
     private IEnumerator ExtractFramesCoroutine2()
     {
         videoPlayer2.Pause();
         started2 = false;
         videoPlayer2.prepareCompleted += VideoPreparationComplete2;
+        float time2 = 0f;
         while (i2 < n2)
         {
             if (started2)
             {
                 i2++;
             }
-            if (started2 == true && i2 > 1)
+            if (started2 && i2 > 1)
             {
-                videoPlayer2.time += (double)skip2 / 1000;
-                Texture2D texturein2 = new Texture2D(480, 270, TextureFormat.RGB24, false);
+                videoPlayer2.time = time2;
+                time2 += skip2 / 1000;
 
-                // Read the pixel data from the Render Texture into the Texture2D
+                yield return new WaitForSeconds(0.1f);
+
+                Texture2D texturein2 = new Texture2D(480, 270, TextureFormat.RGB24, false);
                 RenderTexture.active = renderTexture2;
                 texturein2.ReadPixels(new Rect(0, 0, 480, 270), 0, 0);
                 texturein2.Apply();
 
-                // Convert the Texture2D to a byte array
                 byte[] bytes = texturein2.EncodeToJPG();
-
                 byteslist2.Add(bytes);
 
-                // Don't forget to clean up
-                Destroy(texturein2);
-                Debug.Log(byteslist2.Count);
 
-                if (i2 == 12)
+                if (i2 == 2)
                 {
                     RawImage rawImage2 = myGameObject2.GetComponent<RawImage>();
                     Texture2D texture2 = new Texture2D(300, 100);
-                    texture2.ReadPixels(new Rect(0, 0, 300, 100), 0, 0);
+                    texture2.ReadPixels(new Rect(90, 85, 300, 100), 0, 0);
                     texture2.Apply();
                     rawImage2.texture = texture2;
                 }
                 RenderTexture.active = null;
+                Destroy(texturein2);
             }
+
             yield return null;
         }
+        //for (int i = 0; i < byteslist2.Count; i++)
+        //{
+        //    byte[] bytes = byteslist2[i];
+        //    string path = Path.Combine(Application.dataPath, @"Frames/Img" + i.ToString() + "_2.png");
+        //    File.WriteAllBytes(path, bytes);
+        //    Debug.Log("Image saved to: " + path + "_2");
+        //}
+        i2 = 0;
     }
 }

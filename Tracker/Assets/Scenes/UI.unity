@@ -265,8 +265,9 @@ MonoBehaviour:
   renderTexture2: {fileID: 8400000, guid: 82245cafa1a9e418c97df0694771460b, type: 2}
   videoPlayer1: {fileID: 1137377588}
   videoPlayer2: {fileID: 652978241}
-  myGameObject: {fileID: 0}
-  fps: 20
+  myGameObject1: {fileID: 1234514472}
+  myGameObject2: {fileID: 1956577999}
+  fps: 2
 --- !u!1 &101182384
 GameObject:
   m_ObjectHideFlags: 0
