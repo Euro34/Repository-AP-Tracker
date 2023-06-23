@@ -95,8 +95,6 @@ public class Frame_ext : MonoBehaviour
 
                 if (i1 == 2)
                 {
-                    Debug.Log(time1);
-                    Debug.Log(i1);
                     RawImage rawImage1 = myGameObject1.GetComponent<RawImage>();
                     Texture2D texture1 = new Texture2D(300, 100);
                     texture1.ReadPixels(new Rect(90, 85, 300, 100), 0, 0);
@@ -112,7 +110,7 @@ public class Frame_ext : MonoBehaviour
         //for (int i = 1; i < byteslist1.Count; i++)
         //{
         //    byte[] bytes = byteslist1[i - 0];
-        //    string path = Path.Combine(Application.dataPath, @"Frames/Img" + i.ToString() + "_1.png");
+        //    string path = Path.Combine(Application.dataPath, @"Frames/Img1_" + i.ToString() + ".png");
         //    File.WriteAllBytes(path, bytes);
         //    Debug.Log("Image saved to: " + path + "_1");
         //}
@@ -164,7 +162,7 @@ public class Frame_ext : MonoBehaviour
         //for (int i = 0; i < byteslist2.Count; i++)
         //{
         //    byte[] bytes = byteslist2[i];
-        //    string path = Path.Combine(Application.dataPath, @"Frames/Img" + i.ToString() + "_2.png");
+        //    string path = Path.Combine(Application.dataPath, @"Frames/Img2_" + i.ToString() + ".png");
         //    File.WriteAllBytes(path, bytes);
         //    Debug.Log("Image saved to: " + path + "_2");
         //}
