@@ -359,9 +359,10 @@
 -r:"Library/Bee/artifacts/900b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/CrystalFramework/Utility/Demos/SafeAreaDemo.cs"
 "Assets/CrystalFramework/Utility/SafeArea.cs"
-"Assets/Script/FilePicker.cs"
-"Assets/Script/Frame_ext.cs"
-"Assets/Script/Switch_Scene_Relative_Point.cs"
+"Assets/My Asset/Script/FilePicker.cs"
+"Assets/My Asset/Script/Frame_ext.cs"
+"Assets/My Asset/Script/Refer_pic.cs"
+"Assets/My Asset/Script/Switch_Scene_Relative_Point.cs"
 "Assets/TutorialInfo/Scripts/Readme.cs"
 -langversion:9.0
 
