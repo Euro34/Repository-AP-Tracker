@@ -4,11 +4,13 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
+using System.Threading;
 
 public class Zoom_Slider: MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     private bool isDragging;
     private bool SliderDrag;
+    private bool istouching;
     private float currentScale;
     public float minScale, maxScale;
     public Slider slider;
@@ -16,6 +18,7 @@ public class Zoom_Slider: MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private float scalingRate = 0.01f;
     public float Zoom;
     public TextMeshProUGUI Zoom_txt;
+    public ScrollRect scrollRect;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,16 +32,16 @@ public class Zoom_Slider: MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         {
             if (isDragging)
             {
-                transform.localScale = new Vector2(currentScale, currentScale);
+                scrollRect.enabled = false;
                 float distance = Vector3.Distance(Input.GetTouch(0).position, Input.GetTouch(1).position);
+                Debug.Log(distance + " " + temp);
                 if (temp > distance)
                 {
-                    currentScale -=  (temp - distance) * scalingRate/ (Time.deltaTime);
+                    currentScale -=  (temp - distance) * scalingRate;
                 }
-
                 else if (temp < distance)
                 {
-                    currentScale += (distance - temp) * scalingRate / (Time.deltaTime);
+                    currentScale += (distance - temp) * scalingRate;
                 }
                 if (currentScale < minScale)
                 {
@@ -55,12 +58,13 @@ public class Zoom_Slider: MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             {
                 temp = 0;
             }
-            if(SliderDrag)
+            if (SliderDrag)
             {
                 currentScale = slider.value;
             }
             Zoom = (Mathf.Pow(slider.value, 2) / 2);
             Zoom_txt.text = Zoom.ToString() + " %";
+            //transform.localScale = new Vector2(currentScale, currentScale);
             yield return null;
         }
     }
@@ -69,7 +73,12 @@ public class Zoom_Slider: MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         if (Input.touchCount == 2)
         {
+            scrollRect.enabled = false;
             isDragging = true;
+        }
+        if (Input.touchCount == 1)
+        {
+            scrollRect.enabled = true;
         }
     }
 
@@ -77,6 +86,7 @@ public class Zoom_Slider: MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public void OnPointerUp(PointerEventData eventData)
     {
         isDragging = false;
+        istouching = false;
     }
     public void SliderPointerDown()
     {
