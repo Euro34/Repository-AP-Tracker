@@ -361,9 +361,11 @@
 "Assets/CrystalFramework/Utility/SafeArea.cs"
 "Assets/My Asset/Script/FilePicker.cs"
 "Assets/My Asset/Script/Frame_ext.cs"
+"Assets/My Asset/Script/Pan_Zoom.cs"
 "Assets/My Asset/Script/Refer_pic.cs"
 "Assets/My Asset/Script/Switch_Scene_Relative_Point.cs"
 "Assets/My Asset/Script/Vid_select_Switch.cs"
+"Assets/My Asset/Script/Zoom_Slider.cs"
 "Assets/TutorialInfo/Scripts/Readme.cs"
 -langversion:9.0
 
