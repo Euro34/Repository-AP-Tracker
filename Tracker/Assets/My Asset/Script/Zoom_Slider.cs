@@ -34,7 +34,10 @@ public class Zoom_Slider: MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             {
                 scrollRect.enabled = false;
                 float distance = Vector3.Distance(Input.GetTouch(0).position, Input.GetTouch(1).position);
-                Debug.Log(distance + " " + temp);
+                if (temp == 0)
+                {
+                    temp = distance;
+                }
                 if (temp > distance)
                 {
                     currentScale -=  (temp - distance) * scalingRate;
