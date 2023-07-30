@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028326, g: 0.22571333, b: 0.30692202, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -417,7 +417,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zoom_slider: {fileID: 654654437}
-  maxZoom: 50
 --- !u!1 &902884632
 GameObject:
   m_ObjectHideFlags: 0
@@ -779,7 +778,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zoom_slider: {fileID: 654654437}
-  maxZoom: 50
 --- !u!1 &1126985271
 GameObject:
   m_ObjectHideFlags: 0
@@ -1596,7 +1594,7 @@ MonoBehaviour:
   m_Content: {fileID: 991325226}
   m_Horizontal: 1
   m_Vertical: 1
-  m_MovementType: 1
+  m_MovementType: 0
   m_Elasticity: 0.1
   m_Inertia: 0
   m_DecelerationRate: 0.01
