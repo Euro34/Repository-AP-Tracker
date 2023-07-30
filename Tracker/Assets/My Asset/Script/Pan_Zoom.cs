@@ -1,34 +1,28 @@
-using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class Pan_Zoom : MonoBehaviour
 {
     private UnityEngine.Vector3 initialScale;
+    private UnityEngine.Vector3 initialPos;
+    private UnityEngine.Vector3 startPos;
     public Zoom_Slider zoom_slider;
-    float Zoom;
-
-
-    [SerializeField]
-    private int maxZoom = 50;
+    float Zoom, Zoom2;
 
     private void Awake()
     {
         initialScale = transform.localScale;
+        startPos = transform.position - new Vector3(0f,19.5f,0f);
+        Zoom2 = Zoom;
     }
 
     public void SetScale()
     {
+        initialPos = transform.position;
         Zoom = (zoom_slider.Zoom)/100;
         var desiredScale = initialScale * Zoom;
-        desiredScale = ClampDesiredScale(desiredScale);
+        transform.position = startPos + ((initialPos - startPos) * (Zoom/Zoom2));
+        Zoom2 = Zoom;
         transform.localScale = desiredScale;
-    }
-
-    private UnityEngine.Vector3 ClampDesiredScale(Vector3 desiredScale)
-    {
-        desiredScale = Vector3.Max(initialScale/2, desiredScale);
-        desiredScale = Vector3.Min(initialScale * maxZoom, desiredScale);
-        return desiredScale;
     }
 }
