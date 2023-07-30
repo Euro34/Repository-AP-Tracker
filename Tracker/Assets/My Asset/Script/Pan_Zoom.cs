@@ -21,7 +21,6 @@ public class Pan_Zoom : MonoBehaviour
         initialPos = transform.position;
         Zoom = (zoom_slider.Zoom)/100;
         var desiredScale = initialScale * Zoom;
-        Debug.Log(Zoom.ToString() + Zoom2.ToString() + (Zoom / Zoom2).ToString());
         transform.position = startPos + ((initialPos - startPos) * (Zoom/Zoom2));
         Zoom2 = Zoom;
         transform.localScale = desiredScale;
