@@ -30,6 +30,10 @@ public class Frame_ext : MonoBehaviour
     public int fps = 2;
     private double vid_lenght1;
     private double vid_lenght2;
+    public int width1;
+    public int width2;
+    public int height1;
+    public int height2;
 
     public void button1()
     {
@@ -55,6 +59,11 @@ public class Frame_ext : MonoBehaviour
         vid_lenght1 = videoPlayer1.length;
         n1 = (int)(vid_lenght1 * fps);
         skip1 = (float)(1000 / fps);
+        width1 = (int)videoPlayer1.width;
+        height1 = (int)videoPlayer1.height;
+        renderTexture1.Release();
+        renderTexture1.width = width1;
+        renderTexture1.height = height1;
     }
 
     private void VideoPreparationComplete2(VideoPlayer source)
@@ -63,6 +72,11 @@ public class Frame_ext : MonoBehaviour
         vid_lenght2 = videoPlayer2.length;
         n2 = (int)(vid_lenght2 * fps);
         skip2 = (float)(1000 / fps);
+        width2 = (int)videoPlayer2.width;
+        height2 = (int)videoPlayer2.height;
+        renderTexture2.Release();
+        renderTexture2.width = width2;
+        renderTexture2.height = height2;
     }
 
     private IEnumerator ExtractFramesCoroutine1()
@@ -84,9 +98,9 @@ public class Frame_ext : MonoBehaviour
 
                 yield return new WaitForSeconds(0.1f); 
 
-                Texture2D texturein1 = new Texture2D(480, 270, TextureFormat.RGB24, false);
+                Texture2D texturein1 = new Texture2D(width1, height1, TextureFormat.RGB24, false);
                 RenderTexture.active = renderTexture1;
-                texturein1.ReadPixels(new Rect(0, 0, 480, 270), 0, 0);
+                texturein1.ReadPixels(new Rect(0, 0, width1, height1), 0, 0);
                 texturein1.Apply();
 
                 byte[] bytes = texturein1.EncodeToJPG();
@@ -136,9 +150,9 @@ public class Frame_ext : MonoBehaviour
 
                 yield return new WaitForSeconds(0.1f);
 
-                Texture2D texturein2 = new Texture2D(480, 270, TextureFormat.RGB24, false);
+                Texture2D texturein2 = new Texture2D(width2, height2, TextureFormat.RGB24, false);
                 RenderTexture.active = renderTexture2;
-                texturein2.ReadPixels(new Rect(0, 0, 480, 270), 0, 0);
+                texturein2.ReadPixels(new Rect(0, 0, width2, height2), 0, 0);
                 texturein2.Apply();
 
                 byte[] bytes = texturein2.EncodeToJPG();
