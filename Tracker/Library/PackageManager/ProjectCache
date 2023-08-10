@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638218339125028423
-    m_Hash: 3036887627
+      ticks: 638272539765830574
+    m_Hash: 2607596893
   m_LockFileStatus:
     m_FilePath: C:/Users/User/Documents/GitHub/Repository-Tracker/Tracker/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638218339125028423
-    m_Hash: 2237237411
+      ticks: 638272539766189599
+    m_Hash: 367268452
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -22,6 +22,57 @@ m_LocalPackages:
 m_ProjectPath: C:/Users/User/Documents/GitHub/Repository-Tracker/Tracker/Packages
 m_EditorVersion: 2021.3.26f1 (a16dc32e0ff2)
 m_ResolvedPackages:
+- packageId: com.nobi.roundedcorners@https://github.com/kirevdokimov/Unity-UI-Rounded-Corners.git
+  testable: 0
+  isDirectDependency: 1
+  version: 3.3.1
+  source: 5
+  resolvedPath: C:\Users\User\Documents\GitHub\Repository-Tracker\Tracker\Library\PackageCache\com.nobi.roundedcorners@8862398817
+  assetPath: Packages/com.nobi.roundedcorners
+  name: com.nobi.roundedcorners
+  displayName: UI Rounded Corners
+  author:
+    name: 
+    email: 
+    url: 
+  category: UI
+  type: 
+  description: This package provides components and shaders that allow you to add
+    rounded corners to UI elements!
+  status: 0
+  errors: []
+  versions:
+    all: []
+    compatible: []
+    verified: 
+  dependencies: []
+  resolvedDependencies: []
+  keywords:
+  - UI
+  - Shader
+  - Cg
+  - Hlsl
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+  hideInEditor: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 0
+  documentationUrl: 
+  hasRepository: 0
+  repository:
+    type: 
+    url: 
+    revision: 
+    path: 
+  unityLifecycle:
+    version: 
+    nextVersion: 
 - packageId: com.unity.collab-proxy@2.0.4
   testable: 0
   isDirectDependency: 1
@@ -108,16 +159,18 @@ m_ResolvedPackages:
     - 2.0.3
     - 2.0.4
     - 2.0.5
+    - 2.0.7
     - 2.1.0-preview.3
     - 2.1.0-preview.5
     - 2.1.0-preview.6
     compatible:
     - 2.0.4
     - 2.0.5
+    - 2.0.7
     - 2.1.0-preview.3
     - 2.1.0-preview.5
     - 2.1.0-preview.6
-    verified: 2.0.5
+    verified: 2.0.7
   dependencies: []
   resolvedDependencies: []
   keywords:
@@ -363,9 +416,11 @@ m_ResolvedPackages:
     - 2.0.16
     - 2.0.17
     - 2.0.18
+    - 2.0.20
     compatible:
     - 2.0.18
-    verified: 2.0.18
+    - 2.0.20
+    verified: 2.0.20
   dependencies:
   - name: com.unity.test-framework
     version: 1.1.9
@@ -1029,8 +1084,10 @@ m_ResolvedPackages:
     - 1.7.8
     - 1.8.0-pre.1
     - 1.8.0
+    - 1.9.0
     compatible:
     - 1.8.0
+    - 1.9.0
     verified: 1.8.0
   dependencies:
   - name: com.unity.ugui
@@ -2871,11 +2928,13 @@ m_ResolvedPackages:
     - 2.0.2
     - 2.0.3
     - 2.0.4
+    - 2.0.5
     compatible:
     - 1.0.6
     - 2.0.2
     - 2.0.3
     - 2.0.4
+    - 2.0.5
     verified: 1.0.6
   dependencies: []
   resolvedDependencies: []
@@ -3174,9 +3233,11 @@ m_ResolvedPackages:
     - 2.1.0
     - 2.1.1
     - 2.2.0
+    - 2.2.1
     compatible:
     - 2.1.1
     - 2.2.0
+    - 2.2.1
     verified: 2.1.1
   dependencies:
   - name: com.unity.modules.androidjni

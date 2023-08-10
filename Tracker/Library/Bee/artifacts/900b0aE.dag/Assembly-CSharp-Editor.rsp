@@ -344,6 +344,8 @@
 -r:"Library/Bee/artifacts/900b0aE.dag/Assembly-CSharp.ref.dll"
 -r:"Library/Bee/artifacts/900b0aE.dag/NativeFilePicker.Editor.ref.dll"
 -r:"Library/Bee/artifacts/900b0aE.dag/NativeFilePicker.Runtime.ref.dll"
+-r:"Library/Bee/artifacts/900b0aE.dag/Nobi.UiRoundedCorners.Editor.ref.dll"
+-r:"Library/Bee/artifacts/900b0aE.dag/Nobi.UiRoundedCorners.ref.dll"
 -r:"Library/Bee/artifacts/900b0aE.dag/Unity.AdaptivePerformance.Editor.ref.dll"
 -r:"Library/Bee/artifacts/900b0aE.dag/Unity.AdaptivePerformance.Profiler.Editor.ref.dll"
 -r:"Library/Bee/artifacts/900b0aE.dag/Unity.AdaptivePerformance.ref.dll"
