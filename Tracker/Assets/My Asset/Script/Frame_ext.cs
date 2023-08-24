@@ -16,8 +16,8 @@ public class Frame_ext : MonoBehaviour
     public VideoPlayer videoPlayer2;
     public GameObject myGameObject1;
     public GameObject myGameObject2;
-    public List<byte[]> byteslist1 = new List<byte[]>();
-    public List<byte[]> byteslist2 = new List<byte[]>();
+    public static List<byte[]> byteslist1 = new List<byte[]>();
+    public static List<byte[]> byteslist2 = new List<byte[]>();
     private bool started1;
     private bool started2;
     private int i1 = 0;
@@ -40,7 +40,6 @@ public class Frame_ext : MonoBehaviour
         button = 1;
         i1 = 0;
         byteslist1.Clear();
-        myGameObject1 = GameObject.Find("RawImage_vid1");
         StartCoroutine(ExtractFramesCoroutine1());
     }
 
@@ -49,7 +48,6 @@ public class Frame_ext : MonoBehaviour
         button = 2;
         i2 = 0;
         byteslist2.Clear();
-        myGameObject2 = GameObject.Find("RawImage_vid2");
         StartCoroutine(ExtractFramesCoroutine2());
     }
 
@@ -110,8 +108,8 @@ public class Frame_ext : MonoBehaviour
                 if (i1 == 2)
                 {
                     RawImage rawImage1 = myGameObject1.GetComponent<RawImage>();
-                    Texture2D texture1 = new Texture2D(300, 100);
-                    texture1.ReadPixels(new Rect(90, 85, 300, 100), 0, 0);
+                    Texture2D texture1 = new Texture2D(width1, width1/2, TextureFormat.RGB24, false);
+                    texture1.ReadPixels(new Rect(0, height1/2-width1/4, width1, width1/2), 0, 0);
                     texture1.Apply();
                     rawImage1.texture = texture1;
                 }
@@ -162,8 +160,8 @@ public class Frame_ext : MonoBehaviour
                 if (i2 == 2)
                 {
                     RawImage rawImage2 = myGameObject2.GetComponent<RawImage>();
-                    Texture2D texture2 = new Texture2D(300, 100);
-                    texture2.ReadPixels(new Rect(90, 85, 300, 100), 0, 0);
+                    Texture2D texture2 = new Texture2D(width2, width2 / 2);
+                    texture2.ReadPixels(new Rect(0, height2 / 2 - width2 / 4, width2, width2 / 2), 0, 0);
                     texture2.Apply();
                     rawImage2.texture = texture2;
                 }
