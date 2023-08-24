@@ -30,10 +30,10 @@ public class Frame_ext : MonoBehaviour
     public int fps = 2;
     private double vid_lenght1;
     private double vid_lenght2;
-    public int width1;
-    public int width2;
-    public int height1;
-    public int height2;
+    public static int width1;
+    public static int width2;
+    public static int height1;
+    public static int height2;
 
     public void button1()
     {
@@ -101,6 +101,14 @@ public class Frame_ext : MonoBehaviour
                 texturein1.ReadPixels(new Rect(0, 0, width1, height1), 0, 0);
                 texturein1.Apply();
 
+                Color[] pixels = texturein1.GetPixels();
+                for (int i = 0; i < pixels.Length; i++)
+                {
+                    pixels[i] = pixels[i].gamma; // Convert to gamma space
+                }
+                texturein1.SetPixels(pixels);
+                texturein1.Apply();
+
                 byte[] bytes = texturein1.EncodeToJPG();
                 byteslist1.Add(bytes);
 
@@ -111,6 +119,9 @@ public class Frame_ext : MonoBehaviour
                     Texture2D texture1 = new Texture2D(width1, width1/2, TextureFormat.RGB24, false);
                     texture1.ReadPixels(new Rect(0, height1/2-width1/4, width1, width1/2), 0, 0);
                     texture1.Apply();
+                    texture1.SetPixels(pixels);
+                    texture1.Apply();
+
                     rawImage1.texture = texture1;
                 }
                 RenderTexture.active = null;
@@ -153,6 +164,14 @@ public class Frame_ext : MonoBehaviour
                 texturein2.ReadPixels(new Rect(0, 0, width2, height2), 0, 0);
                 texturein2.Apply();
 
+                Color[] pixels = texturein2.GetPixels();
+                for (int i = 0; i < pixels.Length; i++)
+                {
+                    pixels[i] = pixels[i].gamma; // Convert to gamma space
+                }
+                texturein2.SetPixels(pixels);
+                texturein2.Apply();
+
                 byte[] bytes = texturein2.EncodeToJPG();
                 byteslist2.Add(bytes);
 
@@ -162,6 +181,8 @@ public class Frame_ext : MonoBehaviour
                     RawImage rawImage2 = myGameObject2.GetComponent<RawImage>();
                     Texture2D texture2 = new Texture2D(width2, width2 / 2);
                     texture2.ReadPixels(new Rect(0, height2 / 2 - width2 / 4, width2, width2 / 2), 0, 0);
+                    texture2.Apply();
+                    texture2.SetPixels(pixels);
                     texture2.Apply();
                     rawImage2.texture = texture2;
                 }

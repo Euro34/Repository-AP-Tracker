@@ -11,11 +11,12 @@ public class Vid_select_Switch : MonoBehaviour
 {
     public TextMeshProUGUI Output;
     private int Select_Vid = 1;
-    public GameObject RawImage_Img;
+    public RawImage RawImage_Img;
 
     void Start()
     {
         Output.text = "Vid_1";
+        AssignPic();
     }
 
 
@@ -25,21 +26,40 @@ public class Vid_select_Switch : MonoBehaviour
         {
             Output.text = "Vid_2";
             Select_Vid = 2;
+            AssignPic();
         }
         else
         {
             Output.text = "Vid_1";
             Select_Vid = 1;
+            AssignPic();
         }
-        Debug.Log(Select_Vid);
     }
 
     private void AssignPic()
     {
-        RawImage rawImage = RawImage_Img.GetComponent<RawImage>();
-        Texture2D texture = new Texture2D(3024,4032);
-        texture.ReadPixels(new Rect(0, 0, 3024, 4032), 0, 0);
-        texture.Apply();
-        rawImage.texture = texture;
+        if (Select_Vid == 1)
+        {
+            int width = (Frame_ext.width1 * 4032) / Frame_ext.height1;
+            Texture2D texture = new Texture2D(Frame_ext.width1, Frame_ext.height1);
+            texture.LoadImage(Frame_ext.byteslist1[1]);
+            texture.ReadPixels(new Rect(0, 0, Frame_ext.width1, Frame_ext.height1), 0, 0);
+            texture.Apply();
+
+            // Set the new width while preserving the original height
+            RawImage_Img.rectTransform.sizeDelta = new Vector2(width, 4032);
+            RawImage_Img.texture = texture;
+        }
+        else {
+            int width = (Frame_ext.width2 * 4032) / Frame_ext.height2;
+            Texture2D texture = new Texture2D(Frame_ext.width2, Frame_ext.height2);
+            texture.LoadImage(Frame_ext.byteslist2[1]);
+            texture.ReadPixels(new Rect(0, 0, Frame_ext.width2, Frame_ext.height2), 0, 0);
+            texture.Apply();
+
+            // Set the new width while preserving the original height
+            RawImage_Img.rectTransform.sizeDelta = new Vector2(width, 4032);
+            RawImage_Img.texture = texture;
+        }
     }
 }
