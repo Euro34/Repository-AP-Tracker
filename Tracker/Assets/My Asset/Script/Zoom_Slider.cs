@@ -10,7 +10,6 @@ public class Zoom_Slider: MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     private bool isDragging;
     private bool SliderDrag;
-    private bool istouching;
     private float currentScale;
     public float minScale, maxScale;
     public Slider slider;
@@ -89,7 +88,6 @@ public class Zoom_Slider: MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public void OnPointerUp(PointerEventData eventData)
     {
         isDragging = false;
-        istouching = false;
     }
     public void SliderPointerDown()
     {

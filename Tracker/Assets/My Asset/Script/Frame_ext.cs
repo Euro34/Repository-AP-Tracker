@@ -22,7 +22,6 @@ public class Frame_ext : MonoBehaviour
     private bool started2;
     private int i1 = 0;
     private int i2 = 0;
-    private short button;
     private int n1 = 1;
     private int n2 = 1;
     private float skip1;
@@ -37,7 +36,6 @@ public class Frame_ext : MonoBehaviour
 
     public void button1()
     {
-        button = 1;
         i1 = 0;
         byteslist1.Clear();
         StartCoroutine(ExtractFramesCoroutine1());
@@ -45,7 +43,6 @@ public class Frame_ext : MonoBehaviour
 
     public void button2()
     {
-        button = 2;
         i2 = 0;
         byteslist2.Clear();
         StartCoroutine(ExtractFramesCoroutine2());

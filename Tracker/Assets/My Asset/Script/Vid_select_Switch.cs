@@ -9,9 +9,10 @@ using UnityEngine.UI;
 
 public class Vid_select_Switch : MonoBehaviour
 {
-    public TextMeshProUGUI Output;
     private int Select_Vid = 1;
+    public TextMeshProUGUI Output;
     public RawImage RawImage_Img;
+    public Pan_Zoom pan_zoom;
 
     void Start()
     {
@@ -40,26 +41,24 @@ public class Vid_select_Switch : MonoBehaviour
     {
         if (Select_Vid == 1)
         {
-            int width = (Frame_ext.width1 * 4032) / Frame_ext.height1;
-            Texture2D texture = new Texture2D(Frame_ext.width1, Frame_ext.height1);
-            texture.LoadImage(Frame_ext.byteslist1[1]);
-            texture.ReadPixels(new Rect(0, 0, Frame_ext.width1, Frame_ext.height1), 0, 0);
-            texture.Apply();
+            int width1 = (Frame_ext.width1 * 4032) / Frame_ext.height1;
+            Texture2D texture1 = new Texture2D(Frame_ext.width1, Frame_ext.height1);
+            texture1.LoadImage(Frame_ext.byteslist1[1]);
+            texture1.Apply();
 
             // Set the new width while preserving the original height
-            RawImage_Img.rectTransform.sizeDelta = new Vector2(width, 4032);
-            RawImage_Img.texture = texture;
+            RawImage_Img.rectTransform.sizeDelta = new Vector2(width1, 4032);
+            RawImage_Img.texture = texture1;
         }
         else {
-            int width = (Frame_ext.width2 * 4032) / Frame_ext.height2;
-            Texture2D texture = new Texture2D(Frame_ext.width2, Frame_ext.height2);
-            texture.LoadImage(Frame_ext.byteslist2[1]);
-            texture.ReadPixels(new Rect(0, 0, Frame_ext.width2, Frame_ext.height2), 0, 0);
-            texture.Apply();
+            int width2 = (Frame_ext.width2 * 4032) / Frame_ext.height2;
+            Texture2D texture2 = new Texture2D(Frame_ext.width2, Frame_ext.height2);
+            texture2.LoadImage(Frame_ext.byteslist2[1]);
+            texture2.Apply();
 
             // Set the new width while preserving the original height
-            RawImage_Img.rectTransform.sizeDelta = new Vector2(width, 4032);
-            RawImage_Img.texture = texture;
+            RawImage_Img.rectTransform.sizeDelta = new Vector2(width2, 4032);
+            RawImage_Img.texture = texture2;
         }
     }
 }
