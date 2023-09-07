@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028326, g: 0.22571333, b: 0.30692202, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -704,7 +704,7 @@ GameObject:
   - component: {fileID: 1077920837}
   - component: {fileID: 1077920836}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Button_Cap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -773,7 +773,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1077920837}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2146498349}
+        m_TargetAssemblyTypeName: Pan_Zoom, Assembly-CSharp
+        m_MethodName: Pos_Capture
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1077920837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -994,7 +1006,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 2146498349}
         m_TargetAssemblyTypeName: Pan_Zoom, Assembly-CSharp
-        m_MethodName: Reset
+        m_MethodName: Reset_
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -24,16 +24,20 @@ public class Pan_Zoom : MonoBehaviour
         initialPos = transform.position;
         Zoom = (zoom_slider.Zoom) / 100;
         transform.position = startPos + ((initialPos - startPos) * (Zoom / Zoom2));
-        Debug.Log(transform.position);
         Zoom2 = Zoom;
         transform.localScale = initialScale * Zoom;
     }
 
-    public void Reset()
+    public void Reset_()
     {
         slider.value = Mathf.Sqrt(200);
         transform.localScale = initialScale;
         transform.position = startPos;
         //Debug.Log(startPos);
+    }
+    public void Pos_Capture()
+    {
+        Vector3 position = (transform.position - startPos) / (Zoom2);
+
     }
 }
