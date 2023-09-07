@@ -31,7 +31,7 @@ public class Pan_Zoom : MonoBehaviour
 
     public void Reset()
     {
-        slider.value = 20;
+        slider.value = Mathf.Sqrt(200);
         transform.localScale = initialScale;
         transform.position = startPos;
         //Debug.Log(startPos);
