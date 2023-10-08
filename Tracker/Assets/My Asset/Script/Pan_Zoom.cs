@@ -41,3 +41,15 @@ public class Pan_Zoom : MonoBehaviour
 
     }
 }
+class Name_Pos
+{
+    static string name;
+    static double x_pos;
+    static double y_pos;
+    static double z_pos;
+
+    public static void Collect_Pos (Vector3 args)
+    {
+        
+    }
+}
