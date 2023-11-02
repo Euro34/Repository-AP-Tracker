@@ -11,6 +11,7 @@ public class Pan_Zoom : MonoBehaviour
     public RawImage RawImage_Img;
     float Zoom, Zoom2;
     public Slider slider; 
+    public Ref_Point_Select ref_Point;
 
     private void Awake()
     {
@@ -38,18 +39,31 @@ public class Pan_Zoom : MonoBehaviour
     public void Pos_Capture()
     {
         Vector3 position = (transform.position - startPos) / (Zoom2);
-
+        Debug.Log(position);
+        if (ref_Point == null){
+            Debug.Log("null");
+        }
+        else {
+            Debug.Log(ref_Point.Current_value);
+        }
+        Name_Pos2d obj = new Name_Pos2d();
+        obj.SetPos("Test", position);
+        Debug.Log("Name: " + obj.Name);
+        Debug.Log("Position X: " + obj.pos_x);
+        Debug.Log("Position Y: " + obj.pos_y);
     }
 }
-class Name_Pos
+public class Name_Pos2d
 {
-    static string name;
-    static double x_pos;
-    static double y_pos;
-    static double z_pos;
+    public string Name { get; set; }
+    public double pos_x { get; set; }
+    public double pos_y { get; set; }
 
-    public static void Collect_Pos (Vector3 args)
+    // Constructor to initialize the object with values
+    public void SetPos(string name, Vector3 vector)
     {
-        
+        Name = name;
+        pos_x = vector.x;
+        pos_y = vector.y;
     }
 }
