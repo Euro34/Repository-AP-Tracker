@@ -40,14 +40,9 @@ public class Pan_Zoom : MonoBehaviour
     {
         Vector3 position = (transform.position - startPos) / (Zoom2);
         Debug.Log(position);
-        if (ref_Point == null){
-            Debug.Log("null");
-        }
-        else {
-            Debug.Log(ref_Point.Current_value);
-        }
+        Debug.Log(ref_Point.Current_value);
         Name_Pos2d obj = new Name_Pos2d();
-        obj.SetPos("Test", position);
+        obj.SetPos(ref_Point.Current_value.ToString(), position);
         Debug.Log("Name: " + obj.Name);
         Debug.Log("Position X: " + obj.pos_x);
         Debug.Log("Position Y: " + obj.pos_y);
