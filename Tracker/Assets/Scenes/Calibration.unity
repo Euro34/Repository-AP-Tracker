@@ -538,9 +538,8 @@ GameObject:
   - component: {fileID: 654654431}
   - component: {fileID: 654654436}
   - component: {fileID: 654654437}
-  - component: {fileID: 654654438}
   - component: {fileID: 654654439}
-  - component: {fileID: 654654440}
+  - component: {fileID: 654654441}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -657,7 +656,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Output: {fileID: 1326045467}
   RawImage_Img: {fileID: 2146498350}
-  pan_zoom: {fileID: 654654438}
+  pan_zoom: {fileID: 0}
 --- !u!114 &654654437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -676,22 +675,6 @@ MonoBehaviour:
   Zoom: 0
   Zoom_txt: {fileID: 1389041411}
   scrollRect: {fileID: 1465989762}
---- !u!114 &654654438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 654654430}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89fa86458c3c448e88f03f4e611bb6ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  zoom_slider: {fileID: 654654437}
-  RawImage_Img: {fileID: 2146498350}
-  slider: {fileID: 1478685795}
-  ref_Point: {fileID: 654654440}
 --- !u!114 &654654439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -706,7 +689,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Current_value: 1
   Text: {fileID: 70382555}
---- !u!114 &654654440
+--- !u!114 &654654441
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -715,9 +698,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 654654430}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 563bf446a801343188de30abdbd55e26, type: 3}
+  m_Script: {fileID: 11500000, guid: ef04e2abb365e4779ad26d4b5b5efc04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pan_zoom: {fileID: 2146498349}
 --- !u!1 &902884632
 GameObject:
   m_ObjectHideFlags: 0
@@ -3263,7 +3247,7 @@ MonoBehaviour:
   zoom_slider: {fileID: 654654437}
   RawImage_Img: {fileID: 2146498350}
   slider: {fileID: 1478685795}
-  ref_Point: {fileID: 0}
+  ref_Point: {fileID: 654654439}
 --- !u!114 &2146498350
 MonoBehaviour:
   m_ObjectHideFlags: 0

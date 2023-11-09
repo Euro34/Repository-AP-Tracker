@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -12,6 +13,8 @@ public class Pan_Zoom : MonoBehaviour
     float Zoom, Zoom2;
     public Slider slider; 
     public Ref_Point_Select ref_Point;
+    IDictionary<string, Name_Pos2d> refpoint = new Dictionary<string, Name_Pos2d>();
+
 
     private void Awake()
     {
@@ -34,30 +37,28 @@ public class Pan_Zoom : MonoBehaviour
         slider.value = Mathf.Sqrt(200);
         transform.localScale = initialScale;
         transform.position = startPos;
-        //Debug.Log(startPos);
     }
     public void Pos_Capture()
     {
         Vector3 position = (transform.position - startPos) / (Zoom2);
-        Debug.Log(position);
-        Debug.Log(ref_Point.Current_value);
         Name_Pos2d obj = new Name_Pos2d();
-        obj.SetPos(ref_Point.Current_value.ToString(), position);
-        Debug.Log("Name: " + obj.Name);
-        Debug.Log("Position X: " + obj.pos_x);
-        Debug.Log("Position Y: " + obj.pos_y);
+        obj.SetPos(position);
+        try
+        {
+            refpoint.Add(ref_Point.Current_value.ToString(), obj);
+        }
+        catch
+        {
+            refpoint[ref_Point.Current_value.ToString()] = obj;
+        }
     }
 }
 public class Name_Pos2d
 {
-    public string Name { get; set; }
     public double pos_x { get; set; }
     public double pos_y { get; set; }
-
-    // Constructor to initialize the object with values
-    public void SetPos(string name, Vector3 vector)
+    public void SetPos(Vector3 vector)
     {
-        Name = name;
         pos_x = vector.x;
         pos_y = vector.y;
     }
