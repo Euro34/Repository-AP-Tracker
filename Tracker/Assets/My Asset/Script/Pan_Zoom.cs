@@ -12,10 +12,10 @@ public class Pan_Zoom : MonoBehaviour
     public RawImage RawImage_Img;
     public Slider slider; 
     public Ref_Point_Select ref_Point;
+    public Vid_select_Switch vid_Select_Switch;
     float Zoom, Zoom2;
-    IDictionary<string, Name_Pos2d> refpoint = new Dictionary<string, Name_Pos2d>();
-    //IDictionary<string, Name_Pos2d> refpoint = new Dictionary<string, Name_Pos2d>();
-
+    IDictionary<string, Name_Pos2d> refpoint1 = new Dictionary<string, Name_Pos2d>();
+    IDictionary<string, Name_Pos2d> refpoint2 = new Dictionary<string, Name_Pos2d>();
 
     private void Awake()
     {
@@ -41,24 +41,45 @@ public class Pan_Zoom : MonoBehaviour
     }
     public void Pos_Capture()
     {
-
         Vector3 position = (transform.position - startPos) / (Zoom2);
         Name_Pos2d obj = new Name_Pos2d();
         obj.SetPos(position);
-        try
-        {
-            refpoint.Add(ref_Point.Current_value.ToString(), obj);
-        }
-        catch
-        {
-            refpoint[ref_Point.Current_value.ToString()] = obj;
-        }
-        for (int i = 1 ; i <= 6 ; i++){
-            try{
-                Debug.Log(i +  " = " + refpoint[i.ToString()]);
+        if (vid_Select_Switch.Select_Vid == 1) {
+            Debug.Log("1");
+            try
+            {
+                refpoint1.Add(ref_Point.Current_value.ToString(), obj);
             }
-            catch{
-                Debug.Log(i + " = nan");
+            catch
+            {
+                refpoint1[ref_Point.Current_value.ToString()] = obj;
+            }
+            for (int i = 1 ; i <= 8 ; i++){
+                try{
+                    Debug.Log(i +  " = " + refpoint1[i.ToString()]);
+                }
+                catch{
+                    Debug.Log(i + " = nan");
+                }
+            }
+        }
+        else {
+            Debug.Log("2");
+            try
+            {
+                refpoint2.Add(ref_Point.Current_value.ToString(), obj);
+            }
+            catch
+            {
+                refpoint2[ref_Point.Current_value.ToString()] = obj;
+            }
+            for (int i = 1 ; i <= 8 ; i++){
+                try{
+                    Debug.Log(i +  " = " + refpoint2[i.ToString()]);
+                }
+                catch{
+                    Debug.Log(i + " = nan");
+                }
             }
         }
     }
