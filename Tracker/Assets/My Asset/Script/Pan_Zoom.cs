@@ -10,10 +10,11 @@ public class Pan_Zoom : MonoBehaviour
     private UnityEngine.Vector3 startPos;
     public Zoom_Slider zoom_slider;
     public RawImage RawImage_Img;
-    float Zoom, Zoom2;
     public Slider slider; 
     public Ref_Point_Select ref_Point;
+    float Zoom, Zoom2;
     IDictionary<string, Name_Pos2d> refpoint = new Dictionary<string, Name_Pos2d>();
+    //IDictionary<string, Name_Pos2d> refpoint = new Dictionary<string, Name_Pos2d>();
 
 
     private void Awake()
@@ -40,6 +41,7 @@ public class Pan_Zoom : MonoBehaviour
     }
     public void Pos_Capture()
     {
+
         Vector3 position = (transform.position - startPos) / (Zoom2);
         Name_Pos2d obj = new Name_Pos2d();
         obj.SetPos(position);
@@ -50,6 +52,14 @@ public class Pan_Zoom : MonoBehaviour
         catch
         {
             refpoint[ref_Point.Current_value.ToString()] = obj;
+        }
+        for (int i = 1 ; i <= 6 ; i++){
+            try{
+                Debug.Log(i +  " = " + refpoint[i.ToString()]);
+            }
+            catch{
+                Debug.Log(i + " = nan");
+            }
         }
     }
 }
@@ -62,4 +72,9 @@ public class Name_Pos2d
         pos_x = vector.x;
         pos_y = vector.y;
     }
+    public override string ToString()
+    {
+        return $"x : {pos_x} ,y : {pos_y}";
+    }
 }
+

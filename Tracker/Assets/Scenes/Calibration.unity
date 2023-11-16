@@ -654,6 +654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd71e8dea57a145adba2b0a479cd57dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Select_Vid: 1
   Output: {fileID: 1326045467}
   RawImage_Img: {fileID: 2146498350}
   pan_zoom: {fileID: 0}
@@ -1390,7 +1391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 0.392}
+  m_Color: {r: 0.3137255, g: 0.3137255, b: 0.3137255, a: 0.78039217}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

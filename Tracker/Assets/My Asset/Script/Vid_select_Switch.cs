@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 public class Vid_select_Switch : MonoBehaviour
 {
-    private int Select_Vid = 1;
+    public int Select_Vid = 1;
     public TextMeshProUGUI Output;
     public RawImage RawImage_Img;
     public Pan_Zoom pan_zoom;
