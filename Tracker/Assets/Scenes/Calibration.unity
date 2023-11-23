@@ -657,7 +657,6 @@ MonoBehaviour:
   Select_Vid: 1
   Output: {fileID: 1326045467}
   RawImage_Img: {fileID: 2146498350}
-  pan_zoom: {fileID: 0}
 --- !u!114 &654654437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2770,10 +2769,10 @@ RectTransform:
   m_Father: {fileID: 654654435}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -711}
-  m_SizeDelta: {x: 2200, y: 3000}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 154}
+  m_SizeDelta: {x: 4000, y: 4000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2005877081
 MonoBehaviour:
@@ -3249,6 +3248,7 @@ MonoBehaviour:
   RawImage_Img: {fileID: 2146498350}
   slider: {fileID: 1478685795}
   ref_Point: {fileID: 654654439}
+  vid_Select_Switch: {fileID: 654654436}
 --- !u!114 &2146498350
 MonoBehaviour:
   m_ObjectHideFlags: 0

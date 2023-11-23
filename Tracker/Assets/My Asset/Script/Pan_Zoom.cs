@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Pan_Zoom : MonoBehaviour
@@ -16,12 +15,14 @@ public class Pan_Zoom : MonoBehaviour
     float Zoom, Zoom2;
     IDictionary<string, Name_Pos2d> refpoint1 = new Dictionary<string, Name_Pos2d>();
     IDictionary<string, Name_Pos2d> refpoint2 = new Dictionary<string, Name_Pos2d>();
-
+    List <IDictionary<string, Name_Pos2d>> refpoint = new List <IDictionary<string, Name_Pos2d>>();
     private void Awake()
     {
         initialScale = transform.localScale;
         startPos = transform.position - new Vector3(0f,19.5f,0f); 
         Zoom2 = 1;
+        refpoint.Add(new Dictionary<string, Name_Pos2d>());
+        refpoint.Add(new Dictionary<string, Name_Pos2d>());
     }
 
     public void SetScale()
@@ -44,44 +45,27 @@ public class Pan_Zoom : MonoBehaviour
         Vector3 position = (transform.position - startPos) / (Zoom2);
         Name_Pos2d obj = new Name_Pos2d();
         obj.SetPos(position);
-        if (vid_Select_Switch.Select_Vid == 1) {
-            Debug.Log("1");
-            try
-            {
-                refpoint1.Add(ref_Point.Current_value.ToString(), obj);
-            }
-            catch
-            {
-                refpoint1[ref_Point.Current_value.ToString()] = obj;
-            }
+        Debug.Log(refpoint);
+        try
+        {
+            refpoint[vid_Select_Switch.Select_Vid-1].Add(ref_Point.Current_value.ToString(), obj);
+        }
+        catch
+        {
+            refpoint[vid_Select_Switch.Select_Vid-1][ref_Point.Current_value.ToString()] = obj;
+        }
+        //Debug.Log thing from here
+        for (int a = 0 ; a<=1 ; a++){
             for (int i = 1 ; i <= 8 ; i++){
                 try{
-                    Debug.Log(i +  " = " + refpoint1[i.ToString()]);
+                    Debug.Log((a+1).ToString()+ "_" + i +  " = " + refpoint[a][i.ToString()]);
                 }
                 catch{
-                    Debug.Log(i + " = nan");
+                    Debug.Log((a+1).ToString()+ "_" + i + " = nan");
                 }
             }
         }
-        else {
-            Debug.Log("2");
-            try
-            {
-                refpoint2.Add(ref_Point.Current_value.ToString(), obj);
-            }
-            catch
-            {
-                refpoint2[ref_Point.Current_value.ToString()] = obj;
-            }
-            for (int i = 1 ; i <= 8 ; i++){
-                try{
-                    Debug.Log(i +  " = " + refpoint2[i.ToString()]);
-                }
-                catch{
-                    Debug.Log(i + " = nan");
-                }
-            }
-        }
+        //To here
     }
 }
 public class Name_Pos2d

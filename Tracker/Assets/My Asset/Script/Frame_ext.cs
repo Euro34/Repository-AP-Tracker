@@ -3,10 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
-using System.IO;
-using System.Threading;
-using Unity.VisualScripting;
-using System;
 
 public class Frame_ext : MonoBehaviour
 {
