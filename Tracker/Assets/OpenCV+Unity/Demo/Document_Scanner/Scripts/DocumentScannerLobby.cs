@@ -13,7 +13,7 @@
 		}
 
 		void OnDestroy() {
-			SceneManager.UnloadScene ("DocumentScannerScene");
+			//SceneManager.UnloadScene ("DocumentScannerScene"); Euro
 		}
 
 		public void OnButton(string name) {
