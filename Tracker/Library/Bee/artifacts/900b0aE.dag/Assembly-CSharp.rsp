@@ -363,6 +363,7 @@
 -r:"Library/Bee/artifacts/900b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/CrystalFramework/Utility/Demos/SafeAreaDemo.cs"
 "Assets/CrystalFramework/Utility/SafeArea.cs"
+"Assets/My Asset/Script/Dot_render.cs"
 "Assets/My Asset/Script/FilePicker.cs"
 "Assets/My Asset/Script/Frame_ext.cs"
 "Assets/My Asset/Script/Homography.cs"

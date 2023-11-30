@@ -5,6 +5,7 @@ public class Ref_Point_Select : MonoBehaviour
 {
     public float Current_value;
     public TextMeshProUGUI Text;
+    public Dot_render dot_render;
     void Start(){
         Current_value = 1;
     }
@@ -15,6 +16,7 @@ public class Ref_Point_Select : MonoBehaviour
             Current_value = 1;
         }
         Text.text = Current_value.ToString();
+        dot_render.Set_dot(Current_value.ToString());
     }
     public void down()
     {
@@ -23,5 +25,6 @@ public class Ref_Point_Select : MonoBehaviour
             Current_value = 8;
         }
         Text.text = Current_value.ToString();
+        dot_render.Set_dot(Current_value.ToString());
     }
 }
