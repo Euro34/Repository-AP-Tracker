@@ -45,7 +45,7 @@ public class Pan_Zoom : MonoBehaviour
         Vector3 position = (transform.position - startPos) / (Zoom2);
         Name_Pos2d obj = new Name_Pos2d();
         obj.SetPos(position);
-        Debug.Log(refpoint);
+        //Debug.Log(refpoint);
         try
         {
             refpoint[vid_Select_Switch.Select_Vid-1].Add(ref_Point.Current_value.ToString(), obj);
@@ -58,10 +58,10 @@ public class Pan_Zoom : MonoBehaviour
         for (int a = 0 ; a<=1 ; a++){
             for (int i = 1 ; i <= 8 ; i++){
                 try{
-                    Debug.Log((a+1).ToString()+ "_" + i +  " = " + refpoint[a][i.ToString()]);
+                    //Debug.Log((a+1).ToString()+ "_" + i +  " = " + refpoint[a][i.ToString()]);
                 }
                 catch{
-                    Debug.Log((a+1).ToString()+ "_" + i + " = nan");
+                    //Debug.Log((a+1).ToString()+ "_" + i + " = nan");
                 }
             }
         }

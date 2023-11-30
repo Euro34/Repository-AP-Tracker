@@ -12,7 +12,6 @@ public class FilePicker : MonoBehaviour
     private string holder;
     public string Vid1_path;
     public string Vid2_path;
-    private string Output;
     // Start is called before the first frame update
     public void Import()
     {
@@ -25,7 +24,6 @@ public class FilePicker : MonoBehaviour
                 Finalpath = path;
                 int index1 = Finalpath.LastIndexOf('/');
                 string Temp = Finalpath.Substring(index1 + 1).ToString();
-                Output = Temp.Substring(0, Temp.Length - 4).ToString();
                 holder = " ";
             }
         }, new string[] { FileType });

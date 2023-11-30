@@ -124,13 +124,13 @@ public class Frame_ext : MonoBehaviour
 
             yield return null;
         }
-        for (int i = 1; i < byteslist1.Count; i++)
+/*        for (int i = 1; i < byteslist1.Count; i++)
         {
             byte[] bytes = byteslist1[i];
             string path = Path.Combine(Application.dataPath + "/My Asset/Frames/1/Img1_" + i.ToString() + ".png");
             File.WriteAllBytes(path, bytes);
             Debug.Log("Image saved to: " + path + "_1");
-        }
+        }*/
         i1 = 0;
     }
 
