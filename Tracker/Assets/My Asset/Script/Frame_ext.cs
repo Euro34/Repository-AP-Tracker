@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
@@ -22,7 +23,7 @@ public class Frame_ext : MonoBehaviour
     private int n2 = 1;
     private float skip1;
     private float skip2;
-    public int fps = 2;
+    public int fps;
     private double vid_lenght1;
     private double vid_lenght2;
     public static int width1;
@@ -75,7 +76,7 @@ public class Frame_ext : MonoBehaviour
         videoPlayer1.Pause();
         started1 = false;
         videoPlayer1.prepareCompleted += VideoPreparationComplete1;
-        float time1 = 0f;
+        float time1 = 0.1f;
         while (i1 < n1)
         {
             if (started1)
@@ -87,7 +88,7 @@ public class Frame_ext : MonoBehaviour
                 videoPlayer1.time = time1;
                 time1 += skip1 / 1000;
 
-                yield return new WaitForSeconds(0.1f); 
+                yield return new WaitForSeconds(0.1f);
 
                 Texture2D texturein1 = new Texture2D(width1, height1, TextureFormat.RGB24, false);
                 RenderTexture.active = renderTexture1;
@@ -109,8 +110,8 @@ public class Frame_ext : MonoBehaviour
                 if (i1 == 2)
                 {
                     RawImage rawImage1 = myGameObject1.GetComponent<RawImage>();
-                    Texture2D texture1 = new Texture2D(width1, width1/2, TextureFormat.RGB24, false);
-                    texture1.ReadPixels(new Rect(0, height1/2-width1/4, width1, width1/2), 0, 0);
+                    Texture2D texture1 = new Texture2D(width1, width1 / 2, TextureFormat.RGB24, false);
+                    texture1.ReadPixels(new Rect(0, height1 / 2 - width1 / 4, width1, width1 / 2), 0, 0);
                     texture1.Apply();
                     texture1.SetPixels(pixels);
                     texture1.Apply();
@@ -123,13 +124,13 @@ public class Frame_ext : MonoBehaviour
 
             yield return null;
         }
-        //for (int i = 1; i < byteslist1.Count; i++)
-        //{
-        //    byte[] bytes = byteslist1[i - 0];
-        //    string path = Path.Combine(Application.dataPath, @"Frames/Img1_" + i.ToString() + ".png");
-        //    File.WriteAllBytes(path, bytes);
-        //    Debug.Log("Image saved to: " + path + "_1");
-        //}
+        for (int i = 1; i < byteslist1.Count; i++)
+        {
+            byte[] bytes = byteslist1[i];
+            string path = Path.Combine(Application.dataPath + "/My Asset/Frames/1/Img1_" + i.ToString() + ".png");
+            File.WriteAllBytes(path, bytes);
+            Debug.Log("Image saved to: " + path + "_1");
+        }
         i1 = 0;
     }
 
@@ -188,7 +189,7 @@ public class Frame_ext : MonoBehaviour
         //for (int i = 0; i < byteslist2.Count; i++)
         //{
         //    byte[] bytes = byteslist2[i];
-        //    string path = Path.Combine(Application.dataPath, @"Frames/Img2_" + i.ToString() + ".png");
+        //    string path = Path.Combine(Application.dataPath + "/My Asset/Frames/2/Img2_" + i.ToString() + ".png");
         //    File.WriteAllBytes(path, bytes);
         //    Debug.Log("Image saved to: " + path + "_2");
         //}

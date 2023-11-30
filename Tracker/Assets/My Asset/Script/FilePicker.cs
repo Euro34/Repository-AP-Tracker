@@ -14,19 +14,21 @@ public class FilePicker : MonoBehaviour
     public string Vid2_path;
     private string Output;
     // Start is called before the first frame update
-    public void Import(){
+    public void Import()
+    {
         string FileType = NativeFilePicker.ConvertExtensionToFileType("video/*");
 
         NativeFilePicker.Permission permission = NativeFilePicker.PickFile((path) =>
         {
-            if (path != null){
+            if (path != null)
+            {
                 Finalpath = path;
                 int index1 = Finalpath.LastIndexOf('/');
-                string Temp = Finalpath.Substring(index1+1).ToString();
-                Output = Temp.Substring(0,Temp.Length-4).ToString();
+                string Temp = Finalpath.Substring(index1 + 1).ToString();
+                Output = Temp.Substring(0, Temp.Length - 4).ToString();
                 holder = " ";
             }
-        }, new string[] {FileType});
+        }, new string[] { FileType });
     }
 
     public void Import1()
@@ -43,7 +45,8 @@ public class FilePicker : MonoBehaviour
         videoPlayer2.url = Vid2_path;
         Vid2_holder.text = holder;
     }
-    void Start(){
+    void Start()
+    {
         Vid1_holder.text = "+";
         Vid2_holder.text = "+";
     }
@@ -51,6 +54,6 @@ public class FilePicker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
