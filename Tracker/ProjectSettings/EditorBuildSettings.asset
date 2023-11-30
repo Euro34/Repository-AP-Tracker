@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Calibration.unity
     guid: a94c63653566044c0baeb58999d18582
+  - enabled: 1
+    path: Assets/Scenes/Reference_Object.unity
+    guid: 441074659f7294e17b6794e1ffe45f68
   m_configObjects:
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000,
       guid: 9a4f9d33a981e45598f89949bc505b45, type: 2}
