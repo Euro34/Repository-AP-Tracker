@@ -16,7 +16,7 @@ public class Pan_Zoom : MonoBehaviour
     float Zoom, Zoom2;
     IDictionary<string, Name_Pos2d> refpoint1 = new Dictionary<string, Name_Pos2d>();
     IDictionary<string, Name_Pos2d> refpoint2 = new Dictionary<string, Name_Pos2d>();
-    List <IDictionary<string, Name_Pos2d>> refpoint = new List <IDictionary<string, Name_Pos2d>>();
+    public List <IDictionary<string, Name_Pos2d>> refpoint = new List <IDictionary<string, Name_Pos2d>>();
     private void Awake()
     {
         initialScale = transform.localScale;
@@ -50,7 +50,7 @@ public class Pan_Zoom : MonoBehaviour
         position[0] = (-1.2078f - position[0]) / Zoom2;
         position[1] = (-position[1])/Zoom2;
         obj.SetPos(position);
-        dot_render.CreateDotCopy(position[0], position[1], vid_Select_Switch.Select_Vid + "-" +ref_Point.Current_value.ToString());
+        dot_render.CreateDotCopy(position[0], position[1], vid_Select_Switch.Select_Vid + "_" +ref_Point.Current_value.ToString());
         try
         {
             refpoint[vid_Select_Switch.Select_Vid-1].Add(ref_Point.Current_value.ToString(), obj);
@@ -60,13 +60,17 @@ public class Pan_Zoom : MonoBehaviour
             refpoint[vid_Select_Switch.Select_Vid-1][ref_Point.Current_value.ToString()] = obj;
         }
         //Debug.Log thing from here
-        /*for (int a = 0 ; a<=1 ; a++){
-            for (int i = 1 ; i <= 8 ; i++){
-                try{
-                    Debug.Log((a+1).ToString()+ "_" + i +  " = " + refpoint[a][i.ToString()]);
+        /*for (int a = 0; a <= 1; a++)
+        {
+            for (int i = 1; i <= 8; i++)
+            {
+                try
+                {
+                    Debug.Log((a + 1).ToString() + "_" + i + " = " + refpoint[a][i.ToString()]);
                 }
-                catch{
-                    Debug.Log((a+1).ToString()+ "_" + i + " = nan");
+                catch
+                {
+                    Debug.Log((a + 1).ToString() + "_" + i + " = nan");
                 }
             }
         }*/
