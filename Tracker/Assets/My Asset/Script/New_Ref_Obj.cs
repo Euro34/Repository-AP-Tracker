@@ -11,6 +11,7 @@ public class New_Ref_Obj : MonoBehaviour
     public Button originalButton;
     public Transform buttonParent;
     public RectTransform panel_add;
+    public RectTransform panel_edit;
     public static List<Ref_dst> Ref_List = new List<Ref_dst>();
     public static int Selected_Ref_Index;
     private float space = 262.5f;
@@ -18,11 +19,17 @@ public class New_Ref_Obj : MonoBehaviour
     public TMP_InputField textField_width;
     public TMP_InputField textField_height;
     public TMP_InputField textField_length;
+    public TMP_InputField edit_textField_name;
+    public TMP_InputField edit_textField_width;
+    public TMP_InputField edit_textField_height;
+    public TMP_InputField edit_textField_length;
+    public int latest_button_index;
 
     void Start()
     {
         originalButton.gameObject.SetActive(false);
         panel_add.gameObject.SetActive(false);
+        panel_edit.gameObject.SetActive(false);
 
         //Set Rubik
         if (Ref_List.Count == 0)
@@ -41,6 +48,11 @@ public class New_Ref_Obj : MonoBehaviour
 
     public void CreateRef()
     {
+        textField_name.text = "";
+        textField_width.text = "";
+        textField_height.text = "";
+        textField_length.text = "";
+        
         panel_add.gameObject.SetActive(true);
     }
 
@@ -60,6 +72,37 @@ public class New_Ref_Obj : MonoBehaviour
         panel_add.gameObject.SetActive(false);
     }
 
+    public void EditRef(Button clickedButton)
+    {
+        int latest_button_index = int.Parse(clickedButton.name);
+        panel_edit.gameObject.SetActive(true);
+        edit_textField_name.text = Ref_List[latest_button_index].Name;
+        edit_textField_width.text = Ref_List[latest_button_index].Width.ToString();
+        edit_textField_height.text = Ref_List[latest_button_index].Height.ToString();
+        edit_textField_length.text = Ref_List[latest_button_index].Length.ToString();
+    }
+
+    public void EditRef_Set()
+    {
+        float width = float.Parse(edit_textField_width.text);
+        float height = float.Parse(edit_textField_height.text);
+        float length = float.Parse(edit_textField_length.text);
+        string name = edit_textField_name.text;
+        
+        Ref_dst obj = new Ref_dst();
+        obj.SetPos(width, height, length, name);
+        Ref_List[latest_button_index]=obj;
+        Re_renderButton();
+        panel_edit.gameObject.SetActive(false);
+    }
+
+    public void Edit_Del()
+    {
+        Ref_List.RemoveAt(latest_button_index);
+        Re_renderButton();
+        panel_edit.gameObject.SetActive(false);
+    }
+
     public void RenderButton(int index)
     {
         Button newButton = Instantiate(originalButton, buttonParent);
@@ -73,6 +116,16 @@ public class New_Ref_Obj : MonoBehaviour
 
     public void Re_renderButton()
     {
+        Button[] allButtons = FindObjectsOfType<Button>();
+        foreach (Button button in allButtons)
+        {
+            // Check if the button's name matches the specified name
+            int hold;
+            if (int.TryParse(button.name, out hold))
+            {
+                Destroy(button.gameObject);
+            }
+        }
         for (int index = 0; index<Ref_List.Count; index++)
         {
             Button newButton = Instantiate(originalButton, buttonParent);
@@ -97,7 +150,6 @@ public class New_Ref_Obj : MonoBehaviour
         }
         catch
         {
-
             Debug.Log("You Little Piece of ...");
             return new Tuple<float, float, float, string>(0,0,0,"Error");
         }
@@ -122,9 +174,9 @@ public class Name_Pos3d
 }
 public class Ref_dst
 {
-    float Width { get; set; }
-    float Height { get; set; }
-    float Length { get; set; }
+    public float Width { get; set; }
+    public float Height { get; set; }
+    public float Length { get; set; }
     public Name_Pos3d[] List_Ref_Pos = new Name_Pos3d[8];
     public string Name { get; set; }
 
