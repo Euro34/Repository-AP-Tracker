@@ -15,7 +15,7 @@ C:/Users/Por/Documents/Repository-Tracker/Tracker
 -logFile
 Logs/AssetImportWorker1.log
 -srvPort
-5290
+6849
 Successfully changed project path to: C:/Users/Por/Documents/Repository-Tracker/Tracker
 C:/Users/Por/Documents/Repository-Tracker/Tracker
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -47,11 +47,11 @@ C:/Users/Por/Documents/Repository-Tracker/Tracker
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [27132] Host "[IP] 10.16.36.173 [Port] 0 [Flags] 2 [Guid] 3577649920 [EditorId] 3577649920 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-NCLNRAG) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+Player connection [6836] Host "[IP] 192.168.1.153 [Port] 0 [Flags] 2 [Guid] 967641649 [EditorId] 967641649 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-NCLNRAG) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
-Player connection [27132] Host "[IP] 10.16.36.173 [Port] 0 [Flags] 2 [Guid] 3577649920 [EditorId] 3577649920 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-NCLNRAG) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [6836] Host "[IP] 192.168.1.153 [Port] 0 [Flags] 2 [Guid] 967641649 [EditorId] 967641649 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-NCLNRAG) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
-Refreshing native plugins compatible for Editor in 182.64 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 137.52 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.3.26f1 (a16dc32e0ff2)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.3.26f1/Editor/Data/Resources/UnitySubsystems
@@ -67,965 +67,173 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.3.26f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.3.26f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.3.26f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56000
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56232
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.26f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.26f1/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.26f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.020374 seconds.
+Registered in 0.013104 seconds.
 Native extension for WindowsStandalone target not found
 [usbmuxd] Start listen thread
 [usbmuxd] Listen thread started
 Native extension for iOS target not found
 Native extension for Android target not found
-Android Extension - Scanning For ADB Devices 690 ms
-Refreshing native plugins compatible for Editor in 165.74 ms, found 4 plugins.
+Android Extension - Scanning For ADB Devices 400 ms
+Refreshing native plugins compatible for Editor in 121.24 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  2.537 seconds
+- Completed reload, in  1.577 seconds
 Domain Reload Profiling:
-	ReloadAssembly (2538ms)
-		BeginReloadAssembly (195ms)
+	ReloadAssembly (1578ms)
+		BeginReloadAssembly (135ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (2091ms)
-			LoadAssemblies (194ms)
+		EndReloadAssembly (1265ms)
+			LoadAssemblies (132ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (329ms)
+			SetupTypeCache (196ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (193ms)
-			SetupLoadedEditorAssemblies (1415ms)
+			RebuildScriptCaches (46ms)
+			SetupLoadedEditorAssemblies (924ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (954ms)
+				InitializePlatformSupportModulesInManaged (557ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (166ms)
+				RefreshPlugins (121ms)
 				BeforeProcessingInitializeOnLoad (2ms)
-				ProcessInitializeOnLoadAttributes (193ms)
-				ProcessInitializeOnLoadMethodAttributes (100ms)
+				ProcessInitializeOnLoadAttributes (163ms)
+				ProcessInitializeOnLoadMethodAttributes (80ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.010737 seconds.
+Registered in 0.007850 seconds.
 Begin MonoManager ReloadAssembly
-Symbol file data-000001A5D6F10A20 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll
+Symbol file data-000002AABE8F6EB0 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D5E0E1E0 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VSCode.Editor.dll
+Symbol file data-000002AAC047D460 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VSCode.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D5D70E90 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Notifications.dll
+Symbol file data-000002AAC0486670 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Notifications.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D6F10A20 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
+Symbol file data-000002AAC039E220 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D6F10A20 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll
+Symbol file data-000002AAC039E220 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D5D70E90 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Profiling.Core.dll
+Symbol file data-000002AAC02FA040 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Profiling.Core.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D6BC7840 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\UnityEngine.TestRunner.dll
+Symbol file data-000002AAC019FC40 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\UnityEngine.TestRunner.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D6BE8450 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Timeline.dll
+Symbol file data-000002AAC019FC40 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Timeline.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D1A5DC60 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll
+Symbol file data-000002AABF074020 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D50640C0 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.TextMeshPro.dll
+Symbol file data-000002AAC03E8C30 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.TextMeshPro.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D6BFDA60 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll
+Symbol file data-000002AAC03A6230 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D1ABCA70 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.Simulator.Extension.dll
+Symbol file data-000002AAC03A6230 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.Simulator.Extension.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D5093ED0 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\UnityEditor.TestRunner.dll
+Symbol file data-000002AAC0418A40 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\UnityEditor.TestRunner.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D1ABCA70 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll
+Symbol file data-000002AAC03A6230 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D1ABCA70 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Subsystem.Registration.dll
+Symbol file data-000002AAC03A6230 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Subsystem.Registration.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D1ABCA70 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.UI.Editor.dll
+Symbol file data-000002AAC03A6230 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.UI.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D50A90E0 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\UnityEditor.UI.dll
+Symbol file data-000002AAC03A6230 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\UnityEditor.UI.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D50BC6F0 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Rider.Editor.dll
+Symbol file data-000002AAC03A6230 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Rider.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D6B14020 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll
+Symbol file data-000002AAC00A8020 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D70A9E70 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\UnityEngine.UI.dll
+Symbol file data-000002AAC00E5430 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\UnityEngine.UI.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D6B51430 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll
+Symbol file data-000002AAC00E5430 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D50BC6F0 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Notifications.iOS.dll
+Symbol file data-000002AAC03AD440 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Notifications.iOS.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D6B51430 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.Core.dll
+Symbol file data-000002AABFF5DA30 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.Core.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D552E430 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.Simulator.Editor.dll
+Symbol file data-000002AAC03AD440 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.Simulator.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D5B7EA60 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.Editor.dll
+Symbol file data-000002AAC008B040 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D50D1300 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll
+Symbol file data-000002AAC03AD440 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D50D1300 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\NativeGallery.Editor.dll
+Symbol file data-000002AAC0431DA0 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\NativeGallery.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D5B7EA60 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Mobile.AndroidLogcat.Editor.dll
+Symbol file data-000002AABFF5DA30 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Mobile.AndroidLogcat.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D56DC230 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
+Symbol file data-000002AAC00E5430 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D50D1300 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
+Symbol file data-000002AAC0431DA0 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D50D1300 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\NativeFilePicker.Runtime.dll
+Symbol file data-000002AAC03AD440 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\NativeFilePicker.Runtime.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D5B86A70 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\NativeGallery.Runtime.dll
+Symbol file data-000002AABEA46040 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\NativeGallery.Runtime.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D50D1300 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\NativeFilePicker.Editor.dll
+Symbol file data-000002AABEA46040 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\NativeFilePicker.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D5B86A70 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.dll
+Symbol file data-000002AABFF5DA30 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D5B86A70 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Notifications.Android.dll
+Symbol file data-000002AABEA46040 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Notifications.Android.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D50D1300 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.Profiler.Editor.dll
+Symbol file data-000002AABEA46040 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.Profiler.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D5B8D480 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.State.dll
+Symbol file data-000002AAC008B040 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.State.dll
 Symbol file LoadedFromMemory is not a mono symbol file
 Symbol file LoadedFromMemory doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
 Symbol file LoadedFromMemory doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
 Native extension for WindowsStandalone target not found
 Native extension for iOS target not found
 Native extension for Android target not found
-Refreshing native plugins compatible for Editor in 1.94 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 1.45 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
 Package Manager log level set to [2]
-- Completed reload, in  2.243 seconds
+- Completed reload, in  2.098 seconds
 Domain Reload Profiling:
-	ReloadAssembly (2245ms)
-		BeginReloadAssembly (268ms)
+	ReloadAssembly (2101ms)
+		BeginReloadAssembly (197ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (13ms)
+			DisableScriptedObjects (9ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (43ms)
-		EndReloadAssembly (1740ms)
-			LoadAssemblies (194ms)
+			CreateAndSetChildDomain (29ms)
+		EndReloadAssembly (1725ms)
+			LoadAssemblies (142ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (585ms)
+			SetupTypeCache (414ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (128ms)
-			SetupLoadedEditorAssemblies (743ms)
+			RebuildScriptCaches (126ms)
+			SetupLoadedEditorAssemblies (896ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (72ms)
-				SetLoadedEditorAssemblies (1ms)
+				InitializePlatformSupportModulesInManaged (76ms)
+				SetLoadedEditorAssemblies (2ms)
 				RefreshPlugins (2ms)
-				BeforeProcessingInitializeOnLoad (174ms)
-				ProcessInitializeOnLoadAttributes (439ms)
-				ProcessInitializeOnLoadMethodAttributes (41ms)
-				AfterProcessingInitializeOnLoad (14ms)
+				BeforeProcessingInitializeOnLoad (200ms)
+				ProcessInitializeOnLoadAttributes (545ms)
+				ProcessInitializeOnLoadMethodAttributes (54ms)
+				AfterProcessingInitializeOnLoad (18ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (14ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.08 seconds
-Refreshing native plugins compatible for Editor in 3.05 ms, found 4 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.10 seconds
+Refreshing native plugins compatible for Editor in 2.98 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 3630 Unused Serialized files (Serialized files now loaded: 0)
 Unloading 46 unused Assets / (284.1 KB). Loaded Objects now: 4075.
 Memory consumption went from 131.6 MB to 131.3 MB.
-Total: 6.685200 ms (FindLiveObjects: 0.420700 ms CreateObjectMapping: 0.359100 ms MarkObjects: 5.712900 ms  DeleteObjects: 0.191000 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.008109 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file data-000001A5DA7DAC60 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D1A4EA20 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VSCode.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D1C09D20 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Notifications.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D1BEF010 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D529A010 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D1A57C30 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Profiling.Core.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D529A010 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\UnityEngine.TestRunner.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D6D92020 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Timeline.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D8744010 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D819B050 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.TextMeshPro.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D529A010 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D1A57C30 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.Simulator.Extension.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D5B9F1B0 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\UnityEditor.TestRunner.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D1A57C30 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D1B04DC0 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Subsystem.Registration.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D1A57C30 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.UI.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D529A010 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\UnityEditor.UI.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D529A010 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Rider.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DA32F040 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D4F20080 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\UnityEngine.UI.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DA6EF020 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D1C09D20 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Notifications.iOS.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DA6EF020 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.Core.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DA36C450 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.Simulator.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DA571010 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DA36C450 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D7D37C50 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\NativeGallery.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D6D92020 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Mobile.AndroidLogcat.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D842B020 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D7D37C50 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DA36C450 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\NativeFilePicker.Runtime.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D1C09D20 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\NativeGallery.Runtime.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D7D37C50 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\NativeFilePicker.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D85FE020 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D8606230 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Notifications.Android.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DA36C450 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.Profiler.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DA579020 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.State.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file LoadedFromMemory doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
-Symbol file LoadedFromMemory doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
-Native extension for WindowsStandalone target not found
-Native extension for iOS target not found
-Native extension for Android target not found
-Refreshing native plugins compatible for Editor in 1.79 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.564 seconds
-Domain Reload Profiling:
-	ReloadAssembly (1565ms)
-		BeginReloadAssembly (206ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (10ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (47ms)
-		EndReloadAssembly (1192ms)
-			LoadAssemblies (144ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (415ms)
-			ReleaseScriptCaches (2ms)
-			RebuildScriptCaches (75ms)
-			SetupLoadedEditorAssemblies (496ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (57ms)
-				SetLoadedEditorAssemblies (1ms)
-				RefreshPlugins (2ms)
-				BeforeProcessingInitializeOnLoad (105ms)
-				ProcessInitializeOnLoadAttributes (283ms)
-				ProcessInitializeOnLoadMethodAttributes (34ms)
-				AfterProcessingInitializeOnLoad (13ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (9ms)
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 7.28 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3608 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 39 unused Assets / (24.6 KB). Loaded Objects now: 4078.
-Memory consumption went from 129.3 MB to 129.3 MB.
-Total: 3.586100 ms (FindLiveObjects: 0.315500 ms CreateObjectMapping: 0.208900 ms MarkObjects: 3.012100 ms  DeleteObjects: 0.048700 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.008084 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file data-000001A5D5872CB0 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D73AF030 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VSCode.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D73AF030 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Notifications.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D1BEF010 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DB5D9450 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D1A57C30 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Profiling.Core.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DB5D9450 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\UnityEngine.TestRunner.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D6D92020 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Timeline.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DA0C8460 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DA32F040 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.TextMeshPro.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DA1B5860 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D73AF030 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.Simulator.Extension.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D86A2030 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\UnityEditor.TestRunner.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D73AF030 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D1932050 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Subsystem.Registration.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D73AF030 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.UI.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DB5D9450 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\UnityEditor.UI.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DB5D9450 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Rider.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D53D0420 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D9DDC010 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\UnityEngine.UI.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D1AC71B0 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DB5D9450 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Notifications.iOS.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D50640C0 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.Core.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DB5D9450 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.Simulator.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DB5D9450 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DB5D9450 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D540D830 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\NativeGallery.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D9FAC9B0 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Mobile.AndroidLogcat.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D842B020 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D540D830 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DB5E1460 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\NativeFilePicker.Runtime.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DB7C9B00 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\NativeGallery.Runtime.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D540D830 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\NativeFilePicker.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DB7C9B00 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DB7D1D10 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Notifications.Android.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D540D830 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.Profiler.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D6F1A040 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.State.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file LoadedFromMemory doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
-Symbol file LoadedFromMemory doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
-Native extension for WindowsStandalone target not found
-Native extension for iOS target not found
-Native extension for Android target not found
-Refreshing native plugins compatible for Editor in 1.72 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.765 seconds
-Domain Reload Profiling:
-	ReloadAssembly (1766ms)
-		BeginReloadAssembly (197ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (9ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (43ms)
-		EndReloadAssembly (1407ms)
-			LoadAssemblies (144ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (427ms)
-			ReleaseScriptCaches (2ms)
-			RebuildScriptCaches (86ms)
-			SetupLoadedEditorAssemblies (628ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (71ms)
-				SetLoadedEditorAssemblies (1ms)
-				RefreshPlugins (2ms)
-				BeforeProcessingInitializeOnLoad (133ms)
-				ProcessInitializeOnLoadAttributes (360ms)
-				ProcessInitializeOnLoadMethodAttributes (44ms)
-				AfterProcessingInitializeOnLoad (18ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (14ms)
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 8.43 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3608 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 39 unused Assets / (24.6 KB). Loaded Objects now: 4081.
-Memory consumption went from 129.3 MB to 129.3 MB.
-Total: 4.758200 ms (FindLiveObjects: 0.337400 ms CreateObjectMapping: 0.272900 ms MarkObjects: 4.094800 ms  DeleteObjects: 0.051400 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.009195 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file data-000001A5D7342010 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A61C533640 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VSCode.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DB644410 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Notifications.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D7A47E40 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D82EF030 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DA729020 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Profiling.Core.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D82EF030 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\UnityEngine.TestRunner.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D6D92020 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Timeline.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D50640C0 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DB3354F0 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.TextMeshPro.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D70BD010 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DA0C1020 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.Simulator.Extension.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DB5D1030 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\UnityEditor.TestRunner.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DA0C1020 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DB4A32D0 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Subsystem.Registration.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DA0C1020 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.UI.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A61BCA7C20 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\UnityEditor.UI.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A61BCA7C20 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Rider.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DB7A8430 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D4F20080 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\UnityEngine.UI.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D57E7080 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DB644410 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Notifications.iOS.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A61BE06070 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.Core.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DA0C1020 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.Simulator.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D6A6C060 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DA0C1020 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DA0C1020 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\NativeGallery.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DB7D9730 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Mobile.AndroidLogcat.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DB507390 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DA0C1020 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DA0C1020 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\NativeFilePicker.Runtime.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DA0C1020 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\NativeGallery.Runtime.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DA0C1020 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\NativeFilePicker.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D8409020 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D4F39890 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Notifications.Android.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DA0C1020 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.Profiler.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D4F39890 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.State.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file LoadedFromMemory doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
-Symbol file LoadedFromMemory doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
-Native extension for WindowsStandalone target not found
-Native extension for iOS target not found
-Native extension for Android target not found
-Refreshing native plugins compatible for Editor in 1.32 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.673 seconds
-Domain Reload Profiling:
-	ReloadAssembly (1674ms)
-		BeginReloadAssembly (204ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (10ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (47ms)
-		EndReloadAssembly (1301ms)
-			LoadAssemblies (146ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (376ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (79ms)
-			SetupLoadedEditorAssemblies (599ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (69ms)
-				SetLoadedEditorAssemblies (1ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (131ms)
-				ProcessInitializeOnLoadAttributes (333ms)
-				ProcessInitializeOnLoadMethodAttributes (46ms)
-				AfterProcessingInitializeOnLoad (17ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (11ms)
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 7.92 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3608 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 39 unused Assets / (24.6 KB). Loaded Objects now: 4084.
-Memory consumption went from 129.3 MB to 129.3 MB.
-Total: 4.355900 ms (FindLiveObjects: 0.407700 ms CreateObjectMapping: 0.317800 ms MarkObjects: 3.579200 ms  DeleteObjects: 0.049500 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.006435 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file data-000001A5D7342010 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A61C533640 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VSCode.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D6D1E020 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Notifications.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DA8B3010 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D82EF030 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DB6C2CA0 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Profiling.Core.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D82EF030 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\UnityEngine.TestRunner.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DB6EB490 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Timeline.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DB4AF310 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D81AB060 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.TextMeshPro.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D59C5010 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DA7EB030 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.Simulator.Extension.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D1BEF010 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\UnityEditor.TestRunner.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DB6C2CA0 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DB54F030 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Subsystem.Registration.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DB6C2CA0 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.UI.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DB7CE040 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\UnityEditor.UI.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DB7CE040 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Rider.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D589CF10 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D8510020 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\UnityEngine.UI.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DAAC8090 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D6D1E020 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Notifications.iOS.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DAAC8090 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.Core.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DB6C2CA0 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.Simulator.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D6A6C060 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DB6C2CA0 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DB6C2CA0 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\NativeGallery.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DB7D94E0 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Mobile.AndroidLogcat.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D6841010 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DB6C2CA0 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DB6C2CA0 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\NativeFilePicker.Runtime.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DA7EB030 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\NativeGallery.Runtime.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DB6C2CA0 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\NativeFilePicker.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D58C0B20 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D8529830 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Notifications.Android.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DB6C2CA0 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.Profiler.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D8529830 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.State.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file LoadedFromMemory doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
-Symbol file LoadedFromMemory doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
-Native extension for WindowsStandalone target not found
-Native extension for iOS target not found
-Native extension for Android target not found
-Refreshing native plugins compatible for Editor in 1.01 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.761 seconds
-Domain Reload Profiling:
-	ReloadAssembly (1762ms)
-		BeginReloadAssembly (212ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (9ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (45ms)
-		EndReloadAssembly (1376ms)
-			LoadAssemblies (151ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (426ms)
-			ReleaseScriptCaches (2ms)
-			RebuildScriptCaches (86ms)
-			SetupLoadedEditorAssemblies (612ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (70ms)
-				SetLoadedEditorAssemblies (1ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (128ms)
-				ProcessInitializeOnLoadAttributes (352ms)
-				ProcessInitializeOnLoadMethodAttributes (45ms)
-				AfterProcessingInitializeOnLoad (16ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (14ms)
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 7.04 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3608 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 39 unused Assets / (24.6 KB). Loaded Objects now: 4087.
-Memory consumption went from 129.3 MB to 129.3 MB.
-Total: 4.465600 ms (FindLiveObjects: 0.436600 ms CreateObjectMapping: 0.471600 ms MarkObjects: 3.513500 ms  DeleteObjects: 0.042800 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.009314 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file data-000001A61BF74030 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DB638C40 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VSCode.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D7E4D010 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Notifications.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D7A47E40 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D9FAC9B0 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DA0B4370 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Profiling.Core.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D9FAC9B0 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\UnityEngine.TestRunner.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D6D92020 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Timeline.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D5D25010 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D52CB010 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.TextMeshPro.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D53946D0 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D5054010 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.Simulator.Extension.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D6F0A030 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\UnityEditor.TestRunner.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DA0B4370 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D84B8030 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Subsystem.Registration.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DA0B4370 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.UI.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DB4792A0 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\UnityEditor.UI.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DB4792A0 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Rider.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D52CB010 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D53D0420 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\UnityEngine.UI.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D7059060 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DB6B5550 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Notifications.iOS.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D7059060 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.Core.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DA0B4370 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.Simulator.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D6D78020 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DA0B4370 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DA0C1020 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\NativeGallery.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D6D92020 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Mobile.AndroidLogcat.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D86A2030 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DA0C1020 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DA0B4370 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\NativeFilePicker.Runtime.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D5054010 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\NativeGallery.Runtime.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DA0C1020 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\NativeFilePicker.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D9FAC9B0 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D7E4D010 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Notifications.Android.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DA0B4370 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.Profiler.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DB638C40 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.State.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file LoadedFromMemory doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
-Symbol file LoadedFromMemory doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
-Native extension for WindowsStandalone target not found
-Native extension for iOS target not found
-Native extension for Android target not found
-Refreshing native plugins compatible for Editor in 0.85 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.664 seconds
-Domain Reload Profiling:
-	ReloadAssembly (1666ms)
-		BeginReloadAssembly (217ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (10ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (51ms)
-		EndReloadAssembly (1256ms)
-			LoadAssemblies (152ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (402ms)
-			ReleaseScriptCaches (2ms)
-			RebuildScriptCaches (86ms)
-			SetupLoadedEditorAssemblies (524ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (52ms)
-				SetLoadedEditorAssemblies (1ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (111ms)
-				ProcessInitializeOnLoadAttributes (294ms)
-				ProcessInitializeOnLoadMethodAttributes (48ms)
-				AfterProcessingInitializeOnLoad (17ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (14ms)
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 4.64 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3608 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 39 unused Assets / (24.6 KB). Loaded Objects now: 4090.
-Memory consumption went from 129.3 MB to 129.3 MB.
-Total: 4.011500 ms (FindLiveObjects: 0.320000 ms CreateObjectMapping: 0.253600 ms MarkObjects: 3.393200 ms  DeleteObjects: 0.043700 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.007572 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file data-000001A5D7342010 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D53BE010 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VSCode.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D6883020 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Notifications.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D7A47E40 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D1C09040 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DA729020 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Profiling.Core.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D7373010 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\UnityEngine.TestRunner.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A61BF56080 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Timeline.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D5D25010 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D52CB010 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.TextMeshPro.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DAC84060 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D70BD010 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.Simulator.Extension.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D80F7020 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\UnityEditor.TestRunner.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D70BD010 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A61BDBA020 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Subsystem.Registration.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D70BD010 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.UI.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DAC84060 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\UnityEditor.UI.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DAC84060 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Rider.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D52CB010 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D7B6A490 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\UnityEngine.UI.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D842B020 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D6883020 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Notifications.iOS.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D842B020 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.Core.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A61C5B9430 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.Simulator.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DAC84060 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A61C5B9430 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DA0C1020 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\NativeGallery.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A61BF56080 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Mobile.AndroidLogcat.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D8574020 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DA0C1020 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A61C5B9430 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\NativeFilePicker.Runtime.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D70BD010 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\NativeGallery.Runtime.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5DA0C1020 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\NativeFilePicker.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D5CE2060 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D6A76750 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.Notifications.Android.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A61C5B9430 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.AdaptivePerformance.Profiler.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001A5D1AF9010 doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\ScriptAssemblies\Unity.VisualScripting.State.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file LoadedFromMemory doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
-Symbol file LoadedFromMemory doesn't match image C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
-Native extension for WindowsStandalone target not found
-Native extension for iOS target not found
-Native extension for Android target not found
-Refreshing native plugins compatible for Editor in 1.20 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.745 seconds
-Domain Reload Profiling:
-	ReloadAssembly (1746ms)
-		BeginReloadAssembly (200ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (8ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (46ms)
-		EndReloadAssembly (1366ms)
-			LoadAssemblies (141ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (431ms)
-			ReleaseScriptCaches (2ms)
-			RebuildScriptCaches (78ms)
-			SetupLoadedEditorAssemblies (623ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (63ms)
-				SetLoadedEditorAssemblies (1ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (130ms)
-				ProcessInitializeOnLoadAttributes (363ms)
-				ProcessInitializeOnLoadMethodAttributes (46ms)
-				AfterProcessingInitializeOnLoad (19ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (13ms)
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 8.08 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3608 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 39 unused Assets / (24.7 KB). Loaded Objects now: 4093.
-Memory consumption went from 129.3 MB to 129.3 MB.
-Total: 6.566000 ms (FindLiveObjects: 0.463000 ms CreateObjectMapping: 0.480100 ms MarkObjects: 5.571100 ms  DeleteObjects: 0.050400 ms)
+Total: 6.010800 ms (FindLiveObjects: 0.898700 ms CreateObjectMapping: 0.878700 ms MarkObjects: 4.116800 ms  DeleteObjects: 0.113800 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 

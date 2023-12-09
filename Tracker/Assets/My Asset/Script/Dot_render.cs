@@ -12,11 +12,11 @@ public class Dot_render : MonoBehaviour
     private List<string> NameList = new List<string>();
     public Slider slider;
     private Color color = new Color32(255, 0, 0, 255);
-    private int Name_Color = 0;
+    private byte Name_Color = 0;
 
     public void CreateDotCopy(float pos_x, float pos_y, string name)
     {
-        Name_Color = name[2]-'1';
+        Name_Color = (byte)(name[2]-'1');
         // Create a copy of the dot
         if (NameList.Contains(name))
         {
@@ -56,10 +56,11 @@ public class Dot_render : MonoBehaviour
     {
         //Color32[] colors = new Color32[] {new Color32(150, 250, 150, 150), new Color32(250, 250, 150, 150), new Color32(250, 150, 150, 150), new Color32(150, 150, 150, 150), new Color32(250, 250, 250, 150), new Color32(150, 250, 250, 150), new Color32(150, 150, 250, 150), new Color32(250, 150, 250, 150)};
         //color = colors[Name_Color];
-        string c = Convert.ToString(Name_Color, 2).PadLeft(3, '0');
-        byte R = (byte)((int)(c[2] - '0') * 100 + 150);
-        byte G = (byte)((int)(c[1] - '0') * 100 + 150);
-        byte B = (byte)((int)(c[0] - '0') * 100 + 150);
+        
+        byte R = (byte)((Name_Color - 2 * (Name_Color >> 1)) * 100 + 150);
+        byte B = (byte)((Name_Color >> 2) * 100 + 150);
+        byte G = (byte)(((Name_Color >> 1) - 2 * (Name_Color >> 2)) * 100 + 150);
+        
         color = new Color32(R,G,B,150);
         if(dotCopy!= null)
         {

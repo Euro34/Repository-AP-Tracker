@@ -75,3 +75,4 @@ crashlytics-build.properties
 # Ignore .meta file
 *.meta
 Library/
+Tracker/Library/ArtifactDB
