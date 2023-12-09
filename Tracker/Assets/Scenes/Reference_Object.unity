@@ -1617,7 +1617,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!224 &630185917
 RectTransform:
@@ -2044,7 +2044,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!224 &901187502
 RectTransform:
@@ -2359,7 +2359,6 @@ MonoBehaviour:
   originalButton: {fileID: 901187503}
   buttonParent: {fileID: 1362383652}
   panel_add: {fileID: 380495101}
-  space: 262.5
   textField_name: {fileID: 558976853}
   textField_width: {fileID: 2123430615}
   textField_height: {fileID: 1828288035}
@@ -2916,7 +2915,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Content: {fileID: 1362383652}
-  m_Horizontal: 1
+  m_Horizontal: 0
   m_Vertical: 1
   m_MovementType: 1
   m_Elasticity: 0.1

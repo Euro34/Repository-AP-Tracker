@@ -12,7 +12,8 @@ public class New_Ref_Obj : MonoBehaviour
     public Transform buttonParent;
     public RectTransform panel_add;
     public static List<Ref_dst> Ref_List = new List<Ref_dst>();
-    public float space = 262.5f;
+    public static int Selected_Ref_Index;
+    private float space = 262.5f;
     public TMP_InputField textField_name;
     public TMP_InputField textField_width;
     public TMP_InputField textField_height;
@@ -24,10 +25,18 @@ public class New_Ref_Obj : MonoBehaviour
         panel_add.gameObject.SetActive(false);
 
         //Set Rubik
-        Ref_dst obj = new Ref_dst();
-        obj.SetPos(5.5f, 5.5f, 5.5f,"Rubik");
-        Ref_List.Add(obj);
-        RenderButton(Ref_List.IndexOf(obj));
+        if (Ref_List.Count == 0)
+        {
+            Ref_dst obj = new Ref_dst();
+            obj.SetPos(5.5f, 5.5f, 5.5f,"Rubik");
+            Ref_List.Add(obj);
+            RenderButton(Ref_List.IndexOf(obj));
+            Selected_Ref_Index = 0;
+        }
+        else
+        {
+            Re_renderButton();
+        }
     }
 
     public void CreateRef()
@@ -60,6 +69,20 @@ public class New_Ref_Obj : MonoBehaviour
         TextMeshProUGUI buttonText = newButton.GetComponentInChildren<TextMeshProUGUI>();
         buttonText.text = Ref_List[index].ToString();
         newButton.gameObject.SetActive(true);
+    }
+
+    public void Re_renderButton()
+    {
+        for (int index = 0; index<Ref_List.Count; index++)
+        {
+            Button newButton = Instantiate(originalButton, buttonParent);
+            RectTransform buttonRect = newButton.GetComponent<RectTransform>();
+            buttonRect.localPosition = buttonRect.localPosition + new Vector3((((index+1)%3)-1)*(space), (float)(int)((index+1)/3)*(-space), 0f);
+            newButton.name = index.ToString();
+            TextMeshProUGUI buttonText = newButton.GetComponentInChildren<TextMeshProUGUI>();
+            buttonText.text = Ref_List[index].ToString();
+            newButton.gameObject.SetActive(true);
+        }
     }
 
     public Tuple<float, float, float, string> Window_Set()
