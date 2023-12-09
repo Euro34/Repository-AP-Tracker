@@ -4,19 +4,18 @@ using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class New_Ref_Obj : MonoBehaviour
 {
     public Button originalButton;
     public Transform buttonParent;
     public static List<Ref_dst> Ref_List = new List<Ref_dst>();
-    public float space;
+    public float space = 262.5f;
 
     void Start()
     {
         originalButton.gameObject.SetActive(false);
-        RectTransform panel = GetComponent<RectTransform>();
-        space = (panel.sizeDelta.x/2)-137.5f;
 
         //Set Rubik
         Ref_dst obj = new Ref_dst();
@@ -39,9 +38,11 @@ public class New_Ref_Obj : MonoBehaviour
     public void RenderButton(int index)
     {
         Button newButton = Instantiate(originalButton, buttonParent);
-        
-        newButton.transform.position = new Vector3(index%3*space, 0f, 0f);
+        RectTransform buttonRect = newButton.GetComponent<RectTransform>();
+        buttonRect.localPosition = buttonRect.localPosition + new Vector3((((index+1)%3)-1)*(space), (float)(int)((index+1)/3)*(-space), 0f);
         newButton.name = index.ToString();
+        TextMeshProUGUI buttonText = newButton.GetComponentInChildren<TextMeshProUGUI>();
+        buttonText.text = Ref_List[index].ToString();
         newButton.gameObject.SetActive(true);
     }
 
@@ -107,11 +108,7 @@ public class Ref_dst
     }
     public override string ToString()
     {
-        string Out = "";
-        for (int i = 0; i < 8; i++)
-        {
-            Out += (i+1).ToString() + " : " + List_Ref_Pos[i] + "\n";
-        }
-        return Name + "\n" + Out;
+        //string Out = "";
+        return Name + "\n" + Width + "*" + Height + "*" + Lenght;
     }
 }
