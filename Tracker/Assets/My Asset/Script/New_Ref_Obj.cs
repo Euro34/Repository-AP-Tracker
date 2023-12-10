@@ -193,10 +193,9 @@ public class Ref_dst
     {
         for (short i = 0; i < 8; i++)
         {
-            string binary_i = Convert.ToString(i, 2).PadLeft(3, '0');
-            float x = (int)(binary_i[2] - '0') * Width;
-            float y = (int)(binary_i[1] - '0') * Height;
-            float z = (int)(binary_i[0] - '0') * Length;
+            float x = (int)(i & 1) * Width;
+            float y = (int)((i >> 1) & 1) * Height;
+            float z = (int)((i >> 2) & 1) * Length;
             Name_Pos3d obj = new Name_Pos3d();
             obj.SetPos(x, y, z);
             List_Ref_Pos[i] = obj;

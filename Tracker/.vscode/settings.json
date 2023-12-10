@@ -51,5 +51,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Tracker.sln"
+    "dotnet.defaultSolution": "Tracker.sln",
+    "editor.defaultColorDecorators": true
 }

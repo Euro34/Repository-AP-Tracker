@@ -52,14 +52,14 @@ public class Dot_render : MonoBehaviour
             NameList.Add(name);
         }
     }
-    public void color_change()
+    private void color_change()
     {
         //Color32[] colors = new Color32[] {new Color32(150, 250, 150, 150), new Color32(250, 250, 150, 150), new Color32(250, 150, 150, 150), new Color32(150, 150, 150, 150), new Color32(250, 250, 250, 150), new Color32(150, 250, 250, 150), new Color32(150, 150, 250, 150), new Color32(250, 150, 250, 150)};
         //color = colors[Name_Color];
         
-        byte R = (byte)((Name_Color - 2 * (Name_Color >> 1)) * 100 + 150);
-        byte B = (byte)((Name_Color >> 2) * 100 + 150);
-        byte G = (byte)(((Name_Color >> 1) - 2 * (Name_Color >> 2)) * 100 + 150);
+        byte R = (byte)((Name_Color & 1) * 100 + 150);
+        byte G = (byte)(((Name_Color >> 1) & 1) * 100 + 150);
+        byte B = (byte)(((Name_Color >> 2) & 1) * 100 + 150);
         
         color = new Color32(R,G,B,150);
         if(dotCopy!= null)
