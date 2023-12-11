@@ -74,7 +74,8 @@ public class New_Ref_Obj : MonoBehaviour
 
     public void EditRef(Button clickedButton)
     {
-        int latest_button_index = int.Parse(clickedButton.name);
+        latest_button_index = int.Parse(clickedButton.name);
+        Debug.Log(latest_button_index);
         panel_edit.gameObject.SetActive(true);
         edit_textField_name.text = Ref_List[latest_button_index].Name;
         edit_textField_width.text = Ref_List[latest_button_index].Width.ToString();

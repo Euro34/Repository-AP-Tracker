@@ -2430,7 +2430,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'New Reference Object
+  m_text: 'Edit Reference Object
 
 '
   m_isRightToLeft: 0

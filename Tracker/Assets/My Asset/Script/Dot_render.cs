@@ -71,19 +71,25 @@ public class Dot_render : MonoBehaviour
     {
         for(int i = 1; i <= 8; i++)
         {
-            if (NameList.Contains(vid1.ToString() + "-" + i))
+            if (NameList.Contains(vid1.ToString() + "_" + i))
             {
-                GameObject dotcopy_obj = GameObject.Find("dot:" + vid1.ToString() + "-" + i);
+                GameObject dotcopy_obj = GameObject.Find("dot:" + vid1.ToString() + "_" + i);
                 dotCopy = dotcopy_obj.GetComponent<Image>();
+                dotCopy.enabled = true;
+                GameObject dotcopy_border = GameObject.Find("dot:" + vid1.ToString() + "_" + i);
+                dotCopy = dotcopy_border.GetComponent<Image>();
                 dotCopy.enabled = true;
             }
         }
         for (int i = 1; i <= 8; i++)
         {
-            if (NameList.Contains(vid2.ToString() + "-" + i))
+            if (NameList.Contains(vid2.ToString() + "_" + i))
             {
-                GameObject dotcopy_obj = GameObject.Find("dot:" + vid2.ToString() + "-" + i);
+                GameObject dotcopy_obj = GameObject.Find("dot:" + vid2.ToString() + "_" + i);
                 dotCopy = dotcopy_obj.GetComponent<Image>();
+                dotCopy.enabled = false;
+                GameObject dotcopy_border = GameObject.Find("dot:" + vid2.ToString() + "_" + i);
+                dotCopy = dotcopy_border.GetComponent<Image>();
                 dotCopy.enabled = false;
             }
         }
