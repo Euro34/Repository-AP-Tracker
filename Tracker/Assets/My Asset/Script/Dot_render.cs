@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,49 +7,52 @@ public class Dot_render : MonoBehaviour
     public Image dotImage; // Drag your Image UI element here in the Inspector
     private Image dotCopy;
     private Image dotCopy_Border;
+    public static Dot_value[,] dot_list = new Dot_value[8,2];
     public RectTransform canvasRectTransform; // Reference to the Canvas RectTransform
-    private List<string> NameList = new List<string>();
-    public Slider slider;
     private Color color = new Color32(255, 0, 0, 255);
     private byte Name_Color = 0;
 
-    public void CreateDotCopy(float pos_x, float pos_y, string name)
+    private void Start()
     {
-        Name_Color = (byte)(name[2]-'1');
+        Reset_(1, 2);
+    }
+    public void CreateDotCopy(float pos_x, float pos_y, int vid, int dot_no)
+    {
+        Name_Color = (byte)(dot_no - 1);
         // Create a copy of the dot
-        if (NameList.Contains(name))
+        if (GameObject.Find("dot:" + vid.ToString() + '_' + dot_no.ToString() + "_Border") != null)
         {
-            GameObject dotcopy_obj = GameObject.Find("dot:" + name);
-            dotCopy = dotcopy_obj.GetComponent<Image>();
-            dotCopy.rectTransform.anchoredPosition = new Vector2(pos_x, pos_y);
-            GameObject dotcopy_Border_obj = GameObject.Find("dot:" + name + "_Border");
+            GameObject dotcopy_Border_obj = GameObject.Find("dot:" + vid.ToString() + '_' + dot_no.ToString() + "_Border");
             dotCopy_Border = dotcopy_Border_obj.GetComponent<Image>();
             dotCopy_Border.rectTransform.anchoredPosition = new Vector2(pos_x, pos_y);
         }
         else
         {
+            dotCopy = Instantiate(dotImage, canvasRectTransform); // Instantiate the dot in the canvas
+
+            // Change properties of the copy if needed
+            dotCopy.gameObject.name = "dot:" + vid.ToString() + '_' + dot_no.ToString();
+
+            // Adjust the position of the copy (for example, move it to the right)
+            color_change();
+
+            dotCopy.rectTransform.sizeDelta = new Vector2(20f, 20f);
             dotCopy_Border = Instantiate(dotImage, canvasRectTransform); // Instantiate the dot in the canvas
 
             // Change properties of the copy if needed
-            dotCopy_Border.gameObject.name = "dot:" + name + "_Border";
+            dotCopy_Border.gameObject.name = "dot:" + vid.ToString() + '_' + dot_no.ToString() + "_Border";
 
             // Adjust the position of the copy (for example, move it to the right)
             dotCopy_Border.color = new Color32(56, 56, 56, 255);
             dotCopy_Border.rectTransform.anchoredPosition = new Vector2(pos_x, pos_y);
 
             dotCopy_Border.rectTransform.sizeDelta = new Vector2(25f, 25f);
-            dotCopy = Instantiate(dotImage, canvasRectTransform); // Instantiate the dot in the canvas
-
-            // Change properties of the copy if needed
-            dotCopy.gameObject.name = "dot:" + name;
-
-            // Adjust the position of the copy (for example, move it to the right)
-            color_change();
-            dotCopy.rectTransform.anchoredPosition = new Vector2(pos_x, pos_y);
-
-            dotCopy.rectTransform.sizeDelta = new Vector2(20f, 20f);
-            NameList.Add(name);
+            dotCopy.transform.SetParent(dotCopy_Border.transform);
+            dotCopy.rectTransform.anchoredPosition = new Vector2(0, 0);
         }
+        Dot_value obj = new Dot_value();
+        obj.SetPos(pos_x, pos_y);
+        dot_list[dot_no - 1, vid - 1] = obj;
     }
     private void color_change()
     {
@@ -67,31 +69,29 @@ public class Dot_render : MonoBehaviour
             dotCopy.color = color;
         }
     }
-    public void Reset_(int vid1,int vid2)
+    public void Reset_(int Selected_Vid, int Last_Vid)
     {
-        for(int i = 1; i <= 8; i++)
+        for (int i = 1; i <= 8; i++) 
         {
-            if (NameList.Contains(vid1.ToString() + "_" + i))
+            if (dot_list[i - 1, Selected_Vid - 1] != null)
             {
-                GameObject dotcopy_obj = GameObject.Find("dot:" + vid1.ToString() + "_" + i);
-                dotCopy = dotcopy_obj.GetComponent<Image>();
-                dotCopy.enabled = true;
-                GameObject dotcopy_border = GameObject.Find("dot:" + vid1.ToString() + "_" + i);
-                dotCopy = dotcopy_border.GetComponent<Image>();
-                dotCopy.enabled = true;
+                CreateDotCopy(dot_list[i - 1, Selected_Vid - 1].pos_x, dot_list[i - 1, Selected_Vid - 1].pos_y, Selected_Vid, i);
+            }
+            if (dot_list[i - 1, Last_Vid - 1] != null)
+            {
+                GameObject dotcopy_Border_obj = GameObject.Find("dot:" + Last_Vid.ToString() + '_' + i.ToString() + "_Border");
+                Destroy(dotcopy_Border_obj);
             }
         }
-        for (int i = 1; i <= 8; i++)
-        {
-            if (NameList.Contains(vid2.ToString() + "_" + i))
-            {
-                GameObject dotcopy_obj = GameObject.Find("dot:" + vid2.ToString() + "_" + i);
-                dotCopy = dotcopy_obj.GetComponent<Image>();
-                dotCopy.enabled = false;
-                GameObject dotcopy_border = GameObject.Find("dot:" + vid2.ToString() + "_" + i);
-                dotCopy = dotcopy_border.GetComponent<Image>();
-                dotCopy.enabled = false;
-            }
-        }
+    }
+}
+public class Dot_value
+{
+    public float pos_x { get; set; }
+    public float pos_y { get; set; }
+    public void SetPos(float Pos_x, float Pos_y)
+    {
+        pos_x = Pos_x;
+        pos_y = Pos_y;
     }
 }

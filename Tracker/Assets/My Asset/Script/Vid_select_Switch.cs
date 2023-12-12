@@ -26,14 +26,14 @@ public class Vid_select_Switch : MonoBehaviour
             Output.text = "Vid_2";
             Select_Vid = 2;
             AssignPic();
-            dot_render.Reset_(2, 1);
+            dot_render.Reset_(Select_Vid,1);
         }
         else
         {
             Output.text = "Vid_1";
             Select_Vid = 1;
             AssignPic();
-            dot_render.Reset_(1, 2);
+            dot_render.Reset_(Select_Vid,2);
         }
     }
 

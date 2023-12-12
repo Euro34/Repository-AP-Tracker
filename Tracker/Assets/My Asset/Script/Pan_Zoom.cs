@@ -50,7 +50,7 @@ public class Pan_Zoom : MonoBehaviour
         position[0] = (-1.2078f - position[0]) / Zoom2;
         position[1] = (-position[1])/Zoom2;
         obj.SetPos(position);
-        dot_render.CreateDotCopy(position[0], position[1], vid_Select_Switch.Select_Vid + "_" +ref_Point.Current_value.ToString());
+        dot_render.CreateDotCopy(position[0], position[1], vid_Select_Switch.Select_Vid, ref_Point.Current_value);
         try
         {
             refpoint[vid_Select_Switch.Select_Vid-1].Add(ref_Point.Current_value.ToString(), obj);
