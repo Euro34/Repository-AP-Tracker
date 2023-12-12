@@ -77,3 +77,6 @@ crashlytics-build.properties
 Tracker/Library/
 Tracker/Library/ArtifactDB
 Tracker/Assets/OpenCV+Unity
+**/Library
+**/ArtifactDB
+**/OpenCV+Unity
