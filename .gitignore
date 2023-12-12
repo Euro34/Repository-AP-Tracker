@@ -74,5 +74,6 @@ crashlytics-build.properties
 
 # Ignore .meta file
 *.meta
-Library/
+Tracker/Library/
 Tracker/Library/ArtifactDB
+Tracker/Assets/OpenCV+Unity
