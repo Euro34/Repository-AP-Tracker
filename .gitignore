@@ -2,14 +2,12 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
-/[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
 /[Bb]uild/
 /[Bb]uilds/
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
-[Ll]ibrary/
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
@@ -74,9 +72,4 @@ crashlytics-build.properties
 
 # Ignore .meta file
 *.meta
-Tracker/Library/
-Tracker/Library/ArtifactDB
 Tracker/Assets/OpenCV+Unity
-**/Library
-**/ArtifactDB
-**/OpenCV+Unity
