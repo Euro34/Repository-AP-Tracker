@@ -6,12 +6,14 @@ using System;
 public class Homography : MonoBehaviour
 {
     public Pan_Zoom pan_zoom;
+    public New_Ref_Obj new_ref_obj;
     List<short> Cal_Face;
     Point2f[][] srcPoint_List = new Point2f[6][];
     List<Point2f[]> dstPoint_List = new List<Point2f[]>();
-    Mat[] Homolist = new Mat[6];
+    Mat[] Homolist;
 
     public void Homo_Assign(){
+        Homolist = new Mat[6];
         Cal_Face = new List<short>() { 1, 2, 3, 4, 5, 6 };
         for (byte i = 1; i <= 8; i++)
         {
@@ -25,9 +27,9 @@ public class Homography : MonoBehaviour
                 string NaN_str = Convert.ToString(i - 1, 2).PadLeft(3, '0');
                 try
                 {
-                    Cal_Face[(i-1) >> 2] = 0;
-                    Cal_Face[(((i - 1) >> 1) - 2 * ((i - 1) >> 2)) + 2] = 0;
-                    Cal_Face[((i - 1) - 2 * ((i - 1) >> 1)) + 4] = 0;
+                    Cal_Face[(i - 1) >> 2] = 0;
+                    Cal_Face[(((i - 1) >> 1) & 1) + 2] = 0;
+                    Cal_Face[(i - 1) & 1] = 0;
                 }
                 catch { }
             }
@@ -39,7 +41,7 @@ public class Homography : MonoBehaviour
                 Point2f[] srcPoint = new Point2f[4];
                 int a = (4 + (i >> 2) - 2 * (i >> 1)) * (i % 2) + 1;
                 int b = a + 1 + (i >> 2);
-                int c = b + 1 + (i >> 1) * 2 - ((i >> 2) * 4) + (i >> 2);
+                int c = b + 1 + (i >> 1) * 2 - ((i >> 2) * 3);
                 int d = c + 1 + (i >> 2);
                 srcPoint[0] = new Point2f(pan_zoom.refpoint[0][a.ToString()].pos_x, pan_zoom.refpoint[0][a.ToString()].pos_y);
                 srcPoint[1] = new Point2f(pan_zoom.refpoint[0][b.ToString()].pos_x, pan_zoom.refpoint[0][b.ToString()].pos_y);
@@ -62,7 +64,6 @@ public class Homography : MonoBehaviour
     }
     private Mat Homo_Cal(byte Cal_Face_i)
     {
-        Mat homography = new Mat();
         if (srcPoint_List[Cal_Face_i] != null)
         {
             Point2f[] dstPoints = new Point2f[4];
@@ -70,8 +71,7 @@ public class Homography : MonoBehaviour
             dstPoints[1] = new Point2f(400, 0);
             dstPoints[2] = new Point2f(0, 400);
             dstPoints[3] = new Point2f(400, 400);
-            homography = Cv2.GetPerspectiveTransform(srcPoint_List[Cal_Face_i], dstPoints);
-            return homography;
+            return Cv2.GetPerspectiveTransform(srcPoint_List[Cal_Face_i], dstPoints);
         }
         else
         {

@@ -76,6 +76,11 @@ public class Pan_Zoom : MonoBehaviour
         }*/
         //To here
     }
+    public void dot_del()
+    {
+        dot_render.Dot_del(ref_Point.Current_value, vid_Select_Switch.Select_Vid);
+        refpoint[vid_Select_Switch.Select_Vid - 1][ref_Point.Current_value.ToString()] = null;
+    }
 }
 public class Name_Pos2d
 {

@@ -84,6 +84,12 @@ public class Dot_render : MonoBehaviour
             }
         }
     }
+    public void Dot_del(int dot_selected, int Vid)
+    {
+        GameObject dotcopy_Border_obj = GameObject.Find("dot:" + Vid.ToString() + '_' + dot_selected.ToString() + "_Border");
+        Destroy(dotcopy_Border_obj);
+        dot_list[dot_selected -1, Vid -1] = null;
+    }
 }
 public class Dot_value
 {
