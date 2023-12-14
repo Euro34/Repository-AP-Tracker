@@ -76,5 +76,5 @@ crashlytics-build.properties
 *.cs.meta
 *.png.meta
 *.jpg.meta
-/Tracker/Assets/OpenCV+Unity
-/Tracker/Library/ArtifactDB
+/Tracker/Assets/OpenCV+Unity/
+/Tracker/Library/
