@@ -73,6 +73,8 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 # Ignore .meta file
-*.meta
+*.cs.meta
+*.png.meta
+*.jpg.meta
 /Tracker/Assets/OpenCV+Unity
 /Tracker/Library/ArtifactDB
