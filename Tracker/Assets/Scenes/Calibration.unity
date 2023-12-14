@@ -342,8 +342,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 654654439}
-        m_TargetAssemblyTypeName: Reference_Point_select, Assembly-CSharp
+      - m_Target: {fileID: 654654441}
+        m_TargetAssemblyTypeName: Ref_Point_Select, Assembly-CSharp
         m_MethodName: down
         m_Mode: 1
         m_Arguments:
@@ -595,7 +595,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2146498352}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Dot_render, Assembly-CSharp
         m_MethodName: color_change
         m_Mode: 1
@@ -713,10 +713,10 @@ GameObject:
   - component: {fileID: 654654434}
   - component: {fileID: 654654433}
   - component: {fileID: 654654432}
-  - component: {fileID: 654654431}
-  - component: {fileID: 654654436}
+  - component: {fileID: 654654438}
   - component: {fileID: 654654437}
   - component: {fileID: 654654439}
+  - component: {fileID: 654654440}
   - component: {fileID: 654654441}
   m_Layer: 5
   m_Name: Canvas
@@ -725,18 +725,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &654654431
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 654654430}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f1545dd33a5644a4bcc7c4a33d32218, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &654654432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -821,22 +809,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &654654436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 654654430}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd71e8dea57a145adba2b0a479cd57dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Select_Vid: 1
-  Output: {fileID: 1326045467}
-  RawImage_Img: {fileID: 2146498350}
-  dot_render: {fileID: 2146498352}
 --- !u!114 &654654437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -846,15 +818,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 654654430}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04cc2091516de6a48bc44785aea110ed, type: 3}
+  m_Script: {fileID: 11500000, guid: db35317e659615048b2a9944a42de673, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minScale: 10
-  maxScale: 100
-  slider: {fileID: 1478685795}
-  Zoom: 0
-  Zoom_txt: {fileID: 1389041411}
-  scrollRect: {fileID: 1465989762}
+--- !u!114 &654654438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654654430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36d9778579070a842960fe94b6c8e0d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pan_zoom: {fileID: 2146498353}
 --- !u!114 &654654439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -864,12 +843,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 654654430}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a3a76eab7a1843fcba4c464802b9e00, type: 3}
+  m_Script: {fileID: 11500000, guid: 044a0c61527bfff4788a7b9cee12add9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Current_value: 0
-  Text: {fileID: 70382555}
-  Button_del: {fileID: 1905892299}
+  minScale: 10
+  maxScale: 100
+  slider: {fileID: 1478685795}
+  Zoom: 0
+  Zoom_txt: {fileID: 1389041411}
+  scrollRect: {fileID: 1465989762}
+--- !u!114 &654654440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654654430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8115487bdc0bbe4f924df9c90d28059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Select_Vid: 1
+  Output: {fileID: 1326045467}
+  RawImage_Img: {fileID: 2146498350}
+  dot_render: {fileID: 2146498352}
 --- !u!114 &654654441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -879,10 +877,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 654654430}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef04e2abb365e4779ad26d4b5b5efc04, type: 3}
+  m_Script: {fileID: 11500000, guid: 48698f260c05d514b8e67b9038b37edb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pan_zoom: {fileID: 2146498349}
+  Current_value: 0
+  Text: {fileID: 70382555}
+  Button_del: {fileID: 1905892299}
 --- !u!1 &661583914
 GameObject:
   m_ObjectHideFlags: 0
@@ -1004,7 +1004,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 654654431}
+      - m_Target: {fileID: 654654437}
         m_TargetAssemblyTypeName: Switch_Scene_Relative_Point, Assembly-CSharp
         m_MethodName: Back
         m_Mode: 1
@@ -1274,7 +1274,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2146498349}
+      - m_Target: {fileID: 2146498353}
         m_TargetAssemblyTypeName: Pan_Zoom, Assembly-CSharp
         m_MethodName: Pos_Capture
         m_Mode: 1
@@ -1492,7 +1492,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 654654436}
+      - m_Target: {fileID: 654654440}
         m_TargetAssemblyTypeName: Vid_select_Switch, Assembly-CSharp
         m_MethodName: Switch
         m_Mode: 1
@@ -1504,7 +1504,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2146498349}
+      - m_Target: {fileID: 2146498353}
         m_TargetAssemblyTypeName: Pan_Zoom, Assembly-CSharp
         m_MethodName: Reset_
         m_Mode: 1
@@ -2033,7 +2033,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 654654441}
+      - m_Target: {fileID: 654654438}
         m_TargetAssemblyTypeName: Homography, Assembly-CSharp
         m_MethodName: Homo_Assign
         m_Mode: 1
@@ -2477,7 +2477,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2146498349}
+      - m_Target: {fileID: 2146498353}
         m_TargetAssemblyTypeName: Pan_Zoom, Assembly-CSharp
         m_MethodName: SetScale
         m_Mode: 1
@@ -2506,7 +2506,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 654654437}
+        - m_Target: {fileID: 654654439}
           m_TargetAssemblyTypeName: Zoom_Slider, Assembly-CSharp
           m_MethodName: SliderPointerDown
           m_Mode: 1
@@ -2522,7 +2522,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 654654437}
+        - m_Target: {fileID: 654654439}
           m_TargetAssemblyTypeName: Zoom_Slider, Assembly-CSharp
           m_MethodName: SliderPointerUp
           m_Mode: 1
@@ -2618,8 +2618,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 654654439}
-        m_TargetAssemblyTypeName: Reference_Point_select, Assembly-CSharp
+      - m_Target: {fileID: 654654441}
+        m_TargetAssemblyTypeName: Ref_Point_Select, Assembly-CSharp
         m_MethodName: up
         m_Mode: 1
         m_Arguments:
@@ -2937,7 +2937,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0327e1bb7049e4049bab558b57dd53e3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6250ee3ac1766bc4696b09ca603e7e36, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3013,7 +3013,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 130788674180247709664945e5db4c1c, type: 3}
+  m_Texture: {fileID: 2800000, guid: ab2368afe6de185479ce212c6b83363c, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -3188,7 +3188,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2146498349}
+      - m_Target: {fileID: 2146498353}
         m_TargetAssemblyTypeName: Pan_Zoom, Assembly-CSharp
         m_MethodName: dot_del
         m_Mode: 1
@@ -3642,7 +3642,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 45f0807c909e74833a721106dcf0883a, type: 3}
+  m_Texture: {fileID: 2800000, guid: 4816a9f34c3dcf34eb0ba749626317b6, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -3879,7 +3879,6 @@ GameObject:
   - component: {fileID: 2071699526}
   - component: {fileID: 2071699529}
   - component: {fileID: 2071699528}
-  - component: {fileID: 2071699527}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -3910,21 +3909,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2071699527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2071699525}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c97afc556caea1c44969477eb7ddec74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ConformX: 1
-  ConformY: 1
-  Logging: 1
 --- !u!114 &2071699528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4053,8 +4037,8 @@ GameObject:
   - component: {fileID: 2146498348}
   - component: {fileID: 2146498351}
   - component: {fileID: 2146498350}
-  - component: {fileID: 2146498349}
   - component: {fileID: 2146498352}
+  - component: {fileID: 2146498353}
   m_Layer: 5
   m_Name: RawImage_Img
   m_TagString: Untagged
@@ -4082,24 +4066,6 @@ RectTransform:
   m_AnchoredPosition: {x: -1.2078, y: 0}
   m_SizeDelta: {x: 3026.4155, y: 4032}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2146498349
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2146498347}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89fa86458c3c448e88f03f4e611bb6ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  zoom_slider: {fileID: 654654437}
-  RawImage_Img: {fileID: 2146498350}
-  slider: {fileID: 1478685795}
-  ref_Point: {fileID: 654654439}
-  vid_Select_Switch: {fileID: 654654436}
-  dot_render: {fileID: 2146498352}
 --- !u!114 &2146498350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4144,8 +4110,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 2146498347}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1df35845b6e82cf40ae38139b5ceeea7, type: 3}
+  m_Script: {fileID: 11500000, guid: a80db84060263314bb42eba94ef692d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dotImage: {fileID: 1669573462}
   canvasRectTransform: {fileID: 2146498348}
+--- !u!114 &2146498353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146498347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 015a43b262b994445a2a298f362d1c5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoom_slider: {fileID: 654654439}
+  RawImage_Img: {fileID: 2146498350}
+  slider: {fileID: 1478685795}
+  ref_Point: {fileID: 654654441}
+  vid_Select_Switch: {fileID: 654654440}
+  dot_render: {fileID: 2146498352}

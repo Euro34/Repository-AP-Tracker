@@ -13,7 +13,6 @@ public class New_Ref_Obj : MonoBehaviour
     public RectTransform panel_add;
     public RectTransform panel_edit;
     public static List<Ref_dst> Ref_List = new List<Ref_dst>();
-    public static int Selected_Ref_Index;
     private float space = 262.5f;
     public TMP_InputField textField_name;
     public TMP_InputField textField_width;
@@ -23,6 +22,7 @@ public class New_Ref_Obj : MonoBehaviour
     public TMP_InputField edit_textField_width;
     public TMP_InputField edit_textField_height;
     public TMP_InputField edit_textField_length;
+    public static int Selected_Ref_Index;
     public int latest_button_index;
 
     void Start()
@@ -75,7 +75,6 @@ public class New_Ref_Obj : MonoBehaviour
     public void EditRef(Button clickedButton)
     {
         latest_button_index = int.Parse(clickedButton.name);
-        Debug.Log(latest_button_index);
         panel_edit.gameObject.SetActive(true);
         edit_textField_name.text = Ref_List[latest_button_index].Name;
         edit_textField_width.text = Ref_List[latest_button_index].Width.ToString();
@@ -94,6 +93,7 @@ public class New_Ref_Obj : MonoBehaviour
         obj.SetPos(width, height, length, name);
         Ref_List[latest_button_index]=obj;
         Re_renderButton();
+        Selected_Ref_Index = latest_button_index;
         panel_edit.gameObject.SetActive(false);
     }
 
@@ -171,6 +171,10 @@ public class Name_Pos3d
     public override string ToString()
     {
         return $"x : {pos_x} ,y : {pos_y},z: { pos_z}";
+    }
+    public List<float> ToList()
+    {
+        return new List<float> { pos_x, pos_y, pos_z};
     }
 }
 public class Ref_dst

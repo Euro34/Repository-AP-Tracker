@@ -16,7 +16,7 @@ public class Pan_Zoom : MonoBehaviour
     float Zoom, Zoom2;
     IDictionary<string, Name_Pos2d> refpoint1 = new Dictionary<string, Name_Pos2d>();
     IDictionary<string, Name_Pos2d> refpoint2 = new Dictionary<string, Name_Pos2d>();
-    public List <IDictionary<string, Name_Pos2d>> refpoint = new List <IDictionary<string, Name_Pos2d>>();
+    public static List <IDictionary<string, Name_Pos2d>> refpoint = new List <IDictionary<string, Name_Pos2d>>();
     private void Awake()
     {
         initialScale = transform.localScale;
