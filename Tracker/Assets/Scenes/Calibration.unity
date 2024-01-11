@@ -833,7 +833,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36d9778579070a842960fe94b6c8e0d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pan_zoom: {fileID: 2146498353}
 --- !u!114 &654654439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -883,6 +882,7 @@ MonoBehaviour:
   Current_value: 0
   Text: {fileID: 70382555}
   Button_del: {fileID: 1905892299}
+  color: 1
 --- !u!1 &661583914
 GameObject:
   m_ObjectHideFlags: 0

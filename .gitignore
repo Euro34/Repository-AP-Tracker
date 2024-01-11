@@ -72,9 +72,5 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
-# Ignore .meta file
-*.cs.meta
-*.png.meta
-*.jpg.meta
-/Tracker/Assets/OpenCV+Unity/
-/Tracker/Library/
+#/Tracker/Assets/OpenCV+Unity/
+#/Tracker/Library/
