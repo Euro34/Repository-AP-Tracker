@@ -157,10 +157,10 @@ public class New_Ref_Obj : MonoBehaviour
 
 public class Name_Pos3d
 {
-    public float pos_x { get; set; }
-    public float pos_y { get; set; }
-    public float pos_z { get; set; }
-    public void SetPos(float x, float y, float z)
+    public double pos_x { get; set; }
+    public double pos_y { get; set; }
+    public double pos_z { get; set; }
+    public void SetPos(double x, double y, double z)
     {
         pos_x = x;
         pos_y = y;
@@ -170,20 +170,20 @@ public class Name_Pos3d
     {
         return $"x : {pos_x} ,y : {pos_y},z: { pos_z}";
     }
-    public List<float> ToList()
+    public List<double> ToList()
     {
-        return new List<float> { pos_x, pos_y, pos_z};
+        return new List<double> { pos_x, pos_y, pos_z};
     }
 }
 public class Ref_dst
 {
-    public float Width { get; set; }
-    public float Height { get; set; }
-    public float Length { get; set; }
+    public double Width { get; set; }
+    public double Height { get; set; }
+    public double Length { get; set; }
     public Name_Pos3d[] List_Ref_Pos = new Name_Pos3d[8];
     public string Name { get; set; }
 
-    public void SetPos(float width, float height, float length, string name)
+    public void SetPos(double width, double height, double length, string name)
     {
         Width = width;
         Height = height;
@@ -196,9 +196,9 @@ public class Ref_dst
     {
         for (short i = 0; i < 8; i++)
         {
-            float x = (int)(i & 1) * Width;
-            float y = (int)((i >> 1) & 1) * Height;
-            float z = (int)((i >> 2) & 1) * Length;
+            double x = (int)(i & 1) * Width;
+            double y = (int)((i >> 1) & 1) * Height;
+            double z = (int)((i >> 2) & 1) * Length;
             Name_Pos3d obj = new Name_Pos3d();
             obj.SetPos(x, y, z);
             List_Ref_Pos[i] = obj;

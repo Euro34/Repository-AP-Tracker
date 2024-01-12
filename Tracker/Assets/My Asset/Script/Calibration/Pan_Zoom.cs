@@ -84,8 +84,8 @@ public class Pan_Zoom : MonoBehaviour
 }
 public class Name_Pos2d
 {
-    public float pos_x { get; set; }
-    public float pos_y { get; set; }
+    public double pos_x { get; set; }
+    public double pos_y { get; set; }
     public void SetPos(Vector3 vector)
     {
         pos_x = vector.x;

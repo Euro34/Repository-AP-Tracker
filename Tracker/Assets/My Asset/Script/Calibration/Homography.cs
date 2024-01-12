@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 using OpenCvSharp;
 using System.Collections.Generic;
 
@@ -44,6 +44,7 @@ public class Homography : MonoBehaviour
                 srcPoint[1] = new Point2f(Pan_Zoom.refpoint[0][b.ToString()].pos_x, Pan_Zoom.refpoint[0][b.ToString()].pos_y);
                 srcPoint[2] = new Point2f(Pan_Zoom.refpoint[0][c.ToString()].pos_x, Pan_Zoom.refpoint[0][c.ToString()].pos_y);
                 srcPoint[3] = new Point2f(Pan_Zoom.refpoint[0][d.ToString()].pos_x, Pan_Zoom.refpoint[0][d.ToString()].pos_y);
+                Debug.Log(Pan_Zoom.refpoint[0][a.ToString()].pos_x + ", " + Pan_Zoom.refpoint[0][a.ToString()].pos_y+ "," + Pan_Zoom.refpoint[0][b.ToString()].pos_x + "," + Pan_Zoom.refpoint[0][b.ToString()].pos_y + "," + Pan_Zoom.refpoint[0][c.ToString()].pos_x + "" + Pan_Zoom.refpoint[0][c.ToString()].pos_y + "," + Pan_Zoom.refpoint[0][d.ToString()].pos_x + "," + Pan_Zoom.refpoint[0][d.ToString()].pos_y);
                 srcPoint_List[i] = srcPoint;
                 Homolist[i] = Homo_Cal(i);
             }
@@ -79,3 +80,4 @@ public class Homography : MonoBehaviour
         return null;
     }
 }
+*/
