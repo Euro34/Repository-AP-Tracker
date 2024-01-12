@@ -16,4 +16,8 @@ public class Switch_Scene_Relative_Point : MonoBehaviour
     {
         SceneManager.LoadScene(2);
     }
+    public void to_Tracking_Object()
+    {
+        SceneManager.LoadScene(3);
+    }
 }

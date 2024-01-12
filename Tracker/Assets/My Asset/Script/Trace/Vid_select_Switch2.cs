@@ -43,7 +43,7 @@ public class Vid_select_Switch2 : MonoBehaviour
         {
             int width1 = (Frame_ext.width[0] * 4032) / Frame_ext.height[0];
             Texture2D texture1 = new Texture2D(Frame_ext.width[0], Frame_ext.height[0]);
-            texture1.LoadImage(Frame_ext.byteslist[0][1]);
+            texture1.LoadImage(Frame_ext.byteslist[0][0]);
             texture1.Apply();
 
             // Set the new width while preserving the original height
@@ -53,7 +53,7 @@ public class Vid_select_Switch2 : MonoBehaviour
         else {
             int width2 = (Frame_ext.width[1] * 4032) / Frame_ext.height[1];
             Texture2D texture2 = new Texture2D(Frame_ext.width[1], Frame_ext.height[1]);
-            texture2.LoadImage(Frame_ext.byteslist[1][1]);
+            texture2.LoadImage(Frame_ext.byteslist[1][0]);
             texture2.Apply();
 
             // Set the new width while preserving the original height

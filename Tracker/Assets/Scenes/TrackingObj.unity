@@ -342,8 +342,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Ref_Point_Select, Assembly-CSharp
+      - m_Target: {fileID: 654654441}
+        m_TargetAssemblyTypeName: Ref_Point_Select2, Assembly-CSharp
         m_MethodName: down
         m_Mode: 1
         m_Arguments:
@@ -538,6 +538,7 @@ GameObject:
   - component: {fileID: 654654437}
   - component: {fileID: 654654439}
   - component: {fileID: 654654440}
+  - component: {fileID: 654654441}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -672,9 +673,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Select_Vid: 1
-  Output: {fileID: 0}
-  RawImage_Img: {fileID: 0}
-  dot_render: {fileID: 0}
+  Output: {fileID: 1326045467}
+  RawImage_Img: {fileID: 2146498350}
+  dot_render: {fileID: 2146498352}
+--- !u!114 &654654441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654654430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c16982fd59d9b74e83036f303e89dfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Current_value: 0
+  Text: {fileID: 70382555}
+  Button_del: {fileID: 1905892299}
+  dot_Render2: {fileID: 2146498352}
 --- !u!1 &902884632
 GameObject:
   m_ObjectHideFlags: 0
@@ -1026,7 +1043,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1077920837}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2146498352}
+        m_TargetAssemblyTypeName: Dot_render2, Assembly-CSharp
+        m_MethodName: Pos_Capture
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1077920837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2059,7 +2088,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2146498353}
         m_TargetAssemblyTypeName: Pan_Zoom, Assembly-CSharp
         m_MethodName: SetScale
         m_Mode: 1
@@ -2200,8 +2229,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Ref_Point_Select, Assembly-CSharp
+      - m_Target: {fileID: 654654441}
+        m_TargetAssemblyTypeName: Ref_Point_Select2, Assembly-CSharp
         m_MethodName: up
         m_Mode: 1
         m_Arguments:
@@ -2770,9 +2799,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Pan_Zoom, Assembly-CSharp
-        m_MethodName: dot_del
+      - m_Target: {fileID: 2146498352}
+        m_TargetAssemblyTypeName: Dot_render2, Assembly-CSharp
+        m_MethodName: Dot_del
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3407,6 +3436,8 @@ GameObject:
   - component: {fileID: 2146498348}
   - component: {fileID: 2146498351}
   - component: {fileID: 2146498350}
+  - component: {fileID: 2146498352}
+  - component: {fileID: 2146498353}
   m_Layer: 5
   m_Name: RawImage_Img
   m_TagString: Untagged
@@ -3469,3 +3500,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2146498347}
   m_CullTransparentMesh: 1
+--- !u!114 &2146498352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146498347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c798221e88edd34cab9196c1f560768, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dotImage: {fileID: 1669573462}
+  vid_Select_Switch: {fileID: 654654440}
+  ref_Point: {fileID: 654654441}
+  pan_Zoom: {fileID: 2146498353}
+  canvasRectTransform: {fileID: 2146498348}
+--- !u!114 &2146498353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146498347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 015a43b262b994445a2a298f362d1c5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoom_slider: {fileID: 654654439}
+  slider: {fileID: 1478685795}
+  Zoom: 0
+  Zoom2: 0

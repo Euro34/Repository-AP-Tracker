@@ -4,14 +4,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.AI;
 
 public class Cam_cali : MonoBehaviour
 {
     public static Mat proj1;
     public static Mat proj2;
+    public Tri_ang tri_Ang;
     private Mat Cal_Proj(Point2d[] imagePoints, Point3d[] worldPoints)
     {
-        if (imagePoints.Length != worldPoints.Length || imagePoints.Length <= 6)
+        if (imagePoints.Length != worldPoints.Length || imagePoints.Length < 6)
             throw new ArgumentException("There must be at least 6 point correspondences.");
 
         var A = new List<double>();
@@ -48,7 +50,7 @@ public class Cam_cali : MonoBehaviour
             new Point2d ( 320.1559 , 587.304),
             new Point2d ( -311.2058 , 249.6825),
             new Point2d ( -386.7028 , 582.863),
-            new Point2d ( -34.06646 , 801.212)
+            //new Point2d ( -34.06646 , 801.212)
         };
 
         var imagePoints2 = new Point2d[]
@@ -59,7 +61,7 @@ public class Cam_cali : MonoBehaviour
             new Point2d ( 255.6205 , 276.8885),
             new Point2d ( -285.1118 , -91.27262),
             new Point2d ( -330.8735 , 238.0186),
-            new Point2d ( -67.46811 , 385.2279)
+            //new Point2d ( -67.46811 , 385.2279)
         };
 
         var worldPoints = new Point3d[]
@@ -75,8 +77,6 @@ public class Cam_cali : MonoBehaviour
 
         proj1 = Cal_Proj(imagePoints1, worldPoints);
         proj2 = Cal_Proj(imagePoints2, worldPoints);
-        Debug.Log(proj1.Dump());
-        Debug.Log(proj2.Dump());
     }
     void Start()
     {
