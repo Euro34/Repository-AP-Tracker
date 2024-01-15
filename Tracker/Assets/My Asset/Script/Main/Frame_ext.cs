@@ -50,8 +50,8 @@ public class Frame_ext : MonoBehaviour
     {
         vid_lenght[vid_no] = videoPlayer.length;
         n[vid_no] = (int)(vid_lenght[vid_no] * fps);
-        width[vid_no] = (int)videoPlayer.width;
-        height[vid_no] = (int)videoPlayer.height;
+        width[vid_no] = (int)videoPlayer.texture.width;
+        height[vid_no] = (int)videoPlayer.texture.height;
         renderTexture.Release();
         renderTexture.width = width[vid_no];
         renderTexture.height = height[vid_no];
@@ -67,10 +67,9 @@ public class Frame_ext : MonoBehaviour
             VideoPreparationComplete(vid_no, videoPlayer, renderTexture);
             // You can also set other properties here if needed
         };
-
         float time = 0f;
         int i = 0;
-        while (i < n[vid_no])
+        while (i <= n[vid_no])
         {
             if (started)
             {

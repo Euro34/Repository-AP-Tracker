@@ -1,12 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
+using OpenCvSharp;
 
 public class Dot_render2 : MonoBehaviour
 {
     public Image dotImage; // Drag your Image UI element here in the Inspector
     private Image dotCopy;
     private Image dotCopy_Border;
-    public static Dot_value[,] dot_list = new Dot_value[8,2];
+    public static Point2f[,] dot_list = new Point2f[8,2];
     public Vid_select_Switch2 vid_Select_Switch;
     public Ref_Point_Select2 ref_Point;
     public Pan_Zoom pan_Zoom;
@@ -25,6 +26,7 @@ public class Dot_render2 : MonoBehaviour
             GameObject dotcopy_Border_obj = GameObject.Find("dot:" + vid.ToString() + '_' + dot_no.ToString() + "_Border");
             dotCopy_Border = dotcopy_Border_obj.GetComponent<Image>();
             dotCopy_Border.rectTransform.anchoredPosition = new Vector2(pos_x, pos_y);
+            color_change();
         }
         else
         {
@@ -52,19 +54,24 @@ public class Dot_render2 : MonoBehaviour
             dotCopy.transform.SetParent(dotCopy_Border.transform);
             dotCopy.rectTransform.anchoredPosition = new Vector2(0, 0);
         }
-        Dot_value obj = new Dot_value();
-        obj.SetPos(pos_x, pos_y);
+        Point2f obj = new Point2f();
+        obj.X = pos_x;
+        obj.Y = pos_y;
         dot_list[dot_no - 1, vid - 1] = obj;
     }
     public void color_change()
     {
         //Color32[] colors = new Color32[] {new Color32(150, 250, 150, 150), new Color32(250, 250, 150, 150), new Color32(250, 150, 150, 150), new Color32(150, 150, 150, 150), new Color32(250, 250, 250, 150), new Color32(150, 250, 250, 150), new Color32(150, 150, 250, 150), new Color32(250, 150, 250, 150)};
         //color = colors[Name_Color];
-        int dot_selected = ref_Point.Current_value;
+        int dot_selected = ref_Point.Current_value - 1;
         int Vid = vid_Select_Switch.Select_Vid;
         for (int i = 3; i >= 0; i--)
         {
             int img_no = dot_selected - 3 + i;
+            if(img_no < 0)
+            {
+                img_no = Frame_ext.byteslist[Vid].Count - i;
+            }
             byte Transparency = (byte)(150 * ((float)i / 3));
             if (GameObject.Find("dot:" + Vid.ToString() + '_' + img_no.ToString()) != null)
             {
@@ -81,6 +88,10 @@ public class Dot_render2 : MonoBehaviour
                 }
             }
             img_no = dot_selected + 3 - i;
+            if (img_no > Frame_ext.byteslist[Vid].Count)
+            {
+                img_no = i - Frame_ext.byteslist[Vid].Count;
+            }
             Transparency = (byte)(150 * ((float)i / 3));
             if (GameObject.Find("dot:" + Vid.ToString() + '_' + img_no.ToString()) != null)
             {
@@ -102,11 +113,11 @@ public class Dot_render2 : MonoBehaviour
     {
         for (int i = 1; i <= 8; i++)
         {
-            if (dot_list[i - 1, Selected_Vid - 1] != null)
+            if (dot_list[i - 1, Selected_Vid - 1] != new Point2f())
             {
-                CreateDotCopy(dot_list[i - 1, Selected_Vid - 1].pos_x, dot_list[i - 1, Selected_Vid - 1].pos_y, Selected_Vid, i);
+                CreateDotCopy(dot_list[i - 1, Selected_Vid - 1].X, dot_list[i - 1, Selected_Vid - 1].Y, Selected_Vid, i);
             }
-            if (dot_list[i - 1, Last_Vid - 1] != null)
+            if (dot_list[i - 1, Last_Vid - 1] != new Point2f())
             {
                 GameObject dotcopy_Border_obj = GameObject.Find("dot:" + Last_Vid.ToString() + '_' + i.ToString() + "_Border");
                 Destroy(dotcopy_Border_obj);
@@ -119,7 +130,7 @@ public class Dot_render2 : MonoBehaviour
         int Vid = vid_Select_Switch.Select_Vid;
         GameObject dotcopy_Border_obj = GameObject.Find("dot:" + Vid.ToString() + '_' + dot_selected.ToString() + "_Border");
         Destroy(dotcopy_Border_obj);
-        dot_list[dot_selected - 1, Vid - 1] = null;
+        dot_list[dot_selected - 1, Vid - 1] = new Point2f();
     }
     public void Pos_Capture()
     {

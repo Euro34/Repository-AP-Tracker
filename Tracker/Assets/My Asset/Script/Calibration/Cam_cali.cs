@@ -11,11 +11,16 @@ public class Cam_cali : MonoBehaviour
     public static Mat proj1;
     public static Mat proj2;
     public Tri_ang tri_Ang;
-    private Mat Cal_Proj(Point2d[] imagePoints, Point3d[] worldPoints)
+    private Point2f[] imgPoints1;
+    private Point2f[] imgPoints2;
+    private Point3d[] worldPoints;
+    private Mat Cal_Proj(Point2f[] imagePoints, Point3d[] worldPoints)
     {
         if (imagePoints.Length != worldPoints.Length || imagePoints.Length < 6)
-            throw new ArgumentException("There must be at least 6 point correspondences.");
-
+        {
+            Debug.Log("There must be at least 6 point correspondences.");
+            return null;
+        }
         var A = new List<double>();
         for (int i = 0; i < imagePoints.Length; i++)
         {
@@ -42,7 +47,8 @@ public class Cam_cali : MonoBehaviour
     }
     public void Assign()
     {
-        var imagePoints1 = new Point2d[]
+        List_Check();
+        /*var imagePoints1 = new Point2d[]
         {
             new Point2d (-20.21478 , 17.69323),
             new Point2d ( 257.1361 , 262.8997),
@@ -74,12 +80,30 @@ public class Cam_cali : MonoBehaviour
             new Point3d(0, 1, 1),
             //new Point3d(1, 1, 1)
         };
-
-        proj1 = Cal_Proj(imagePoints1, worldPoints);
-        proj2 = Cal_Proj(imagePoints2, worldPoints);
+        */
+        proj1 = Cal_Proj(imgPoints1, worldPoints);
+        proj2 = Cal_Proj(imgPoints2, worldPoints);
+        Debug.Log(proj1.Dump());
+        Debug.Log(proj2.Dump());
     }
-    void Start()
+    public void List_Check()
     {
-        Assign();
+        int j = 0;
+        imgPoints1 = new Point2f[0];
+        imgPoints2 = new Point2f[0];
+        worldPoints = new Point3d[0]; 
+        for (int i = 0; i < 8;i++)
+        {
+            if (Dot_render1.dot_list[i,0] != new Point2f() && Dot_render1.dot_list[i,1] != new Point2f())
+            {
+                Array.Resize(ref imgPoints1, j + 1);
+                Array.Resize(ref imgPoints2, j + 1);
+                Array.Resize(ref worldPoints, j + 1);
+                imgPoints1[j] = Dot_render1.dot_list[i, 0];
+                imgPoints2[j] = Dot_render1.dot_list[i, 1];
+                worldPoints[j] = New_Ref_Obj.Ref_List[New_Ref_Obj.Sel_Ref_i].List_Ref_Pos[i].ToPoint3d();
+                j++;
+            }
+        }
     }
 }

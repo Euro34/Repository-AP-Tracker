@@ -1,12 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
+using OpenCvSharp;
+using Unity.VisualScripting;
 
 public class Dot_render1 : MonoBehaviour
 {
     public Image dotImage; // Drag your Image UI element here in the Inspector
     private Image dotCopy;
     private Image dotCopy_Border;
-    public static Dot_value[,] dot_list = new Dot_value[8,2];
+    public static Point2f[,] dot_list = new Point2f[8,2];
     public Vid_select_Switch1 vid_Select_Switch;
     public Ref_Point_Select1 ref_Point;
     public Pan_Zoom pan_Zoom;
@@ -50,8 +52,9 @@ public class Dot_render1 : MonoBehaviour
             dotCopy.transform.SetParent(dotCopy_Border.transform);
             dotCopy.rectTransform.anchoredPosition = new Vector2(0, 0);
         }
-        Dot_value obj = new Dot_value();
-        obj.SetPos(pos_x, pos_y);
+        Point2f obj = new Point2f();
+        obj.X = pos_x;
+        obj.Y = pos_y;
         dot_list[dot_no - 1, vid - 1] = obj;
     }
     private void color_change(byte Name_Color)
@@ -73,11 +76,11 @@ public class Dot_render1 : MonoBehaviour
     {
         for (int i = 1; i <= 8; i++) 
         {
-            if (dot_list[i - 1, Selected_Vid - 1] != null)
+            if (dot_list[i - 1, Selected_Vid - 1] != new Point2f())
             {
-                CreateDotCopy(dot_list[i - 1, Selected_Vid - 1].pos_x, dot_list[i - 1, Selected_Vid - 1].pos_y, Selected_Vid, i);
+                CreateDotCopy(dot_list[i - 1, Selected_Vid - 1].X, dot_list[i - 1, Selected_Vid - 1].Y, Selected_Vid, i);
             }
-            if (dot_list[i - 1, Last_Vid - 1] != null)
+            if (dot_list[i - 1, Last_Vid - 1] != new Point2f())
             {
                 GameObject dotcopy_Border_obj = GameObject.Find("dot:" + Last_Vid.ToString() + '_' + i.ToString() + "_Border");
                 Destroy(dotcopy_Border_obj);
@@ -90,7 +93,7 @@ public class Dot_render1 : MonoBehaviour
         int Vid = vid_Select_Switch.Select_Vid;
         GameObject dotcopy_Border_obj = GameObject.Find("dot:" + Vid.ToString() + '_' + dot_selected.ToString() + "_Border");
         Destroy(dotcopy_Border_obj);
-        dot_list[dot_selected -1, Vid -1] = null;
+        dot_list[dot_selected -1, Vid -1] = new Point2f();
     }
     public void Pos_Capture()
     {
@@ -98,15 +101,5 @@ public class Dot_render1 : MonoBehaviour
         position[0] = (-1.2078f - position[0]) / pan_Zoom.Zoom2;
         position[1] = (-position[1]) / pan_Zoom.Zoom2;
         CreateDotCopy(position[0], position[1], vid_Select_Switch.Select_Vid, ref_Point.Current_value);
-    }
-}
-public class Dot_value
-{
-    public float pos_x { get; set; }
-    public float pos_y { get; set; }
-    public void SetPos(float Pos_x, float Pos_y)
-    {
-        pos_x = Pos_x;
-        pos_y = Pos_y;
     }
 }

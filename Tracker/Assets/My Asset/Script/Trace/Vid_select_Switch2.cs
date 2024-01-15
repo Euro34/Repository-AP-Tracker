@@ -15,7 +15,7 @@ public class Vid_select_Switch2 : MonoBehaviour
     void Start()
     {
         Output.text = "Vid_1";
-        AssignPic();
+        AssignPic(0);
     }
 
 
@@ -25,25 +25,25 @@ public class Vid_select_Switch2 : MonoBehaviour
         {
             Output.text = "Vid_2";
             Select_Vid = 2;
-            AssignPic();
-            dot_render.Reset_(Select_Vid,1);
+            AssignPic(0);
+            dot_render.Reset_(Select_Vid, 1);
         }
         else
         {
             Output.text = "Vid_1";
             Select_Vid = 1;
-            AssignPic();
-            dot_render.Reset_(Select_Vid,2);
+            AssignPic(0);
+            dot_render.Reset_(Select_Vid, 2);
         }
     }
 
-    private void AssignPic()
+    public void AssignPic(int frame)
     {
         if (Select_Vid == 1)
         {
             int width1 = (Frame_ext.width[0] * 4032) / Frame_ext.height[0];
             Texture2D texture1 = new Texture2D(Frame_ext.width[0], Frame_ext.height[0]);
-            texture1.LoadImage(Frame_ext.byteslist[0][0]);
+            texture1.LoadImage(Frame_ext.byteslist[0][frame]);
             texture1.Apply();
 
             // Set the new width while preserving the original height
@@ -53,7 +53,7 @@ public class Vid_select_Switch2 : MonoBehaviour
         else {
             int width2 = (Frame_ext.width[1] * 4032) / Frame_ext.height[1];
             Texture2D texture2 = new Texture2D(Frame_ext.width[1], Frame_ext.height[1]);
-            texture2.LoadImage(Frame_ext.byteslist[1][0]);
+            texture2.LoadImage(Frame_ext.byteslist[1][frame]);
             texture2.Apply();
 
             // Set the new width while preserving the original height

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using OpenCvSharp;
 
 public class New_Ref_Obj : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class New_Ref_Obj : MonoBehaviour
     public TMP_InputField edit_textField_width;
     public TMP_InputField edit_textField_height;
     public TMP_InputField edit_textField_length;
-    public static int Selected_Ref_Index;
+    public static int Sel_Ref_i;
     public int latest_button_index;
 
     void Start()
@@ -33,10 +34,10 @@ public class New_Ref_Obj : MonoBehaviour
         if (Ref_List.Count == 0)
         {
             Ref_dst obj = new Ref_dst();
-            obj.SetPos(5.5f, 5.5f, 5.5f,"Rubik");
+            obj.SetPos(5.5f, 5.5f, 5.5f, "Rubik");
             Ref_List.Add(obj);
             RenderButton(Ref_List.IndexOf(obj));
-            Selected_Ref_Index = 0;
+            Sel_Ref_i = 0;
         }
         else
         {
@@ -50,7 +51,7 @@ public class New_Ref_Obj : MonoBehaviour
         textField_width.text = "";
         textField_height.text = "";
         textField_length.text = "";
-        
+
         panel_add.gameObject.SetActive(true);
     }
 
@@ -86,12 +87,12 @@ public class New_Ref_Obj : MonoBehaviour
         float height = float.Parse(edit_textField_height.text);
         float length = float.Parse(edit_textField_length.text);
         string name = edit_textField_name.text;
-        
+
         Ref_dst obj = new Ref_dst();
         obj.SetPos(width, height, length, name);
-        Ref_List[latest_button_index]=obj;
+        Ref_List[latest_button_index] = obj;
         Re_renderButton();
-        Selected_Ref_Index = latest_button_index;
+        Sel_Ref_i = latest_button_index;
         panel_edit.gameObject.SetActive(false);
     }
 
@@ -106,7 +107,7 @@ public class New_Ref_Obj : MonoBehaviour
     {
         Button newButton = Instantiate(originalButton, buttonParent);
         RectTransform buttonRect = newButton.GetComponent<RectTransform>();
-        buttonRect.localPosition = buttonRect.localPosition + new Vector3((((index+1)%3)-1)*(space), (float)(int)((index+1)/3)*(-space), 0f);
+        buttonRect.localPosition = buttonRect.localPosition + new Vector3((((index + 1) % 3) - 1) * (space), (float)(int)((index + 1) / 3) * (-space), 0f);
         newButton.name = index.ToString();
         TextMeshProUGUI buttonText = newButton.GetComponentInChildren<TextMeshProUGUI>();
         buttonText.text = Ref_List[index].ToString();
@@ -125,11 +126,11 @@ public class New_Ref_Obj : MonoBehaviour
                 Destroy(button.gameObject);
             }
         }
-        for (int index = 0; index<Ref_List.Count; index++)
+        for (int index = 0; index < Ref_List.Count; index++)
         {
             Button newButton = Instantiate(originalButton, buttonParent);
             RectTransform buttonRect = newButton.GetComponent<RectTransform>();
-            buttonRect.localPosition = buttonRect.localPosition + new Vector3((((index+1)%3)-1)*(space), (float)(int)((index+1)/3)*(-space), 0f);
+            buttonRect.localPosition = buttonRect.localPosition + new Vector3((((index + 1) % 3) - 1) * (space), (float)(int)((index + 1) / 3) * (-space), 0f);
             newButton.name = index.ToString();
             TextMeshProUGUI buttonText = newButton.GetComponentInChildren<TextMeshProUGUI>();
             buttonText.text = Ref_List[index].ToString();
@@ -150,8 +151,14 @@ public class New_Ref_Obj : MonoBehaviour
         catch
         {
             Debug.Log("You Little Piece of ...");
-            return new Tuple<float, float, float, string>(0,0,0,"Error");
+            return new Tuple<float, float, float, string>(0, 0, 0, "Error");
         }
+    }
+
+    public void Close()
+    {
+        panel_add.gameObject.SetActive(false);
+        panel_edit.gameObject.SetActive(false);
     }
 }
 
@@ -168,11 +175,15 @@ public class Name_Pos3d
     }
     public override string ToString()
     {
-        return $"x : {pos_x} ,y : {pos_y},z: { pos_z}";
+        return $"x : {pos_x} ,y : {pos_y},z: {pos_z}";
     }
     public List<double> ToList()
     {
-        return new List<double> { pos_x, pos_y, pos_z};
+        return new List<double> { pos_x, pos_y, pos_z };
+    }
+    public Point3d ToPoint3d()
+    {
+        return new Point3d(pos_x, pos_y, pos_z);
     }
 }
 public class Ref_dst
@@ -207,5 +218,14 @@ public class Ref_dst
     public override string ToString()
     {
         return Name + "\n" + Width + "*" + Height + "*" + Length;
+    }
+    public Point3d[] ToPoint3dList()
+    {
+        Point3d[] OutList = new Point3d[8];
+        for (int i = 0; i < 8; i++)
+        {
+            OutList[i] = List_Ref_Pos[i].ToPoint3d();
+        }
+        return OutList;
     }
 }

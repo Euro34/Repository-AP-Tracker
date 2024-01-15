@@ -8,15 +8,16 @@ public class Ref_Point_Select2 : MonoBehaviour
     public TextMeshProUGUI Text;
     public Button Button_del;
     public Dot_render2 dot_Render2;
+    public Vid_select_Switch2 vid_Select2;
     void Start(){
         Current_value = 1;
     }
     public void up()
     {
         Current_value += 1;
-        if(Current_value >= 9)
+        if(Current_value > (Frame_ext.byteslist[vid_Select2.Select_Vid - 1].Count))
         {
-            Current_value = 1;
+            Current_value--;
         }
         Text.text = Current_value.ToString();
         value_change();
@@ -26,7 +27,7 @@ public class Ref_Point_Select2 : MonoBehaviour
         Current_value -=1;
         if(Current_value <= 0)
         {
-            Current_value = 8;
+            Current_value = Frame_ext.byteslist[vid_Select2.Select_Vid - 1].Count;
         }
         Text.text = Current_value.ToString();
         value_change();
@@ -34,5 +35,6 @@ public class Ref_Point_Select2 : MonoBehaviour
     private void value_change()
     {
         dot_Render2.color_change();
+        vid_Select2.AssignPic(Current_value - 1);
     }
 }
