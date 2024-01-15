@@ -15,4 +15,8 @@ public class Tri_ang : MonoBehaviour
         tri = tri / tri.Get<double>(3, 0);
         Debug.Log(tri.Dump());
     }
+    public void test()
+    {
+        tri_cal(0);
+    }
 }

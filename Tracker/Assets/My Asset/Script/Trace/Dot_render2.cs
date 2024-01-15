@@ -12,7 +12,7 @@ public class Dot_render2 : MonoBehaviour
     public Ref_Point_Select2 ref_Point;
     public Pan_Zoom pan_Zoom;
     public RectTransform canvasRectTransform; // Reference to the Canvas RectTransform
-
+    public Tri_ang tri_Ang;
 
     private void Start()
     {
