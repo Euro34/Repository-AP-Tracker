@@ -738,6 +738,7 @@ MonoBehaviour:
   Zoom: 0
   Zoom_txt: {fileID: 1389041411}
   scrollRect: {fileID: 1465989762}
+  pan_Zoom: {fileID: 2146498353}
 --- !u!114 &654654440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -881,7 +882,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 654654442}
         m_TargetAssemblyTypeName: Tri_ang, Assembly-CSharp
-        m_MethodName: test
+        m_MethodName: Assign
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2214,19 +2215,7 @@ MonoBehaviour:
   m_Value: 14.142136
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2146498353}
-        m_TargetAssemblyTypeName: Pan_Zoom, Assembly-CSharp
-        m_MethodName: SetScale
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1478685796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3255,9 +3244,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3676,7 +3665,6 @@ MonoBehaviour:
   ref_Point: {fileID: 654654441}
   pan_Zoom: {fileID: 2146498353}
   canvasRectTransform: {fileID: 2146498348}
-  tri_Ang: {fileID: 0}
 --- !u!114 &2146498353
 MonoBehaviour:
   m_ObjectHideFlags: 0

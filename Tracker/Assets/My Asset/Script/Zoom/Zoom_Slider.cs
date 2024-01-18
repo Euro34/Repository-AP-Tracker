@@ -16,6 +16,7 @@ public class Zoom_Slider: MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public float Zoom;
     public TextMeshProUGUI Zoom_txt;
     public ScrollRect scrollRect;
+    public Pan_Zoom pan_Zoom;
     // Start is called before the first frame update
     void Start()
     {
@@ -64,7 +65,7 @@ public class Zoom_Slider: MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             }
             Zoom = (Mathf.Pow(slider.value, 2) / 2);
             Zoom_txt.text = Zoom.ToString() + " %";
-            //transform.localScale = new Vector2(currentScale, currentScale);
+            pan_Zoom.SetScale();
             yield return null;
         }
     }

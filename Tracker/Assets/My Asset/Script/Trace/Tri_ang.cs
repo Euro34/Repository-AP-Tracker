@@ -15,8 +15,15 @@ public class Tri_ang : MonoBehaviour
         tri = tri / tri.Get<double>(3, 0);
         Debug.Log(tri.Dump());
     }
-    public void test()
+    public void Assign()
     {
-        tri_cal(0);
+        Point2f null_point = new Point2f();
+        for(int i = 0;i < 8; i++)
+        {
+            if (Dot_render2.dot_list[i,0] != null_point && Dot_render2.dot_list[i,1] != null_point)
+            {
+                tri_cal(i);
+            }
+        }
     }
 }
