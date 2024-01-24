@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
@@ -20,7 +21,7 @@ public class Frame_ext : MonoBehaviour
     private double[] vid_lenght = new double[2];
     public static int[] width = new int[2];
     public static int[] height = new int[2];
-
+    public TextMeshProUGUI textMeshProUGUI;
     void Start()
     {
         skip = (float)(1000 / fps);
@@ -115,6 +116,7 @@ public class Frame_ext : MonoBehaviour
         }
 
         i = 0;
+        textMeshProUGUI.text = bytesList[0].Length.ToString();
     }
 }
 /*        for (int i = 1; i < byteslist1.Count; i++)

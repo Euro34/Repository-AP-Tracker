@@ -17,8 +17,8 @@ public class Dot_render2 : MonoBehaviour
 
     private void Start()
     {
-        Reset_(1, 2);
         dot_list = new Point2f[Math.Max(Frame_ext.byteslist[0].Count, Frame_ext.byteslist[1].Count), 2];
+        Reset_(1, 2);
     }
     public void CreateDotCopy(float pos_x, float pos_y, int vid, int dot_no)
     {
@@ -32,21 +32,20 @@ public class Dot_render2 : MonoBehaviour
         }
         else
         {
-            Color color = new Color32(255, 0, 0, 255);
             dotCopy = Instantiate(dotImage, canvasRectTransform);
             dotCopy.gameObject.name = "dot:" + vid.ToString() + '_' + dot_no.ToString();
             dotCopy.rectTransform.sizeDelta = new Vector2(20f, 20f);
-            color = new Color32(255, 255, 255, 150);
+            Color color = new Color32(255, 255, 255, 225);
             dotCopy.color = color;
             dotCopy_Border = Instantiate(dotImage, canvasRectTransform);
             dotCopy_Border.gameObject.name = "dot:" + vid.ToString() + '_' + dot_no.ToString() + "_Border";
-            dotCopy_Border.color = new Color32(56, 56, 56, 255);
+            dotCopy_Border.color = new Color32(56, 56, 56, 225);
             dotCopy_Border.rectTransform.anchoredPosition = new Vector2(pos_x, pos_y);
             dotCopy_Border.rectTransform.sizeDelta = new Vector2(25f, 25f);
             dotCopy.transform.SetParent(dotCopy_Border.transform);
             dotCopy.rectTransform.anchoredPosition = new Vector2(0, 0);
         }
-        dot_list[dot_no - 1, vid - 1] = new Point2f(pos_x, pos_y);
+        //dot_list[dot_no - 1, vid - 1] = new Point2f(pos_x, pos_y);
     }
     public void color_change()
     {
@@ -57,7 +56,7 @@ public class Dot_render2 : MonoBehaviour
             int img_no = dot_selected + i;
             if (img_no >= 0)
             {
-                byte Transparency = (byte)(50 * (3 - Math.Abs(i)));
+                byte Transparency = (byte)(75 * (3 - Math.Abs(i)));
                 if (GameObject.Find("dot:" + Vid.ToString() + '_' + img_no.ToString()) != null)
                 {
                     GameObject dotCopy_border = GameObject.Find("dot:" + Vid.ToString() + '_' + img_no.ToString() + "_Border");

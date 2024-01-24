@@ -9,13 +9,14 @@ public class Ref_Point_Select2 : MonoBehaviour
     public Button Button_del;
     public Dot_render2 dot_Render2;
     public Vid_select_Switch2 vid_Select2;
-    void Start(){
+    void Start()
+    {
         Current_value = 1;
     }
     public void up()
     {
-        Current_value += 1;
-        if(Current_value > (Frame_ext.byteslist[vid_Select2.Select_Vid - 1].Count))
+        Current_value++;
+        if (Current_value > (Frame_ext.byteslist[vid_Select2.Select_Vid - 1].Count))
         {
             Current_value--;
         }
@@ -24,10 +25,10 @@ public class Ref_Point_Select2 : MonoBehaviour
     }
     public void down()
     {
-        Current_value -=1;
-        if(Current_value <= 0)
+        Current_value--;
+        if (Current_value <= 0)
         {
-            Current_value = Frame_ext.byteslist[vid_Select2.Select_Vid - 1].Count;
+            Current_value++;
         }
         Text.text = Current_value.ToString();
         value_change();

@@ -258,6 +258,7 @@ MonoBehaviour:
   rawImage1: {fileID: 1234514474}
   rawImage2: {fileID: 1956578001}
   fps: 12
+  textMeshProUGUI: {fileID: 0}
 --- !u!114 &56752525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2281,7 +2282,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 8400000, guid: 5600c7f217ec271408cc7cce4c262d44, type: 2}
+  m_Texture: {fileID: 0}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -2489,7 +2490,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 8400000, guid: 82245cafa1a9e418c97df0694771460b, type: 2}
+  m_Texture: {fileID: 0}
   m_UVRect:
     serializedVersion: 2
     x: 0
