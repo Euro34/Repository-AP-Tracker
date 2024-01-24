@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using OpenCvSharp;
+using System.IO;
 
 public class New_Ref_Obj : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class New_Ref_Obj : MonoBehaviour
     public RectTransform panel_edit;
     public static List<Ref_dst> Ref_List = new List<Ref_dst>();
     private float space = 262.5f;
+    private string path;
+    private string fileContent;
     public TMP_InputField textField_name;
     public TMP_InputField textField_width;
     public TMP_InputField textField_height;
@@ -26,23 +29,29 @@ public class New_Ref_Obj : MonoBehaviour
 
     void Start()
     {
+        path = Application.persistentDataPath + "/Obj.json";
+        Ref_List = new List<Ref_dst>();
+        if (File.Exists(path))
+        {
+            //Read file
+            StreamReader reader = new StreamReader(path);
+            fileContent = reader.ReadToEnd();
+            reader.Close();
+            Ref_dst_Array ref_Dst_Array = JsonUtility.FromJson<Ref_dst_Array>(fileContent);
+            Ref_List = ref_Dst_Array.Ref_dst_list;
+        }
+        else
+        {
+            //Set Rubik
+            Ref_dst obj = new Ref_dst();
+            obj.SetPos(5.5,5.5,5.5,"Rubik");
+            Ref_List.Add(obj);
+        }
         originalButton.gameObject.SetActive(false);
         panel_add.gameObject.SetActive(false);
         panel_edit.gameObject.SetActive(false);
 
-        //Set Rubik
-        if (Ref_List.Count == 0)
-        {
-            Ref_dst obj = new Ref_dst();
-            obj.SetPos(5.5f, 5.5f, 5.5f, "Rubik");
-            Ref_List.Add(obj);
-            RenderButton(Ref_List.IndexOf(obj));
-            Sel_Ref_i = 0;
-        }
-        else
-        {
-            Re_renderButton();
-        }
+        Re_renderButton();
     }
 
     public void CreateRef()
@@ -160,8 +169,13 @@ public class New_Ref_Obj : MonoBehaviour
         panel_add.gameObject.SetActive(false);
         panel_edit.gameObject.SetActive(false);
     }
+    public void write()
+    {
+        Ref_dst_Array ref_Dst_Array = new Ref_dst_Array { Ref_dst_list = Ref_List};
+        string json = JsonUtility.ToJson(ref_Dst_Array);
+        File.WriteAllText(path, json);
+    }
 }
-
 public class Name_Pos3d
 {
     public double pos_x { get; set; }
@@ -186,13 +200,18 @@ public class Name_Pos3d
         return new Point3d(pos_x, pos_y, pos_z);
     }
 }
+[System.Serializable]
 public class Ref_dst
 {
-    public double Width { get; set; }
-    public double Height { get; set; }
-    public double Length { get; set; }
+    [SerializeField] private double width;
+    [SerializeField] private double height;
+    [SerializeField] private double length;
+    [SerializeField] private string name;
+    public double Width { get => width; set => width = value; }
+    public double Height { get => height; set => height = value; }
+    public double Length { get => length; set => length = value; }
     public Name_Pos3d[] List_Ref_Pos = new Name_Pos3d[8];
-    public string Name { get; set; }
+    public string Name { get => name; set => name = value; }
 
     public void SetPos(double width, double height, double length, string name)
     {
@@ -228,4 +247,9 @@ public class Ref_dst
         }
         return OutList;
     }
+}
+[System.Serializable]
+class Ref_dst_Array
+{
+    public List<Ref_dst> Ref_dst_list;
 }

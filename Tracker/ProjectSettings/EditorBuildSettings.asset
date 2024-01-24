@@ -18,5 +18,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Trace.unity
     guid: b1fb912ab374e844eb47eff82f58539f
   m_configObjects:
+    com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000,
+      guid: c251677de300c164ebe8fc033733e1ba, type: 2}
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 3f037787ba4f51d44a057ea5100ac842,
+      type: 2}
+    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000,
+      guid: 24141324031a9da41bbeb8f0a263d384, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000,
       guid: 9a4f9d33a981e45598f89949bc505b45, type: 2}

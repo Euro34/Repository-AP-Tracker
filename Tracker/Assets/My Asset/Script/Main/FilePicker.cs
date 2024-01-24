@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.Video;
 using TMPro;
-using UnityEngine.UI;
 
 public class FilePicker : MonoBehaviour
 {
@@ -16,7 +15,7 @@ public class FilePicker : MonoBehaviour
     // Start is called before the first frame update
     public void Import()
     {
-        string FileType = NativeFilePicker.ConvertExtensionToFileType("video/*");
+        /*string FileType = NativeFilePicker.ConvertExtensionToFileType("video/*");
 
         NativeFilePicker.Permission permission = NativeFilePicker.PickFile((path) =>
         {
@@ -27,7 +26,15 @@ public class FilePicker : MonoBehaviour
                 string Temp = Finalpath.Substring(index1 + 1).ToString();
                 holder = " ";
             }
-        }, new string[] { FileType });
+        }, new string[] { FileType });*/
+        NativeGallery.Permission permission = NativeGallery.GetVideoFromGallery((path) =>
+        {
+            if (path != null)
+            {
+                Finalpath = path;
+                holder = " ";
+            }
+        });
     }
 
     public void Import1()

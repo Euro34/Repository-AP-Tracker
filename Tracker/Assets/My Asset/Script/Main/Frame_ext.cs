@@ -86,13 +86,13 @@ public class Frame_ext : MonoBehaviour
                 textureIn.ReadPixels(new Rect(0, 0, width[vid_no], height[vid_no]), 0, 0);
                 textureIn.Apply();
 
-                Color[] pixels = textureIn.GetPixels();
+                /*Color[] pixels = textureIn.GetPixels();
                 for (int j = 0; j < pixels.Length; j++)
                 {
                     pixels[j] = pixels[j].gamma; // Convert to gamma space
                 }
                 textureIn.SetPixels(pixels);
-                textureIn.Apply();
+                textureIn.Apply();*/
 
                 byte[] bytes = textureIn.EncodeToJPG();
                 bytesList.Add(bytes);
@@ -102,8 +102,8 @@ public class Frame_ext : MonoBehaviour
                     Texture2D texture = new Texture2D(width[vid_no], height[vid_no] / 2, TextureFormat.RGB24, false);
                     texture.ReadPixels(new Rect(0, height[vid_no] / 2 - width[vid_no] / 4, width[vid_no], height[vid_no] / 2), 0, 0);
                     texture.Apply();
-                    texture.SetPixels(pixels);
-                    texture.Apply();
+                    //texture.SetPixels(pixels);
+                    //texture.Apply();
                     rawImage.texture = texture;
                     textures[vid_no] = texture;
                 }

@@ -52,10 +52,7 @@ public class Dot_render1 : MonoBehaviour
             dotCopy.transform.SetParent(dotCopy_Border.transform);
             dotCopy.rectTransform.anchoredPosition = new Vector2(0, 0);
         }
-        Point2f obj = new Point2f();
-        obj.X = pos_x;
-        obj.Y = pos_y;
-        dot_list[dot_no - 1, vid - 1] = obj;
+        dot_list[dot_no - 1, vid - 1] = new Point2f(pos_x, pos_y);
     }
     private void color_change(byte Name_Color)
     {

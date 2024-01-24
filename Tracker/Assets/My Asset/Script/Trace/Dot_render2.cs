@@ -1,21 +1,24 @@
 using UnityEngine;
 using UnityEngine.UI;
 using OpenCvSharp;
+using Unity.VisualScripting;
+using System;
 
 public class Dot_render2 : MonoBehaviour
 {
     public Image dotImage; // Drag your Image UI element here in the Inspector
     private Image dotCopy;
     private Image dotCopy_Border;
-    public static Point2f[,] dot_list = new Point2f[8,2];
+    public static Point2f[,] dot_list;
     public Vid_select_Switch2 vid_Select_Switch;
     public Ref_Point_Select2 ref_Point;
     public Pan_Zoom pan_Zoom;
-    public RectTransform canvasRectTransform; // Reference to the Canvas RectTransform
+    public RectTransform canvasRectTransform;
 
     private void Start()
     {
         Reset_(1, 2);
+        dot_list = new Point2f[Math.Max(Frame_ext.byteslist[0].Count, Frame_ext.byteslist[1].Count), 2];
     }
     public void CreateDotCopy(float pos_x, float pos_y, int vid, int dot_no)
     {
@@ -30,87 +33,51 @@ public class Dot_render2 : MonoBehaviour
         else
         {
             Color color = new Color32(255, 0, 0, 255);
-            dotCopy = Instantiate(dotImage, canvasRectTransform); // Instantiate the dot in the canvas
-
-            // Change properties of the copy if needed
+            dotCopy = Instantiate(dotImage, canvasRectTransform);
             dotCopy.gameObject.name = "dot:" + vid.ToString() + '_' + dot_no.ToString();
-
-            // Adjust the position of the copy (for example, move it to the right)
-
             dotCopy.rectTransform.sizeDelta = new Vector2(20f, 20f);
             color = new Color32(255, 255, 255, 150);
             dotCopy.color = color;
-            dotCopy_Border = Instantiate(dotImage, canvasRectTransform); // Instantiate the dot in the canvas
-
-            // Change properties of the copy if needed
+            dotCopy_Border = Instantiate(dotImage, canvasRectTransform);
             dotCopy_Border.gameObject.name = "dot:" + vid.ToString() + '_' + dot_no.ToString() + "_Border";
-
-            // Adjust the position of the copy (for example, move it to the right)
             dotCopy_Border.color = new Color32(56, 56, 56, 255);
             dotCopy_Border.rectTransform.anchoredPosition = new Vector2(pos_x, pos_y);
-
             dotCopy_Border.rectTransform.sizeDelta = new Vector2(25f, 25f);
             dotCopy.transform.SetParent(dotCopy_Border.transform);
             dotCopy.rectTransform.anchoredPosition = new Vector2(0, 0);
         }
-        Point2f obj = new Point2f();
-        obj.X = pos_x;
-        obj.Y = pos_y;
-        dot_list[dot_no - 1, vid - 1] = obj;
+        dot_list[dot_no - 1, vid - 1] = new Point2f(pos_x, pos_y);
     }
     public void color_change()
     {
-        //Color32[] colors = new Color32[] {new Color32(150, 250, 150, 150), new Color32(250, 250, 150, 150), new Color32(250, 150, 150, 150), new Color32(150, 150, 150, 150), new Color32(250, 250, 250, 150), new Color32(150, 250, 250, 150), new Color32(150, 150, 250, 150), new Color32(250, 150, 250, 150)};
-        //color = colors[Name_Color];
-        int dot_selected = ref_Point.Current_value - 1;
+        int dot_selected = ref_Point.Current_value;
         int Vid = vid_Select_Switch.Select_Vid;
-        for (int i = 3; i >= 0; i--)
+        for (int i = -2; i <= 2; i++)
         {
-            int img_no = dot_selected - 3 + i;
-            if(img_no < 0)
+            int img_no = dot_selected + i;
+            if (img_no >= 0)
             {
-                img_no = Frame_ext.byteslist[Vid].Count - i;
-            }
-            byte Transparency = (byte)(150 * ((float)i / 3));
-            if (GameObject.Find("dot:" + Vid.ToString() + '_' + img_no.ToString()) != null)
-            {
-                GameObject dotCopy_border = GameObject.Find("dot:" + Vid.ToString() + '_' + img_no.ToString() + "_Border");
-                Image dotCopy_Img_border = dotCopy_border.GetComponent<Image>();
-                GameObject dotCopy = GameObject.Find("dot:" + Vid.ToString() + '_' + img_no.ToString());
-                Image dotCopy_Img = dotCopy.GetComponent<Image>();
-                Color color = new Color32(255, 255, 255, Transparency);
-                Color color_border = new Color32(56, 56, 56, Transparency);
-                if (dotCopy_Img != null)
+                byte Transparency = (byte)(50 * (3 - Math.Abs(i)));
+                if (GameObject.Find("dot:" + Vid.ToString() + '_' + img_no.ToString()) != null)
                 {
-                    dotCopy_Img_border.color = color_border;
-                    dotCopy_Img.color = color;
-                }
-            }
-            img_no = dot_selected + 3 - i;
-            if (img_no > Frame_ext.byteslist[Vid].Count)
-            {
-                img_no = i - Frame_ext.byteslist[Vid].Count;
-            }
-            Transparency = (byte)(150 * ((float)i / 3));
-            if (GameObject.Find("dot:" + Vid.ToString() + '_' + img_no.ToString()) != null)
-            {
-                GameObject dotCopy_border = GameObject.Find("dot:" + Vid.ToString() + '_' + img_no.ToString() + "_Border");
-                Image dotCopy_Img_border = dotCopy_border.GetComponent<Image>();
-                GameObject dotCopy = GameObject.Find("dot:" + Vid.ToString() + '_' + img_no.ToString());
-                Image dotCopy_Img = dotCopy.GetComponent<Image>();
-                Color color = new Color32(255, 255, 255, Transparency);
-                Color color_border = new Color32(56, 56, 56, Transparency);
-                if (dotCopy_Img != null)
-                {
-                    dotCopy_Img_border.color = color_border;
-                    dotCopy_Img.color = color;
+                    GameObject dotCopy_border = GameObject.Find("dot:" + Vid.ToString() + '_' + img_no.ToString() + "_Border");
+                    Image dotCopy_Img_border = dotCopy_border.GetComponent<Image>();
+                    GameObject dotCopy = GameObject.Find("dot:" + Vid.ToString() + '_' + img_no.ToString());
+                    Image dotCopy_Img = dotCopy.GetComponent<Image>();
+                    Color color = new Color32(255, 255, 255, Transparency);
+                    Color color_border = new Color32(56, 56, 56, Transparency);
+                    if (dotCopy_Img != null)
+                    {
+                        dotCopy_Img_border.color = color_border;
+                        dotCopy_Img.color = color;
+                    }
                 }
             }
         }
     }
     public void Reset_(int Selected_Vid, int Last_Vid)
     {
-        for (int i = 1; i <= 8; i++)
+        for (int i = 1; i <= Frame_ext.byteslist[0].Count; i++)
         {
             if (dot_list[i - 1, Selected_Vid - 1] != new Point2f())
             {
