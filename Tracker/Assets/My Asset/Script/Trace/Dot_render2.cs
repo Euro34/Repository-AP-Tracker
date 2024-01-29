@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using OpenCvSharp;
-using Unity.VisualScripting;
 using System;
 
 public class Dot_render2 : MonoBehaviour
@@ -17,8 +16,11 @@ public class Dot_render2 : MonoBehaviour
 
     private void Start()
     {
-        dot_list = new Point2f[Math.Max(Frame_ext.byteslist[0].Count, Frame_ext.byteslist[1].Count), 2];
-        Reset_(1, 2);
+        if(dot_list == null)
+        {
+            dot_list = new Point2f[(int)(Frame_ext.duration * Ref_Point_Select2.fps), 2];
+        }
+        Reset_(false);
     }
     public void CreateDotCopy(float pos_x, float pos_y, int vid, int dot_no)
     {
@@ -45,12 +47,12 @@ public class Dot_render2 : MonoBehaviour
             dotCopy.transform.SetParent(dotCopy_Border.transform);
             dotCopy.rectTransform.anchoredPosition = new Vector2(0, 0);
         }
-        //dot_list[dot_no - 1, vid - 1] = new Point2f(pos_x, pos_y);
+        dot_list[dot_no - 1, vid] = new Point2f(pos_x, pos_y);
     }
     public void color_change()
     {
         int dot_selected = ref_Point.Current_value;
-        int Vid = vid_Select_Switch.Select_Vid;
+        byte Vid = Convert.ToByte(vid_Select_Switch.Select_Vid);
         for (int i = -2; i <= 2; i++)
         {
             int img_no = dot_selected + i;
@@ -74,17 +76,18 @@ public class Dot_render2 : MonoBehaviour
             }
         }
     }
-    public void Reset_(int Selected_Vid, int Last_Vid)
+    public void Reset_(bool Selected_Vid)
     {
-        for (int i = 1; i <= Frame_ext.byteslist[0].Count; i++)
+        byte Vid = Convert.ToByte(Selected_Vid);
+        for (int i = 1; i <= (int)(Frame_ext.duration * Ref_Point_Select2.fps); i++)
         {
-            if (dot_list[i - 1, Selected_Vid - 1] != new Point2f())
+            if (dot_list[i - 1, Vid] != new Point2f())
             {
-                CreateDotCopy(dot_list[i - 1, Selected_Vid - 1].X, dot_list[i - 1, Selected_Vid - 1].Y, Selected_Vid, i);
+                CreateDotCopy(dot_list[i - 1, Convert.ToByte(Selected_Vid)].X, dot_list[i - 1, Vid].Y, Vid, i);
             }
-            if (dot_list[i - 1, Last_Vid - 1] != new Point2f())
+            if (dot_list[i - 1, Convert.ToByte(!Selected_Vid)] != new Point2f())
             {
-                GameObject dotcopy_Border_obj = GameObject.Find("dot:" + Last_Vid.ToString() + '_' + i.ToString() + "_Border");
+                GameObject dotcopy_Border_obj = GameObject.Find("dot:" + (Convert.ToByte(!Selected_Vid)).ToString() + '_' + i.ToString() + "_Border");
                 Destroy(dotcopy_Border_obj);
             }
         }
@@ -92,16 +95,25 @@ public class Dot_render2 : MonoBehaviour
     public void Dot_del()
     {
         int dot_selected = ref_Point.Current_value;
-        int Vid = vid_Select_Switch.Select_Vid;
+        byte Vid = Convert.ToByte(vid_Select_Switch.Select_Vid);
         GameObject dotcopy_Border_obj = GameObject.Find("dot:" + Vid.ToString() + '_' + dot_selected.ToString() + "_Border");
         Destroy(dotcopy_Border_obj);
         dot_list[dot_selected - 1, Vid - 1] = new Point2f();
     }
     public void Pos_Capture()
     {
-        Vector2 position = canvasRectTransform.anchoredPosition;
+        ref_Point.up();
+        Vector2 position;
+        if (vid_Select_Switch.Select_Vid)
+        {
+            position = Quaternion.Euler(0f, 0f, -FilePicker.rotation2) * canvasRectTransform.anchoredPosition;
+        }
+        else
+        {
+            position = Quaternion.Euler(0f, 0f, -FilePicker.rotation1) * canvasRectTransform.anchoredPosition;
+        }
         position[0] = (-1.2078f - position[0]) / pan_Zoom.Zoom2;
         position[1] = (-position[1]) / pan_Zoom.Zoom2;
-        CreateDotCopy(position[0], position[1], vid_Select_Switch.Select_Vid, ref_Point.Current_value);
+        CreateDotCopy(position[0], position[1], Convert.ToByte(vid_Select_Switch.Select_Vid), ref_Point.Current_value);
     }
 }

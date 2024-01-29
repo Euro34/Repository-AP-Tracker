@@ -808,12 +808,11 @@ GameObject:
   - component: {fileID: 654654434}
   - component: {fileID: 654654433}
   - component: {fileID: 654654432}
-  - component: {fileID: 654654438}
   - component: {fileID: 654654437}
   - component: {fileID: 654654439}
-  - component: {fileID: 654654440}
   - component: {fileID: 654654441}
-  - component: {fileID: 654654442}
+  - component: {fileID: 654654443}
+  - component: {fileID: 654654444}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -915,18 +914,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db35317e659615048b2a9944a42de673, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &654654438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 654654430}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36d9778579070a842960fe94b6c8e0d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &654654439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -946,22 +933,6 @@ MonoBehaviour:
   Zoom_txt: {fileID: 1389041411}
   scrollRect: {fileID: 1465989762}
   pan_Zoom: {fileID: 2146498353}
---- !u!114 &654654440
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 654654430}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8115487bdc0bbe4f924df9c90d28059, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Select_Vid: 1
-  Output: {fileID: 1326045467}
-  RawImage_Img: {fileID: 2146498350}
-  dot_render: {fileID: 2146498352}
 --- !u!114 &654654441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -977,7 +948,24 @@ MonoBehaviour:
   Current_value: 0
   Text: {fileID: 70382555}
   Button_del: {fileID: 1905892299}
---- !u!114 &654654442
+--- !u!114 &654654443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654654430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8115487bdc0bbe4f924df9c90d28059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Select_Vid: 1
+  Output: {fileID: 1326045467}
+  RawImage_Img: {fileID: 2146498350}
+  Videoplayer: {fileID: 842142407}
+  dot_render: {fileID: 2146498352}
+--- !u!114 &654654444
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -989,7 +977,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f358d67f0a021ab4384ba7625871de59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tri_Ang: {fileID: 0}
 --- !u!1 &661583914
 GameObject:
   m_ObjectHideFlags: 0
@@ -1027,6 +1014,73 @@ RectTransform:
   m_AnchoredPosition: {x: 12.5, y: 0}
   m_SizeDelta: {x: -35, y: -14}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &842142406
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 842142408}
+  - component: {fileID: 842142407}
+  m_Layer: 0
+  m_Name: Video Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!328 &842142407
+VideoPlayer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842142406}
+  m_Enabled: 1
+  m_VideoClip: {fileID: 0}
+  m_TargetCameraAlpha: 1
+  m_TargetCamera3DLayout: 0
+  m_TargetCamera: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: 9905db55855aa3a44af5a4b9d6555f46, type: 2}
+  m_TimeReference: 0
+  m_TargetMaterialRenderer: {fileID: 0}
+  m_TargetMaterialProperty: <noninit>
+  m_RenderMode: 2
+  m_AspectRatio: 5
+  m_DataSource: 1
+  m_PlaybackSpeed: 1
+  m_AudioOutputMode: 0
+  m_TargetAudioSources:
+  - {fileID: 0}
+  m_DirectAudioVolumes:
+  - 1
+  m_Url: 
+  m_EnabledAudioTracks: 01
+  m_DirectAudioMutes: 00
+  m_ControlledAudioTrackCount: 1
+  m_PlayOnAwake: 1
+  m_SkipOnDrop: 1
+  m_Looping: 0
+  m_WaitForFirstFrame: 1
+  m_FrameReadyEventEnabled: 0
+  m_VideoShaders: []
+--- !u!4 &842142408
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842142406}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 956.00085, y: 1653.4044, z: 4.7074122}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &902884632
 GameObject:
   m_ObjectHideFlags: 0
@@ -1123,7 +1177,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 654654442}
+      - m_Target: {fileID: 654654444}
         m_TargetAssemblyTypeName: Cam_cali, Assembly-CSharp
         m_MethodName: Assign
         m_Mode: 1
@@ -1611,8 +1665,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 654654440}
-        m_TargetAssemblyTypeName: Vid_select_Switch, Assembly-CSharp
+      - m_Target: {fileID: 654654443}
+        m_TargetAssemblyTypeName: Vid_select_Switch1, Assembly-CSharp
         m_MethodName: Switch
         m_Mode: 1
         m_Arguments:
@@ -3928,14 +3982,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 8400000, guid: 9905db55855aa3a44af5a4b9d6555f46, type: 2}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -3963,7 +4017,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dotImage: {fileID: 1669573462}
-  vid_Select_Switch: {fileID: 654654440}
+  vid_Select_Switch: {fileID: 654654443}
   ref_Point: {fileID: 654654441}
   pan_Zoom: {fileID: 2146498353}
   canvasRectTransform: {fileID: 2146498348}

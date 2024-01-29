@@ -10,7 +10,6 @@ public class Cam_cali : MonoBehaviour
 {
     public static Mat proj1;
     public static Mat proj2;
-    public Tri_ang tri_Ang;
     private Point2f[] imgPoints;
     private Point3d[] worldPoints;
     private Mat Cal_Proj(byte img_no)

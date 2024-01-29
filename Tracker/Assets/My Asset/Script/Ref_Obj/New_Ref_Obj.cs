@@ -159,7 +159,6 @@ public class New_Ref_Obj : MonoBehaviour
         }
         catch
         {
-            Debug.Log("You Little Piece of ...");
             return new Tuple<float, float, float, string>(0, 0, 0, "Error");
         }
     }

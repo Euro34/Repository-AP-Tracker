@@ -251,14 +251,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53f4d93058853dd4fb6e71b16dade970, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderTexture1: {fileID: 8400000, guid: 5600c7f217ec271408cc7cce4c262d44, type: 2}
-  renderTexture2: {fileID: 8400000, guid: 82245cafa1a9e418c97df0694771460b, type: 2}
   videoPlayer1: {fileID: 1137377588}
   videoPlayer2: {fileID: 652978241}
   rawImage1: {fileID: 1234514474}
   rawImage2: {fileID: 1956578001}
-  fps: 12
-  textMeshProUGUI: {fileID: 0}
 --- !u!114 &56752525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,8 +271,7 @@ MonoBehaviour:
   videoPlayer2: {fileID: 652978241}
   Vid1_holder: {fileID: 1178558121}
   Vid2_holder: {fileID: 1477642549}
-  Vid1_path: 
-  Vid2_path: 
+  frame_ext: {fileID: 56752524}
 --- !u!1 &101182384
 GameObject:
   m_ObjectHideFlags: 0
@@ -932,7 +927,7 @@ VideoPlayer:
   m_TargetMaterialRenderer: {fileID: 0}
   m_TargetMaterialProperty: <noninit>
   m_RenderMode: 2
-  m_AspectRatio: 0
+  m_AspectRatio: 4
   m_DataSource: 1
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 0
@@ -1035,18 +1030,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 56752524}
-        m_TargetAssemblyTypeName: Frame_ext, Assembly-CSharp
-        m_MethodName: button2
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 56752525}
         m_TargetAssemblyTypeName: FilePicker, Assembly-CSharp
         m_MethodName: Import2
@@ -1838,18 +1821,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 56752524}
-        m_TargetAssemblyTypeName: Frame_ext, Assembly-CSharp
-        m_MethodName: button1
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1124049188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1922,7 +1893,7 @@ VideoPlayer:
   m_TargetMaterialRenderer: {fileID: 0}
   m_TargetMaterialProperty: <noninit>
   m_RenderMode: 2
-  m_AspectRatio: 0
+  m_AspectRatio: 4
   m_DataSource: 1
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 0
@@ -2275,14 +2246,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 8400000, guid: 5600c7f217ec271408cc7cce4c262d44, type: 2}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -2483,14 +2454,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 8400000, guid: 82245cafa1a9e418c97df0694771460b, type: 2}
   m_UVRect:
     serializedVersion: 2
     x: 0

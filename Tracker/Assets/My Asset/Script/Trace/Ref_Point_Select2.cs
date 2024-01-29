@@ -9,6 +9,7 @@ public class Ref_Point_Select2 : MonoBehaviour
     public Button Button_del;
     public Dot_render2 dot_Render2;
     public Vid_select_Switch2 vid_Select2;
+    public static int fps = 60;
     void Start()
     {
         Current_value = 1;
@@ -16,7 +17,7 @@ public class Ref_Point_Select2 : MonoBehaviour
     public void up()
     {
         Current_value++;
-        if (Current_value > (Frame_ext.byteslist[vid_Select2.Select_Vid - 1].Count))
+        if (Current_value > (Frame_ext.duration * fps))
         {
             Current_value--;
         }
