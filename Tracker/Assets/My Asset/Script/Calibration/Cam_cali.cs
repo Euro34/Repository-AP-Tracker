@@ -1,10 +1,7 @@
 using OpenCvSharp;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
-using UnityEngine.AI;
 
 public class Cam_cali : MonoBehaviour
 {
@@ -12,6 +9,7 @@ public class Cam_cali : MonoBehaviour
     public static Mat proj2;
     private Point2f[] imgPoints;
     private Point3d[] worldPoints;
+    public Tri_ang tri_ang;
     private Mat Cal_Proj(byte img_no)
     {
         List_Check(img_no);
@@ -48,8 +46,7 @@ public class Cam_cali : MonoBehaviour
     {
         proj1 = Cal_Proj(0);
         proj2 = Cal_Proj(1);
-        Debug.Log(proj1.Dump());
-        Debug.Log(proj2.Dump());
+        tri_ang.Assign();
     }
     public void List_Check(byte img_no)
     {

@@ -20,4 +20,8 @@ public class Switch_Scene_Relative_Point : MonoBehaviour
     {
         SceneManager.LoadScene(3);
     }
+    public void to_Visualize()
+    {
+        SceneManager.LoadScene(4);
+    }
 }

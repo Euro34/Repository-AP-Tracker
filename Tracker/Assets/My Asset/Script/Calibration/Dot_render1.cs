@@ -96,11 +96,11 @@ public class Dot_render1 : MonoBehaviour
         Vector2 position;
         if (vid_Select_Switch.Select_Vid)
         {
-            position = Quaternion.Euler(0f, 0f, -FilePicker.rotation2) * canvasRectTransform.anchoredPosition;
+            position = Quaternion.Euler(0f, 0f, 0f) * canvasRectTransform.anchoredPosition;
         }
         else
         {
-            position = Quaternion.Euler(0f, 0f, -FilePicker.rotation1) * canvasRectTransform.anchoredPosition;
+            position = Quaternion.Euler(0f, 0f, 0f) * canvasRectTransform.anchoredPosition;
         }
         position[0] = (-1.2078f - position[0]) / pan_Zoom.Zoom2;
         position[1] = (-position[1]) / pan_Zoom.Zoom2;

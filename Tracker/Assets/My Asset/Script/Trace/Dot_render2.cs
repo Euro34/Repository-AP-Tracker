@@ -51,9 +51,10 @@ public class Dot_render2 : MonoBehaviour
     }
     public void color_change()
     {
+        Color_Reset();
         int dot_selected = ref_Point.Current_value;
         byte Vid = Convert.ToByte(vid_Select_Switch.Select_Vid);
-        for (int i = -2; i <= 2; i++)
+        for (int i = -3; i <= 3; i++)
         {
             int img_no = dot_selected + i;
             if (img_no >= 0)
@@ -72,6 +73,28 @@ public class Dot_render2 : MonoBehaviour
                         dotCopy_Img_border.color = color_border;
                         dotCopy_Img.color = color;
                     }
+                }
+            }
+        }
+    }
+    private void Color_Reset()
+    {
+        byte Vid = Convert.ToByte(vid_Select_Switch.Select_Vid);
+        for (int img_no = 0; img_no <= (int)(Frame_ext.duration * Ref_Point_Select2.fps); img_no++)
+        {
+            byte Transparency = 0;
+            if (GameObject.Find("dot:" + Vid.ToString() + '_' + img_no.ToString()) != null)
+            {
+                GameObject dotCopy_border = GameObject.Find("dot:" + Vid.ToString() + '_' + img_no.ToString() + "_Border");
+                Image dotCopy_Img_border = dotCopy_border.GetComponent<Image>();
+                GameObject dotCopy = GameObject.Find("dot:" + Vid.ToString() + '_' + img_no.ToString());
+                Image dotCopy_Img = dotCopy.GetComponent<Image>();
+                Color color = new Color32(255, 255, 255, Transparency);
+                Color color_border = new Color32(56, 56, 56, Transparency);
+                if (dotCopy_Img != null)
+                {
+                    dotCopy_Img_border.color = color_border;
+                    dotCopy_Img.color = color;
                 }
             }
         }

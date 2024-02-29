@@ -7,7 +7,7 @@ public class Tri_ang : MonoBehaviour
 {
     public static List<double[]> tri_List = new List<double[]>();
     private string path;
-    public void tri_cal(int frame)
+    private void tri_cal(int frame)
     {
         //triangulation
         double[] imgPoint1 = new double[2] { Dot_render2.dot_list[frame, 0].X, Dot_render2.dot_list[frame, 0].Y };
@@ -31,19 +31,23 @@ public class Tri_ang : MonoBehaviour
                 }
             }
         }
-        Write_csv(tri_List);
     }
-    private void Write_csv(List<double[]> Tri_list)
+    public void Write_csv()
     {
         path = Application.persistentDataPath + "/Untitle.csv";
         TextWriter writer = new StreamWriter(path, false);
         writer.WriteLine("Time(s),Pos_X,Pos_Y,Pos_Z");
         writer.Close();
         writer = new StreamWriter(path, true);
-        foreach(double[] Tri in Tri_list)
+        foreach(double[] Tri in Tri_ang.tri_List)
         {
             writer.WriteLine(Tri[0].ToString() + "," + Tri[1].ToString() + "," + Tri[2].ToString() + "," + Tri[3].ToString());
         }
+        writer.Write("\n\n\n");
+        writer.WriteLine("Reference_Object," + New_Ref_Obj.Ref_List[New_Ref_Obj.Sel_Ref_i].Name);
+        writer.WriteLine("Width," + New_Ref_Obj.Ref_List[New_Ref_Obj.Sel_Ref_i].Width.ToString());
+        writer.WriteLine("Height," + New_Ref_Obj.Ref_List[New_Ref_Obj.Sel_Ref_i].Height.ToString());
+        writer.Write("Length," + New_Ref_Obj.Ref_List[New_Ref_Obj.Sel_Ref_i].Length.ToString());
         writer.Close();
         NativeFilePicker.ExportFile(path);
     }

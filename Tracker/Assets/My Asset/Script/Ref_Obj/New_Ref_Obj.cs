@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using OpenCvSharp;
 using System.IO;
+using Unity.VisualScripting;
 
 public class New_Ref_Obj : MonoBehaviour
 {
@@ -29,6 +30,18 @@ public class New_Ref_Obj : MonoBehaviour
 
     void Start()
     {
+        Load();
+        if(originalButton != null)
+        {
+            originalButton.gameObject.SetActive(false);
+            panel_add.gameObject.SetActive(false);
+            panel_edit.gameObject.SetActive(false);
+
+            Re_renderButton();
+        }
+    }
+    public void Load()
+    {
         path = Application.persistentDataPath + "/Obj.json";
         Ref_List = new List<Ref_dst>();
         if (File.Exists(path))
@@ -44,14 +57,9 @@ public class New_Ref_Obj : MonoBehaviour
         {
             //Set Rubik
             Ref_dst obj = new Ref_dst();
-            obj.SetPos(5.5,5.5,5.5,"Rubik");
+            obj.SetPos(5.5, 5.5, 5.5, "Rubik");
             Ref_List.Add(obj);
         }
-        originalButton.gameObject.SetActive(false);
-        panel_add.gameObject.SetActive(false);
-        panel_edit.gameObject.SetActive(false);
-
-        Re_renderButton();
     }
 
     public void CreateRef()
@@ -237,6 +245,10 @@ public class Ref_dst
     {
         return Name + "\n" + Width + "*" + Height + "*" + Length;
     }
+    public string Check()
+    {
+        return Name + "," + Width + "," + Height + "," + Length;
+    }
     public Point3d[] ToPoint3dList()
     {
         Point3d[] OutList = new Point3d[8];
@@ -245,6 +257,10 @@ public class Ref_dst
             OutList[i] = List_Ref_Pos[i].ToPoint3d();
         }
         return OutList;
+    }
+    public Vector3 ToVector3()
+    {
+        return new Vector3((float)width,(float)height,(float)length);
     }
 }
 [System.Serializable]
