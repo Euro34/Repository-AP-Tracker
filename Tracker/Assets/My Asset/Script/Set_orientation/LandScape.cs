@@ -5,6 +5,7 @@ public class LandScape : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
         Screen.orientation = ScreenOrientation.AutoRotation;
 
         // Set which orientations are allowed

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System;
 using Unity.VisualScripting;
 using Accord.Math;
+using UnityEngine.AI;
 
 public class Video_Slider : MonoBehaviour
 {

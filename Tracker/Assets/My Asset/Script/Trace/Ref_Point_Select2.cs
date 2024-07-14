@@ -9,7 +9,7 @@ public class Ref_Point_Select2 : MonoBehaviour
     public Button Button_del;
     public Dot_render2 dot_Render2;
     public Vid_select_Switch2 vid_Select2;
-    public static int fps = 60;
+    public static int fps = 30;
     void Start()
     {
         Current_value = 1;

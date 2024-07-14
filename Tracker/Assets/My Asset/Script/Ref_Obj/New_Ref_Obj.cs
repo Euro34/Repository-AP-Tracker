@@ -229,7 +229,7 @@ public class Ref_dst
         SetPoint();
     }
 
-    private void SetPoint()
+    public void SetPoint()
     {
         for (short i = 0; i < 8; i++)
         {
@@ -254,6 +254,7 @@ public class Ref_dst
         Point3d[] OutList = new Point3d[8];
         for (int i = 0; i < 8; i++)
         {
+            Debug.Log(List_Ref_Pos[i]);
             OutList[i] = List_Ref_Pos[i].ToPoint3d();
         }
         return OutList;

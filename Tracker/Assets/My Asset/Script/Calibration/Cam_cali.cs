@@ -9,6 +9,7 @@ public class Cam_cali : MonoBehaviour
     public static Mat proj2;
     private Point2f[] imgPoints;
     private Point3d[] worldPoints;
+    private Point3d[] OutList = new Point3d[8];
     public Tri_ang tri_ang;
     private Mat Cal_Proj(byte img_no)
     {
@@ -44,6 +45,8 @@ public class Cam_cali : MonoBehaviour
     }
     public void Assign()
     {
+        New_Ref_Obj.Ref_List[New_Ref_Obj.Sel_Ref_i].SetPoint();
+        OutList = New_Ref_Obj.Ref_List[New_Ref_Obj.Sel_Ref_i].ToPoint3dList();
         proj1 = Cal_Proj(0);
         proj2 = Cal_Proj(1);
         tri_ang.Assign();
@@ -60,7 +63,8 @@ public class Cam_cali : MonoBehaviour
                 Array.Resize(ref imgPoints, j + 1);
                 Array.Resize(ref worldPoints, j + 1);
                 imgPoints[j] = Dot_render1.dot_list[i, img_no];
-                worldPoints[j] = New_Ref_Obj.Ref_List[New_Ref_Obj.Sel_Ref_i].List_Ref_Pos[i].ToPoint3d();
+                Debug.Log(i);
+                worldPoints[j] = OutList[i];
                 j++;
             }
         }

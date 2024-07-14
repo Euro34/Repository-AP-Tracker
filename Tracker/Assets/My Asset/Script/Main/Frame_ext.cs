@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
+using System.Collections;
 
 public class Frame_ext : MonoBehaviour
 {
@@ -20,9 +21,14 @@ public class Frame_ext : MonoBehaviour
     }
     void PreparationComplete(VideoPlayer player, RawImage rawImage)
     {
-        player.Pause();
         rawImage.color = Color.white;
+        StartCoroutine(SetVideoTime(player));
+    }
+    IEnumerator SetVideoTime(VideoPlayer player)
+    {
+        yield return new WaitForSeconds(0.1f);
         player.time = player.length / 2;
+        player.Pause();
         duration_compare();
     }
     public void button1()
