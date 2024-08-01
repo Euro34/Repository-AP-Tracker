@@ -27,7 +27,7 @@ public class Frame_ext : MonoBehaviour
     IEnumerator SetVideoTime(VideoPlayer player)
     {
         yield return new WaitForSeconds(0.1f);
-        player.time = player.length / 2;
+        player.time = player.length / 2; //set thumbnail to the middle of the video
         player.Pause();
         duration_compare();
     }

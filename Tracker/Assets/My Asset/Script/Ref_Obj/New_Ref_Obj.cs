@@ -40,6 +40,12 @@ public class New_Ref_Obj : MonoBehaviour
             Re_renderButton();
         }
     }
+    public void write()
+    {
+        Ref_dst_Array ref_Dst_Array = new Ref_dst_Array { Ref_dst_list = Ref_List};
+        string json = JsonUtility.ToJson(ref_Dst_Array);
+        File.WriteAllText(path, json);
+    }
     public void Load()
     {
         path = Application.persistentDataPath + "/Obj.json";
@@ -176,14 +182,8 @@ public class New_Ref_Obj : MonoBehaviour
         panel_add.gameObject.SetActive(false);
         panel_edit.gameObject.SetActive(false);
     }
-    public void write()
-    {
-        Ref_dst_Array ref_Dst_Array = new Ref_dst_Array { Ref_dst_list = Ref_List};
-        string json = JsonUtility.ToJson(ref_Dst_Array);
-        File.WriteAllText(path, json);
-    }
 }
-public class Name_Pos3d
+public class Name_Pos3d //collect pos in x y z
 {
     public double pos_x { get; set; }
     public double pos_y { get; set; }
@@ -200,7 +200,7 @@ public class Name_Pos3d
     }
     public List<double> ToList()
     {
-        return new List<double> { pos_x, pos_y, pos_z };
+        return new List<double> {pos_x, pos_y, pos_z};
     }
     public Point3d ToPoint3d()
     {
@@ -208,7 +208,7 @@ public class Name_Pos3d
     }
 }
 [System.Serializable]
-public class Ref_dst
+public class Ref_dst //set each of the 8 point of a reference object
 {
     [SerializeField] private double width;
     [SerializeField] private double height;

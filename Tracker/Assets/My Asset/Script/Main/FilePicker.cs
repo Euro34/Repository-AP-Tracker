@@ -17,7 +17,7 @@ public class FilePicker : MonoBehaviour
 
     public void Import1()
     {
-        NativeGallery.Permission permission = NativeGallery.GetVideoFromGallery((path) =>
+        NativeGallery.Permission permission = NativeGallery.GetVideoFromGallery((path) => //request permission then import
         {
             if (path != null)
             {
@@ -30,12 +30,14 @@ public class FilePicker : MonoBehaviour
             else if (videoPlayer1.url == null)
             {
                 Vid1_holder.text = "+";
+                Vid1_path = "";
+                videoPlayer1.url = "";
             }
         });
     }
     public void Import2()
     {
-        NativeGallery.Permission permission = NativeGallery.GetVideoFromGallery((path) =>
+        NativeGallery.Permission permission = NativeGallery.GetVideoFromGallery((path) => //request permission then import
         {
             if (path != null)
             {
@@ -47,6 +49,8 @@ public class FilePicker : MonoBehaviour
             }else if (videoPlayer2.url == null)
             {
                 Vid2_holder.text = "+";
+                Vid2_path = "";
+                videoPlayer2.url = "";
             }
         });
     }
