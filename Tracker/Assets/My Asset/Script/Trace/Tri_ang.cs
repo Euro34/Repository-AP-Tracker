@@ -15,24 +15,25 @@ public class Tri_ang : MonoBehaviour
         Mat tri = new Mat();
         Cv2.TriangulatePoints(Cam_cali.proj1, Cam_cali.proj2, InputArray.Create(imgPoint1), InputArray.Create(imgPoint2), tri);
         tri = tri / tri.Get<double>(3, 0);
-        tri_List.Add(new double[] { ((double)frame/(double)Ref_Point_Select2.fps), tri.Get<double>(0, 0), tri.Get<double>(1, 0), tri.Get<double>(2, 0) });
+        //Save the result in tri_List as list of double that include time, x, y, z
+        tri_List.Add(new double[] { ((double)frame/(double)Frame_select.fps), tri.Get<double>(0, 0), tri.Get<double>(1, 0), tri.Get<double>(2, 0) });
     }
-    public void Assign()
+    public void Assign() //Prepare the data before calculation and 
     {
-        tri_List = new List<double[]>();
-        if(Cam_cali.proj1 != null && Cam_cali.proj2 != null)
+        tri_List = new List<double[]>(); //Define tri_List as an empty list of list of double
+        if(Cam_cali.proj1 != null && Cam_cali.proj2 != null) //Only progress if both projection matrix is calculated
         {
-            Point2f null_point = new Point2f();
-            for (int i = 0; i < (int)(Frame_ext.duration*Ref_Point_Select2.fps); i++)
+            Point2f null_point = new Point2f(); //Use to compare to the value in the dot_list to know if it have been capture
+            for (int i = 0; i < (int)(Frame_ext.duration*Frame_select.fps); i++) //Loop thru every frame
             {
-                if (Dot_render2.dot_list[i, 0] != null_point && Dot_render2.dot_list[i, 1] != null_point)
+                if (Dot_render2.dot_list[i, 0] != null_point && Dot_render2.dot_list[i, 1] != null_point) //Loop thru every frame that have been capture in both video
                 {
                     tri_cal(i);
                 }
             }
         }
     }
-    public void Write_csv()
+    public void Write_csv() //Export to csv file
     {
         path = Application.persistentDataPath + "/Untitle.csv";
         TextWriter writer = new StreamWriter(path, false);

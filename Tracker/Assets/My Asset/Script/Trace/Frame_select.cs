@@ -1,18 +1,21 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Video;
 
-public class Ref_Point_Select2 : MonoBehaviour
+public class Frame_select : MonoBehaviour
 {
     public int Current_value;
     public TextMeshProUGUI Text;
+    public VideoPlayer videoPlayer1;
     public Button Button_del;
     public Dot_render2 dot_Render2;
     public Vid_select_Switch2 vid_Select2;
-    public static int fps = 30;
+    public static float fps;
     void Start()
     {
-        Current_value = 1;
+        Current_value = 1; //Start at frame 1
+        fps = videoPlayer1.frameRate; //Set the prefer framerate to the vid1 framerate
     }
     public void up()
     {
@@ -36,7 +39,7 @@ public class Ref_Point_Select2 : MonoBehaviour
     }
     private void value_change()
     {
-        dot_Render2.color_change();
-        vid_Select2.AssignPic(Current_value - 1);
+        dot_Render2.color_change(); //Set other frames opacity
+        vid_Select2.AssignPic(Current_value - 1); //Change the frame to the right one
     }
 }

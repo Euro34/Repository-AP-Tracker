@@ -14,11 +14,12 @@ public class Cam_cali : MonoBehaviour
     private Mat Cal_Proj(byte img_no)
     {
         List_Check(img_no);
-        if (imgPoints.Length != worldPoints.Length || imgPoints.Length < 6)
+        if (imgPoints.Length != worldPoints.Length || imgPoints.Length < 6) //If there are less than 6 point the accuracy will drop dramatically
         {
             Debug.Log("There must be at least 6 point correspondences.");
             return null;
         }
+        //Calculate projection matrix from 2d and real coordinate of every point using SVD
         var A = new List<double>();
         for (int i = 0; i < imgPoints.Length; i++)
         {
@@ -43,15 +44,15 @@ public class Cam_cali : MonoBehaviour
             return M;
         }
     }
-    public void Assign()
+    public void Assign() //Prepare the data before triangulate all the point //This method is call when calculate button is pressed
     {
         New_Ref_Obj.Ref_List[New_Ref_Obj.Sel_Ref_i].SetPoint();
         OutList = New_Ref_Obj.Ref_List[New_Ref_Obj.Sel_Ref_i].ToPoint3dList();
-        proj1 = Cal_Proj(0);
-        proj2 = Cal_Proj(1);
+        proj1 = Cal_Proj(0); //Find Projection matrix of vid1
+        proj2 = Cal_Proj(1); //Find Projection matrix of vid2
         tri_ang.Assign();
     }
-    public void List_Check(byte img_no)
+    public void List_Check(byte img_no) //Prepare the data before calculate the projection matrix
     {
         int j = 0;
         imgPoints = new Point2f[0];
@@ -63,7 +64,6 @@ public class Cam_cali : MonoBehaviour
                 Array.Resize(ref imgPoints, j + 1);
                 Array.Resize(ref worldPoints, j + 1);
                 imgPoints[j] = Dot_render1.dot_list[i, img_no];
-                Debug.Log(i);
                 worldPoints[j] = OutList[i];
                 j++;
             }

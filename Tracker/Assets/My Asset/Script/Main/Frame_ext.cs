@@ -14,20 +14,20 @@ public class Frame_ext : MonoBehaviour
     private bool bool2 = false;
     void Vid_title(VideoPlayer player, RawImage rawImage)
     {
-        player.prepareCompleted += (source =>
+        player.prepareCompleted += (source => //Wait until there is a path to call PreparationComplete() method
         {
             PreparationComplete(player, rawImage);
         });
     }
     void PreparationComplete(VideoPlayer player, RawImage rawImage)
     {
-        rawImage.color = Color.white;
+        rawImage.color = Color.white; //Remove the tint
         StartCoroutine(SetVideoTime(player));
     }
     IEnumerator SetVideoTime(VideoPlayer player)
     {
         yield return new WaitForSeconds(0.1f);
-        player.time = player.length / 2; //set thumbnail to the middle of the video
+        player.time = player.length / 2; //Set thumbnail to the middle of the video
         player.Pause();
         duration_compare();
     }
@@ -41,7 +41,7 @@ public class Frame_ext : MonoBehaviour
         Vid_title(videoPlayer2, rawImage2);
         bool2 = true;
     }
-    void duration_compare()
+    void duration_compare() //Set the variable "duration" = the duration of the shortest between them
     {
         if(bool1 && bool2)
         {

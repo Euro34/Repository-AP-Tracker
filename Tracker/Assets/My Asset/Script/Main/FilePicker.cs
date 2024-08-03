@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Video;
 using TMPro;
+using System;
 
 public class FilePicker : MonoBehaviour
 {
@@ -15,48 +16,9 @@ public class FilePicker : MonoBehaviour
     public Frame_ext frame_ext;
     // Start is called before the first frame update
 
-    public void Import1()
-    {
-        NativeGallery.Permission permission = NativeGallery.GetVideoFromGallery((path) => //request permission then import
-        {
-            if (path != null)
-            {
-                rotation1 = -NativeGallery.GetVideoProperties(path).rotation;
-                Vid1_path = path;
-                videoPlayer1.url = Vid1_path;
-                Vid1_holder.text = " ";
-                frame_ext.button1();
-            }
-            else if (videoPlayer1.url == null)
-            {
-                Vid1_holder.text = "+";
-                Vid1_path = "";
-                videoPlayer1.url = "";
-            }
-        });
-    }
-    public void Import2()
-    {
-        NativeGallery.Permission permission = NativeGallery.GetVideoFromGallery((path) => //request permission then import
-        {
-            if (path != null)
-            {
-                rotation2 = -NativeGallery.GetVideoProperties(path).rotation;
-                Vid2_path = path;
-                videoPlayer2.url = Vid2_path;
-                Vid2_holder.text = " ";
-                frame_ext.button2();
-            }else if (videoPlayer2.url == null)
-            {
-                Vid2_holder.text = "+";
-                Vid2_path = "";
-                videoPlayer2.url = "";
-            }
-        });
-    }
     void Start()
     {
-        if (Vid1_path != null)
+        if (Vid1_path != null) //For Dev. Otherwise it just go straight to else
         {
             videoPlayer1.url = Vid1_path;
             Vid1_holder.text = " ";
@@ -66,7 +28,7 @@ public class FilePicker : MonoBehaviour
         {
             Vid1_holder.text = "+";
         }
-        if (Vid2_path != null)
+        if (Vid2_path != null) //For Dev. Otherwise it just go straight to else
         {
             videoPlayer2.url = Vid2_path;
             Vid2_holder.text = " ";
@@ -76,5 +38,35 @@ public class FilePicker : MonoBehaviour
         {
             Vid2_holder.text = "+";
         }
+    }
+    public void Import1()
+    {
+        NativeGallery.Permission permission = NativeGallery.GetVideoFromGallery((path) => //Request permission then import
+        {
+            if (path != null)
+            {
+                rotation1 = -NativeGallery.GetVideoProperties(path).rotation; //Read the rotation matadata
+                Vid1_path = path;
+                videoPlayer1.url = Vid1_path;
+                Vid1_holder.text = " "; //Set the button text to an empty string
+                frame_ext.button1(); //Call frame_ext to show thumbnail
+                Debug.Log("Vid1 path : " + Vid1_path);
+            }
+        });
+    }
+    public void Import2()
+    {
+        NativeGallery.Permission permission = NativeGallery.GetVideoFromGallery((path) => //Request permission then import
+        {
+            if (path != null)
+            {
+                rotation2 = -NativeGallery.GetVideoProperties(path).rotation; //Read the rotation matadata
+                Vid2_path = path;
+                videoPlayer2.url = Vid2_path;
+                Vid2_holder.text = " "; //Set the button text to an empty string
+                frame_ext.button2(); //Call frame_ext to show thumbnail
+                Debug.Log("Vid2 path : " + Vid2_path);
+            }
+        });
     }
 }

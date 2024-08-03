@@ -33,20 +33,19 @@ public class New_Ref_Obj : MonoBehaviour
         Load();
         if(originalButton != null)
         {
-            originalButton.gameObject.SetActive(false);
-            panel_add.gameObject.SetActive(false);
-            panel_edit.gameObject.SetActive(false);
-
-            Re_renderButton();
+        originalButton.gameObject.SetActive(false); //Hide the original button
+        panel_add.gameObject.SetActive(false); //Hide the add window
+        panel_edit.gameObject.SetActive(false); //Hide the edit window
         }
+        Re_renderButton();
     }
-    public void write()
+    public void write() //Save the reference object data to json file
     {
         Ref_dst_Array ref_Dst_Array = new Ref_dst_Array { Ref_dst_list = Ref_List};
         string json = JsonUtility.ToJson(ref_Dst_Array);
         File.WriteAllText(path, json);
     }
-    public void Load()
+    public void Load() //Read the json file. If it empty, create a rubik object.
     {
         path = Application.persistentDataPath + "/Obj.json";
         Ref_List = new List<Ref_dst>();
@@ -68,7 +67,7 @@ public class New_Ref_Obj : MonoBehaviour
         }
     }
 
-    public void CreateRef()
+    public void CreateRef() //Show the add window
     {
         textField_name.text = "";
         textField_width.text = "";
@@ -78,7 +77,7 @@ public class New_Ref_Obj : MonoBehaviour
         panel_add.gameObject.SetActive(true);
     }
 
-    public void Set_Ref()
+    public void Set_Ref() //Save the reference object to the Ref_list and set it as the selected
     {
         Tuple<float, float, float, string> windowSetValues = Window_Set();
         float width = windowSetValues.Item1;
@@ -94,7 +93,7 @@ public class New_Ref_Obj : MonoBehaviour
         panel_add.gameObject.SetActive(false);
     }
 
-    public void EditRef(Button clickedButton)
+    public void EditRef(Button clickedButton) //Show the edit window
     {
         latest_button_index = int.Parse(clickedButton.name);
         panel_edit.gameObject.SetActive(true);
@@ -104,7 +103,7 @@ public class New_Ref_Obj : MonoBehaviour
         edit_textField_length.text = Ref_List[latest_button_index].Length.ToString();
     }
 
-    public void EditRef_Set()
+    public void EditRef_Set() //Save the edit value and set it as the selected
     {
         float width = float.Parse(edit_textField_width.text);
         float height = float.Parse(edit_textField_height.text);
@@ -116,17 +115,18 @@ public class New_Ref_Obj : MonoBehaviour
         Ref_List[latest_button_index] = obj;
         Re_renderButton();
         Sel_Ref_i = latest_button_index;
+        Debug.Log("Reference object : " + Ref_List[Sel_Ref_i].Name);
         panel_edit.gameObject.SetActive(false);
     }
 
-    public void Edit_Del()
+    public void Edit_Del() //Delete the object
     {
         Ref_List.RemoveAt(latest_button_index);
         Re_renderButton();
         panel_edit.gameObject.SetActive(false);
     }
 
-    public void RenderButton(int index)
+    public void RenderButton(int index) //Create a button for an object and set it in the right position
     {
         Button newButton = Instantiate(originalButton, buttonParent);
         RectTransform buttonRect = newButton.GetComponent<RectTransform>();
@@ -137,7 +137,7 @@ public class New_Ref_Obj : MonoBehaviour
         newButton.gameObject.SetActive(true);
     }
 
-    public void Re_renderButton()
+    public void Re_renderButton() //Call RenderButton() method for each reference object in the Ref_list
     {
         Button[] allButtons = FindObjectsOfType<Button>();
         foreach (Button button in allButtons)
@@ -161,7 +161,7 @@ public class New_Ref_Obj : MonoBehaviour
         }
     }
 
-    public Tuple<float, float, float, string> Window_Set()
+    public Tuple<float, float, float, string> Window_Set() //Set the value in the window to the according object in Ref_list
     {
         try
         {
@@ -171,19 +171,19 @@ public class New_Ref_Obj : MonoBehaviour
             float length = float.Parse(textField_length.text);
             return new Tuple<float, float, float, string>(width, height, length, name);
         }
-        catch
+        catch //Catch error from entering nonnumerical number in width height or length field
         {
             return new Tuple<float, float, float, string>(0, 0, 0, "Error");
         }
     }
 
-    public void Close()
+    public void Close() //Close the window
     {
         panel_add.gameObject.SetActive(false);
         panel_edit.gameObject.SetActive(false);
     }
 }
-public class Name_Pos3d //collect pos in x y z
+public class Name_Pos3d //Collect pos in x y z and have methods to return different type
 {
     public double pos_x { get; set; }
     public double pos_y { get; set; }
@@ -265,7 +265,7 @@ public class Ref_dst //set each of the 8 point of a reference object
     }
 }
 [System.Serializable]
-class Ref_dst_Array
+class Ref_dst_Array //Class for list of ref_dst
 {
     public List<Ref_dst> Ref_dst_list;
 }
