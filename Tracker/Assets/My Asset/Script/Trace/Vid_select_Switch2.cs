@@ -13,6 +13,7 @@ public class Vid_select_Switch2 : MonoBehaviour
     public VideoPlayer[] Videoplayers = new VideoPlayer[2];
     public Dot_render2 dot_render;
     public RenderTexture[] renderTexture = new RenderTexture[2];
+    public Auto_track auto_track;
     private int[] width = new int[2];
     private double multiplier = 0;
 
@@ -50,6 +51,7 @@ public class Vid_select_Switch2 : MonoBehaviour
             RawImage_Img.transform.rotation = Quaternion.Euler(0, 0, FilePicker.rotation2);
             RawImage_Img.texture = renderTexture[1];
             dot_render.Reset_(true);
+            auto_track.current_vid = 1;
         }
         else
         {
@@ -61,13 +63,14 @@ public class Vid_select_Switch2 : MonoBehaviour
             RawImage_Img.transform.rotation = Quaternion.Euler(0, 0, FilePicker.rotation1);
             RawImage_Img.texture = renderTexture[0];
             dot_render.Reset_(false);
+            auto_track.current_vid = 0;
         }
     }
 
     public void AssignPic(int frame)
     {
         byte sel = Convert.ToByte(Select_Vid);
-        Videoplayers[sel].frame = Mathf.RoundToInt((float)(frame * multiplier));
-        Debug.Log(Videoplayers[sel].frame);
+        Videoplayers[sel].frame = (long)(frame * multiplier);
+        auto_track.update_track();
     }
 }

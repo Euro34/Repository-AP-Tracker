@@ -5,19 +5,23 @@ using System;
 
 public class Dot_render2 : MonoBehaviour
 {
-    public Image dotImage; // Drag your Image UI element here in the Inspector
+    public Image dotImage;
     private Image dotCopy;
     private Image dotCopy_Border;
     public static Point2f[,] dot_list;
     public Vid_select_Switch2 vid_Select_Switch;
     public Ref_Point_Select2 ref_Point;
     public Pan_Zoom pan_Zoom;
+    public Auto_track auto_track;
+    public Auto_track_rect auto_track_rect;
     public RectTransform canvasRectTransform;
 
     private void Start()
     {
         if(dot_list == null)
         {
+            dot_list = new Point2f[(int)(Frame_ext.duration * Ref_Point_Select2.fps), 2];
+        }else if(dot_list.Length == 0){
             dot_list = new Point2f[(int)(Frame_ext.duration * Ref_Point_Select2.fps), 2];
         }
         Reset_(false);
@@ -49,6 +53,7 @@ public class Dot_render2 : MonoBehaviour
         }
         dot_list[dot_no - 1, vid] = new Point2f(pos_x, pos_y);
     }
+
     public void color_change()
     {
         Color_Reset();
@@ -125,7 +130,6 @@ public class Dot_render2 : MonoBehaviour
     }
     public void Pos_Capture()
     {
-        ref_Point.up();
         Vector2 position;
         if (vid_Select_Switch.Select_Vid)
         {
@@ -135,8 +139,18 @@ public class Dot_render2 : MonoBehaviour
         {
             position = Quaternion.Euler(0f, 0f, -FilePicker.rotation1) * canvasRectTransform.anchoredPosition;
         }
+
         position[0] = (-1.2078f - position[0]) / pan_Zoom.Zoom2;
         position[1] = (-position[1]) / pan_Zoom.Zoom2;
-        CreateDotCopy(position[0], position[1], Convert.ToByte(vid_Select_Switch.Select_Vid), ref_Point.Current_value);
+
+        if (!auto_track.Auto_Trace_Toggel)
+        {
+            ref_Point.up();
+            CreateDotCopy(position[0], position[1], Convert.ToByte(vid_Select_Switch.Select_Vid), ref_Point.Current_value);
+        }
+        else
+        {
+            auto_track_rect.Auto_trace_rect();
+        }
     }
 }
