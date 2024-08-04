@@ -36,7 +36,7 @@ MonoBehaviour:
   m_Script: {fileID: 12003, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MinSize: {x: 100, y: 100}
+  m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
     m_Text: Console
@@ -45,15 +45,57 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 0
-    y: 806
-    width: 1354.5
-    height: 265
+    x: 360
+    y: 73.6
+    width: 856.4
+    height: 540.6
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
     m_OverlaysVisible: 1
+  m_SerializedViewNames:
+  - UnityEditor.GameView
+  m_SerializedViewValues:
+  - C:\Users\Por\Documents\Repository-Tracker\Tracker\Library\PlayModeViewStates\c0efa256ee9bb73469bfa675afac4096
+  m_PlayModeViewName: Device Simulator
+  m_ShowGizmos: 0
+  m_TargetDisplay: 0
+  m_ClearColor: {r: 0, g: 0, b: 0, a: 1}
+  m_TargetSize: {x: 1080, y: 2256}
+  m_TextureFilterMode: 0
+  m_TextureHideFlags: 61
+  m_RenderIMGUI: 1
+  m_EnterPlayModeBehavior: 2
+  m_UseMipMap: 0
+  m_SimulatorState:
+    controlPanelVisible: 0
+    controlPanelWidth: 0
+    controlPanelFoldoutKeys:
+    - UnityEditor.AdaptivePerformance.Editor.AdaptivePerformanceUIExtension
+    - UnityEditor.AdaptivePerformance.Samsung.Android.Editor.AdaptivePerformanceGoogleUIExtension
+    - UnityEditor.AdaptivePerformance.Samsung.Android.Editor.AdaptivePerformanceVRRUIExtension
+    - UnityEditor.DeviceSimulation.ApplicationSettingsPlugin
+    controlPanelFoldoutValues: 00000000
+    pluginNames:
+    - UnityEditor.AdaptivePerformance.Editor.AdaptivePerformanceUIExtension
+    - UnityEditor.AdaptivePerformance.Samsung.Android.Editor.AdaptivePerformanceGoogleUIExtension
+    - UnityEditor.AdaptivePerformance.Samsung.Android.Editor.AdaptivePerformanceVRRUIExtension
+    - UnityEditor.DeviceSimulation.ApplicationSettingsPlugin
+    - UnityEngine.InputSystem.Editor.InputSystemPlugin
+    pluginStates:
+    - '{"m_SerializationStates":{"thermalFoldout":false,"performanceFoldout":false,"developerFoldout":false,"indexerFoldout":false,"scalersFoldout":false,"deviceSettingsFoldout":false}}'
+    - '{"m_SerializationStates":{"androidSystemFoldout":false}}'
+    - '{"m_SerializationStates":{"settingsFoldout":false,"vrrFoldout":false,"androidSystemFoldout":false}}'
+    - '{}'
+    - '{}'
+    scale: 21
+    fitToScreenEnabled: 0
+    rotationDegree: 0
+    highlightSafeAreaEnabled: 0
+    friendlyName: vivo NEX 3 5G
+    networkReachability: 1
+    systemLanguage: 10
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -146,8 +188,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 461.5
-    height: 734
+    width: 360
+    height: 561.6
   m_MinSize: {x: 201, y: 221}
   m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 7}
@@ -190,7 +232,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: c6930000
       m_LastClickedID: 0
-      m_ExpandedIDs: 389efeff62a3feff66a4feff2eb8fefffad7feff28fefeffae14ffffb818ffffc828ffffb62bffffce2effff5a2fffffbe30ffff7035ffff4636ffff7e37ffffb83dffffd63fffff7240ffffee40ffff3e41ffff0242ffff5e42ffffc642ffff2243ffff7a43ffff0844ffff8645ffff5e4effffb84effff2654ffffbe5affff505dffffdc6effffc86fffff0086ffffe68effffa091ffff9695ffff6896ffffa89dffff7aa2fffffca2ffff80a3ffffd6a3ffff2ca4ffff46a5ffff9ca5ffff20a6ffff7ea6ffff58a9ffffdca9ffff5eaaffff8aacfffff6b7fffffeb9ffff54baffffd6baffff5ebbffffe0bbffff8ac1ffff14c6ffff9ac6ffff6edbffff6cddffff1afbffff5c6900008e690000229500004695000054950000ecb60000f4b6000064b70000b4b70000e0b7000000bd000076ea00007eea0000eeea0000f6ea00006aeb0000f2ef0000faef00006af0000072f00000e6f000007af8000040f90000a0120100ee140100201501000e1b0100161b01005a1b0100861b0100021c0100bc1e0100c41e0100081f0100341f0100b01f0100aa450100b24501009e460100ae510100b6510100a2520100fc5e0100045f0100745f01007c5f0100f05f0100fa5f0100467201004e720100be720100c67201003a730100267c01008c7e0100b87e0100fa7e0100307f0100387f0100ac7f0100b47f0100ec7f0100f47f01002e800100648001006c800100e0800100ea8001007e8e0100868e0100f68e0100728f010052b101005ab1010070b10100dab10100e2b1010056b20100d8b9010052fb01005afb0100dafb0100e2fb010056fc010068fc01002e2f0200a6430200ae430200aa440200b4440200104b0200
+      m_ExpandedIDs: 90caffffd6ccffff7cf4ffff18fbffffb6690000be6900000a6a0000366a00003e6a0000c46a0000d66a0000bc750000c47500003c76000044760000ca760000dc76000032bb00003abb0000b2bb0000babb000040bc0000aac00000b2c000002ac1000032c10000b8c10000cac10000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -229,10 +271,10 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 461.5
+    x: 360
     y: 0
-    width: 894
-    height: 734
+    width: 858.4
+    height: 561.6
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 10}
@@ -262,10 +304,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 461.5
-    y: 72
-    width: 892
-    height: 713
+    x: 360
+    y: 73.6
+    width: 856.4
+    height: 503
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -523,9 +565,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 909.89746, y: 851.789, z: -3.9463978}
+    m_Target: {x: 792.9184, y: 1534.2318, z: 1.9262128}
     speed: 2
-    m_Value: {x: 909.89746, y: 851.789, z: -3.9463978}
+    m_Value: {x: 792.9184, y: 1534.2318, z: 1.9262128}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -576,9 +618,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 2253.9258
+    m_Target: 1224.1896
     speed: 2
-    m_Value: 2253.9258
+    m_Value: 1224.1896
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -691,12 +733,12 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 734
-    width: 1355.5
-    height: 286
-  m_MinSize: {x: 101, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 2}
+    y: 561.6
+    width: 1218.4
+    height: 169.20001
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_ActualView: {fileID: 12}
   m_Panes:
   - {fileID: 12}
   - {fileID: 2}
@@ -724,9 +766,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 806
-    width: 1354.5
-    height: 265
+    y: 635.2
+    width: 1217.4
+    height: 148.20001
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -757,10 +799,10 @@ MonoBehaviour:
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 239}
-    m_SelectedIDs: 506b0000
-    m_LastClickedID: 27472
-    m_ExpandedIDs: 00000000fe6a0000006b0000066b0000086b000000ca9a3b
+    scrollPos: {x: 0, y: 287}
+    m_SelectedIDs: 9e6b0000
+    m_LastClickedID: 27550
+    m_ExpandedIDs: 00000000706b0000726b000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -788,7 +830,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000fe6a0000006b0000066b0000086b000000ca9a3b
+    m_ExpandedIDs: 00000000706b0000726b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -813,10 +855,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: c6930000
-    m_LastClickedInstanceID: 37830
-    m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c6230000f678000000000000b2300100
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
+    m_HadKeyboardFocusLastEvent: 0
+    m_ExpandedInstanceIDs: c6230000f678000000000000b2300100e26a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -844,6 +886,36 @@ MonoBehaviour:
     m_GridSize: 64
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 207
+--- !u!114 &12
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 1
+  m_Script: {fileID: 12003, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_TitleContent:
+    m_Text: Console
+    m_Image: {fileID: -4950941429401207979, guid: 0000000000000000d000000000000000,
+      type: 0}
+    m_Tooltip: 
+  m_Pos:
+    serializedVersion: 2
+    x: 0
+    y: 635.2
+    width: 1217.4
+    height: 148.20001
+  m_ViewDataDictionary: {fileID: 0}
+  m_OverlayCanvas:
+    m_LastAppliedPresetName: Default
+    m_SaveData: []
+    m_OverlaysVisible: 1
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52

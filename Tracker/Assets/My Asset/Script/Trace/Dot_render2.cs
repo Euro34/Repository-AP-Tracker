@@ -6,13 +6,15 @@ using System.Collections.Generic;
 
 public class Dot_render2 : MonoBehaviour
 {
-    public Image dotImage; // Drag your Image UI element here in the Inspector
+    public Image dotImage;
     private Image dotCopy;
     private Image dotCopy_Border;
     public static Point2f[][] dot_list = new Point2f[2][];
     public Vid_select_Switch2 vid_Select_Switch;
     public Frame_select frame_select;
     public Pan_Zoom pan_Zoom;
+    public Auto_track auto_track;
+    public Auto_track_rect auto_track_rect;
     public RectTransform canvasRectTransform;
 
     private void Start()
@@ -115,8 +117,16 @@ public class Dot_render2 : MonoBehaviour
         position = Quaternion.Euler(0f, 0f, 0f) * canvasRectTransform.anchoredPosition; //Get the position from unity from the center
         position[0] = (-position[0]) / pan_Zoom.Zoom2;  //Calculate x
         position[1] = (-position[1]) / pan_Zoom.Zoom2; //Calculate y
-        Save_Pos(position[0], position[1], Convert.ToByte(Vid_select_Switch2.Select_Vid), frame_select.Current_value); //Save and render the dot
-        Debug.Log("vid" + (Vid_select_Switch2.Select_Vid ? 2 : 1) + "_" + frame_select.Current_value + " : x = " + position[0] + ", y = " + position[1]);
-        frame_select.up(); //Advance the frame by 1
+        
+        if (!auto_track.Auto_Trace_Toggel)
+        {
+            Save_Pos(position[0], position[1], Convert.ToByte(Vid_select_Switch2.Select_Vid), frame_select.Current_value); //Save and render the dot
+            Debug.Log("vid" + (Vid_select_Switch2.Select_Vid ? 2 : 1) + "_" + frame_select.Current_value + " : x = " + position[0] + ", y = " + position[1]);
+            frame_select.up(); //Advance the frame by 1
+        }
+        else
+        {
+            auto_track_rect.Auto_trace_rect();
+        }
     }
 }
