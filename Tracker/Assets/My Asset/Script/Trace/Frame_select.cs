@@ -5,7 +5,6 @@ using TMPro;
 public class Frame_select : MonoBehaviour
 {
     public TextMeshProUGUI Text;
-    public Button Button_del;
     public Dot_render2 dot_Render2;
     public Vid_select_Switch2 vid_Select2;
     public int Current_value;

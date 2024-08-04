@@ -48,7 +48,7 @@ public class Tri_ang : MonoBehaviour
             double dt = 1 / Frame_ext.fps[sec_vid];
             double r1 = (time - (frame_before / Frame_ext.fps[sec_vid]))/dt;
             double r2 = 1 - r1;
-            coord = (list[frame_before] * r1) + (list[frame_after] * r2);
+            coord = (list[frame_before] * r2) + (list[frame_after] * r1);
         }
         return coord;
     }

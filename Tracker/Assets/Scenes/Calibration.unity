@@ -437,8 +437,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 654654441}
-        m_TargetAssemblyTypeName: Ref_Point_Select, Assembly-CSharp
+      - m_Target: {fileID: 654654446}
+        m_TargetAssemblyTypeName: Ref_Select, Assembly-CSharp
         m_MethodName: down
         m_Mode: 1
         m_Arguments:
@@ -810,9 +810,9 @@ GameObject:
   - component: {fileID: 654654432}
   - component: {fileID: 654654437}
   - component: {fileID: 654654439}
-  - component: {fileID: 654654441}
   - component: {fileID: 654654443}
   - component: {fileID: 654654445}
+  - component: {fileID: 654654446}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -933,21 +933,6 @@ MonoBehaviour:
   Zoom_txt: {fileID: 1389041411}
   scrollRect: {fileID: 1465989762}
   pan_Zoom: {fileID: 2146498353}
---- !u!114 &654654441
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 654654430}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48698f260c05d514b8e67b9038b37edb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Current_value: 0
-  Text: {fileID: 70382555}
-  Button_del: {fileID: 1905892299}
 --- !u!114 &654654443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -977,6 +962,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 398b7b5ea76d1934ca6e0180c384feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &654654446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654654430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53b3f94ef81c1fe4980d3f0f0674c98f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Current_value: 0
+  Text: {fileID: 70382555}
+  Button_del: {fileID: 1905892299}
 --- !u!1 &661583914
 GameObject:
   m_ObjectHideFlags: 0
@@ -2657,8 +2657,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 654654441}
-        m_TargetAssemblyTypeName: Ref_Point_Select, Assembly-CSharp
+      - m_Target: {fileID: 654654446}
+        m_TargetAssemblyTypeName: Ref_Select, Assembly-CSharp
         m_MethodName: up
         m_Mode: 1
         m_Arguments:
@@ -3252,7 +3252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.26666668, b: 0.21568628, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4018,7 +4018,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dotImage: {fileID: 1669573462}
   vid_Select_Switch: {fileID: 654654443}
-  ref_Point: {fileID: 654654441}
+  ref_Point: {fileID: 654654446}
   pan_Zoom: {fileID: 2146498353}
   canvasRectTransform: {fileID: 2146498348}
 --- !u!114 &2146498353

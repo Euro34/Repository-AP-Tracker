@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4439372, g: 0.49315345, b: 0.5721989, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -342,8 +342,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 654654441}
-        m_TargetAssemblyTypeName: Ref_Point_Select2, Assembly-CSharp
+      - m_Target: {fileID: 654654444}
+        m_TargetAssemblyTypeName: Frame_select, Assembly-CSharp
         m_MethodName: down
         m_Mode: 1
         m_Arguments:
@@ -617,9 +617,9 @@ GameObject:
   - component: {fileID: 654654437}
   - component: {fileID: 654654439}
   - component: {fileID: 654654440}
-  - component: {fileID: 654654441}
   - component: {fileID: 654654442}
   - component: {fileID: 654654443}
+  - component: {fileID: 654654444}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -757,24 +757,7 @@ MonoBehaviour:
   RawImage_Img: {fileID: 2146498350}
   Videoplayer: {fileID: 1832583141}
   dot_render: {fileID: 2146498352}
-  frame_select: {fileID: 654654441}
---- !u!114 &654654441
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 654654430}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c16982fd59d9b74e83036f303e89dfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Text: {fileID: 70382555}
-  Button_del: {fileID: 1905892299}
-  dot_Render2: {fileID: 2146498352}
-  vid_Select2: {fileID: 654654440}
-  Current_value: 1
+  frame_select: {fileID: 654654444}
 --- !u!114 &654654442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -799,6 +782,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 398b7b5ea76d1934ca6e0180c384feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &654654444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654654430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96d197fd20d9de94f883dd655b1767fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Text: {fileID: 70382555}
+  dot_Render2: {fileID: 2146498352}
+  vid_Select2: {fileID: 654654440}
+  Current_value: 0
 --- !u!1 &837967448
 GameObject:
   m_ObjectHideFlags: 0
@@ -2549,8 +2548,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 654654441}
-        m_TargetAssemblyTypeName: Ref_Point_Select2, Assembly-CSharp
+      - m_Target: {fileID: 654654444}
+        m_TargetAssemblyTypeName: Frame_select, Assembly-CSharp
         m_MethodName: up
         m_Mode: 1
         m_Arguments:
@@ -3933,7 +3932,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dotImage: {fileID: 1669573462}
   vid_Select_Switch: {fileID: 654654440}
-  frame_select: {fileID: 654654441}
+  frame_select: {fileID: 654654444}
   pan_Zoom: {fileID: 2146498353}
   canvasRectTransform: {fileID: 2146498348}
 --- !u!114 &2146498353
