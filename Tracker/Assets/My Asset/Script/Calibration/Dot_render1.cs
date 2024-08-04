@@ -6,19 +6,19 @@ using System;
 
 public class Dot_render1 : MonoBehaviour
 {
-    public Image dotImage; // Drag your Image UI element here in the Inspector
+    public Image dotImage; 
     private Image dotCopy;
     private Image dotCopy_Border;
     public static Point2f[,] dot_list = new Point2f[8, 2];
     public Vid_select_Switch1 vid_Select_Switch;
-    public Ref_Point_Select1 ref_Point;
+    public Ref_Select ref_Point;
     public Pan_Zoom pan_Zoom;
-    public RectTransform canvasRectTransform; // Reference to the Canvas RectTransform
+    public RectTransform canvasRectTransform;
     private Color color = new Color32(255, 0, 0, 255);
 
     private void Start()
     {
-        Reset_(false);
+        Reset_(false); //Set the start to vid1
     }
     public void CreateDotCopy(float pos_x, float pos_y, int vid, int dot_no)
     {
@@ -53,9 +53,9 @@ public class Dot_render1 : MonoBehaviour
             dotCopy.transform.SetParent(dotCopy_Border.transform);
             dotCopy.rectTransform.anchoredPosition = new Vector2(0, 0);
         }
-        dot_list[dot_no - 1, vid] = new Point2f(pos_x, pos_y);
+        dot_list[dot_no - 1, vid] = new Point2f(pos_x, pos_y); //Add position in point 2f to a 2d array of reference point number and vid number
     }
-    private void color_change(byte Name_Color)
+    private void color_change(byte Name_Color) //Deal with color of the dot
     {
         byte R = (byte)((Name_Color & 1) * 100 + 150);
         byte G = (byte)(((Name_Color >> 1) & 1) * 100 + 150);
@@ -67,7 +67,7 @@ public class Dot_render1 : MonoBehaviour
             dotCopy.color = color;
         }
     }
-    public void Reset_(bool Selected_Vid)
+    public void Reset_(bool Selected_Vid) //Change the dot set between each vid
     {
         byte Vid = Convert.ToByte(Selected_Vid);
         for (int i = 1; i <= 8; i++)
@@ -83,27 +83,22 @@ public class Dot_render1 : MonoBehaviour
             }
         }
     }
-    public void Dot_del()
+    public void Dot_del() //Delete the dot
     {
         int dot_selected = ref_Point.Current_value;
         byte Vid = Convert.ToByte(vid_Select_Switch.Select_Vid);
         GameObject dotcopy_Border_obj = GameObject.Find("dot:" + Vid.ToString() + '_' + dot_selected.ToString() + "_Border");
-        Destroy(dotcopy_Border_obj);
-        dot_list[dot_selected - 1, Vid] = new Point2f();
+        Destroy(dotcopy_Border_obj); //Delete the render
+        dot_list[dot_selected - 1, Vid] = new Point2f(); //Delete the data
+        Debug.Log("Delete : vid" + (vid_Select_Switch.Select_Vid ? 2 : 1) + "_" + ref_Point.Current_value);
     }
     public void Pos_Capture()
     {
         Vector2 position;
-        if (vid_Select_Switch.Select_Vid)
-        {
-            position = Quaternion.Euler(0f, 0f, 0f) * canvasRectTransform.anchoredPosition;
-        }
-        else
-        {
-            position = Quaternion.Euler(0f, 0f, 0f) * canvasRectTransform.anchoredPosition;
-        }
-        position[0] = (-1.2078f - position[0]) / pan_Zoom.Zoom2;
-        position[1] = (-position[1]) / pan_Zoom.Zoom2;
-        CreateDotCopy(position[0], position[1], Convert.ToByte(vid_Select_Switch.Select_Vid), ref_Point.Current_value);
+        position = Quaternion.Euler(0f, 0f, 0f) * canvasRectTransform.anchoredPosition; //Get the position from unity from the center
+        position[0] = (-position[0]) / pan_Zoom.Zoom2; //Calculate x
+        position[1] = (-position[1]) / pan_Zoom.Zoom2; //Calculate y
+        CreateDotCopy(position[0], position[1], Convert.ToByte(vid_Select_Switch.Select_Vid), ref_Point.Current_value); //Render the dot
+        Debug.Log("vid" + (vid_Select_Switch.Select_Vid ? 2 : 1) + "_" + ref_Point.Current_value + " : x = " + position[0] + ", y = " + position[1]);
     }
 }

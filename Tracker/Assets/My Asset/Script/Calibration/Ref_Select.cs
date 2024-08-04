@@ -2,14 +2,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class Ref_Point_Select1 : MonoBehaviour
+public class Ref_Select : MonoBehaviour
 {
     public int Current_value;
     public TextMeshProUGUI Text;
     public Button Button_del;
     private Image Del_Img;
     //public button color
-    void Start(){
+    void Start(){ //Set the start point to 1
         Current_value = 1;
         Del_Img = Button_del.GetComponent<Image>();
         Color();
@@ -26,7 +26,7 @@ public class Ref_Point_Select1 : MonoBehaviour
     }
     public void down()
     {
-        Current_value -=1;
+        Current_value -= 1;
         if(Current_value <= 0)
         {
             Current_value = 8;
@@ -34,7 +34,7 @@ public class Ref_Point_Select1 : MonoBehaviour
         Text.text = Current_value.ToString();
         Color();
     }
-    void Color()
+    void Color() //Deal with color
     {
         int Color_val = Current_value - 1;
         byte R = (byte)((Color_val & 1) * 100 + 150);

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Switch_Scene_Relative_Point : MonoBehaviour
+public class Switch_Scene : MonoBehaviour
 {
     public void to_edit_Rela_Point()
     {
