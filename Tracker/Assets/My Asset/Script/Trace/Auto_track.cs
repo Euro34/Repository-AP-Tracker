@@ -9,11 +9,11 @@ using System.Threading;
 public class Auto_track : MonoBehaviour
 {
     public RectTransform Auto_Trace_Panel;
-    public RenderTexture[] input;
+    public RenderTexture input;
     public RawImage output;
     public Mat current_frame = null;
-    public VideoPlayer[] videoPlayer = new VideoPlayer[2];
-    public Ref_Point_Select2 ref_Point;
+    public VideoPlayer videoPlayer;
+    public Frame_select ref_Point;
     public Dot_render2 dot_Render2;
     public int current_vid = 0;
     public bool Auto_Trace_Toggel = false;
@@ -42,25 +42,18 @@ public class Auto_track : MonoBehaviour
     }
     public IEnumerator start_track()
     {
-        yield return new WaitForSeconds((float)(1.0 / videoPlayer[current_vid].frameRate));
-        current_frame = OpenCvSharp.Unity.TextureToMat(rt_to_texture(input[0]));
+        yield return new WaitForSeconds((float)(1.0 / videoPlayer.frameRate));
+        current_frame = OpenCvSharp.Unity.TextureToMat(rt_to_texture(input));
         tracker = Tracker.Create(TrackerTypes.KCF);
         double width = (double)((int)size.x);
         double height = (double)((int)size.y);
         boundingBox = new Rect2d(initialPosition.x, initialPosition.y, width, height);
         isInitialized = tracker.Init(current_frame, boundingBox);
         Tracking();
-
-        /*Thread.Sleep((int)(1000 / videoPlayer[current_vid].frameRate));
-        current_frame = OpenCvSharp.Unity.TextureToMat(rt_to_texture(input[current_vid]));
-        tracker = Tracker.Create(TrackerTypes.KCF);
-        boundingBox = new Rect2d(initialPosition.x, initialPosition.y, size.x, size.y);
-        isInitialized = tracker.Init(current_frame, boundingBox);
-        Tracking();*/
     }
     public void Tracking()
     {
-        current_frame = OpenCvSharp.Unity.TextureToMat(rt_to_texture(input[current_vid]));
+        current_frame = OpenCvSharp.Unity.TextureToMat(rt_to_texture(input));
         if (isInitialized && tracker.Update(current_frame, ref boundingBox))
         {
             Point point1 = new Point(boundingBox.X, boundingBox.Y);
@@ -70,26 +63,21 @@ public class Auto_track : MonoBehaviour
             mid_pos.x = (float)(boundingBox.X + boundingBox.Width / 2);
             mid_pos.y = (float)(boundingBox.Y + boundingBox.Height / 2);
             mid_pos = realpos_to_visualpos(mid_pos);
-            dot_Render2.CreateDotCopy(mid_pos.x, mid_pos.y, current_vid, ref_Point.Current_value);
+            dot_Render2.Save_Pos(mid_pos.x, mid_pos.y, current_vid, ref_Point.Current_value);
         }
         output.texture = OpenCvSharp.Unity.MatToTexture(current_frame);
     }
     Texture2D rt_to_texture(RenderTexture rt)
     {
-        // Create a new Texture2D with the same dimensions as the RenderTexture
         Texture2D texture = new Texture2D(rt.width, rt.height, TextureFormat.RGB24, false);
 
-        // Remember the currently active render texture
         RenderTexture currentActiveRT = RenderTexture.active;
 
-        // Set the supplied RenderTexture as the active one
         RenderTexture.active = rt;
 
-        // Read the pixels from the RenderTexture into the Texture2D
         texture.ReadPixels(new UnityEngine.Rect(0, 0, rt.width, rt.height), 0, 0);
         texture.Apply();
 
-        // Restore the previously active RenderTexture
         RenderTexture.active = currentActiveRT;
 
         return texture;
@@ -119,7 +107,7 @@ public class Auto_track : MonoBehaviour
     {
         if (Auto_Trace_Toggel)
         {
-            Thread.Sleep((int)(1000 / videoPlayer[current_vid].frameRate));
+            Thread.Sleep((int)(1000 / videoPlayer.frameRate));
             Tracking();
         }
     }

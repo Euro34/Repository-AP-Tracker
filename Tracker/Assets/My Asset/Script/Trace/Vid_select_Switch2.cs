@@ -74,7 +74,5 @@ public class Vid_select_Switch2 : MonoBehaviour
         {
             Videoplayer.sendFrameReadyEvents = false; //To disable Videoplayer.frameReady method (It could use a lot of gpu)
         }
-        byte sel = Convert.ToByte(Select_Vid);
-        Videoplayers[sel].frame = (long)(frame * multiplier);
     }
 }
