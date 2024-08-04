@@ -14,7 +14,6 @@ public class Vid_select_Switch2 : MonoBehaviour
     public VideoPlayer Videoplayer;
     public Dot_render2 dot_render;
     public Frame_select frame_select;
-    public Auto_track auto_track;
 
     void Start() //Set the start video to vid1
     {
@@ -35,7 +34,6 @@ public class Vid_select_Switch2 : MonoBehaviour
             Select_Vid = true; //To vid 2
             Videoplayer.url = FilePicker.Vid2_path;
             RawImage_Img.transform.rotation = Quaternion.Euler(0, 0, FilePicker.rotation2); //Rotate according to the metadata
-            auto_track.current_vid = 1;
         }
         else
         {
@@ -43,7 +41,6 @@ public class Vid_select_Switch2 : MonoBehaviour
             Select_Vid = false; //To vid 1
             Videoplayer.url = FilePicker.Vid1_path;
             RawImage_Img.transform.rotation = Quaternion.Euler(0, 0, FilePicker.rotation1); //Rotate according to the metadata
-            auto_track.current_vid = 0;
         }
         Videoplayer.prepareCompleted += source => //Wait until the video is ready
         {
@@ -65,7 +62,6 @@ public class Vid_select_Switch2 : MonoBehaviour
         RawImage_Img.color = Color.white; //Remove tint
         int width = (int)(Videoplayer.width * 4032 / Videoplayer.height); //Scale the video for different resolution
         RawImage_Img.rectTransform.sizeDelta = new Vector2(width, 4032);
-        auto_track.update_track();
     }
 
     void OnDisable() 
@@ -74,7 +70,5 @@ public class Vid_select_Switch2 : MonoBehaviour
         {
             Videoplayer.sendFrameReadyEvents = false; //To disable Videoplayer.frameReady method (It could use a lot of gpu)
         }
-        byte sel = Convert.ToByte(Select_Vid);
-        Videoplayers[sel].frame = (long)(frame * multiplier);
     }
 }
