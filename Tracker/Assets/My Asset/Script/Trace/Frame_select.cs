@@ -1,45 +1,40 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.Video;
 
 public class Frame_select : MonoBehaviour
 {
-    public int Current_value;
     public TextMeshProUGUI Text;
-    public VideoPlayer videoPlayer1;
     public Button Button_del;
     public Dot_render2 dot_Render2;
     public Vid_select_Switch2 vid_Select2;
-    public static float fps;
+    public int Current_value;
     void Start()
     {
-        Current_value = 1; //Start at frame 1
-        fps = videoPlayer1.frameRate; //Set the prefer framerate to the vid1 framerate
+        Current_value = 0; //Start at frame 1 (frame index 0 is the first frame)
     }
     public void up()
     {
         Current_value++;
-        if (Current_value > (Frame_ext.duration * fps))
+        if (Current_value >= Frame_ext.framecount[Vid_select_Switch2.Select_Vid ? 1 : 0]) //To stop from going to the frame that doesn't exist
         {
             Current_value--;
         }
-        Text.text = Current_value.ToString();
         value_change();
     }
     public void down()
     {
         Current_value--;
-        if (Current_value <= 0)
+        if (Current_value < 0) //To stop from going to the frame that doesn't exist
         {
-            Current_value++;
+            Current_value = 0;
         }
-        Text.text = Current_value.ToString();
         value_change();
     }
-    private void value_change()
+    public void value_change()
     {
+        Text.text = (Current_value + 1).ToString(); //To display frame number
         dot_Render2.color_change(); //Set other frames opacity
-        vid_Select2.AssignPic(Current_value - 1); //Change the frame to the right one
+        vid_Select2.AssignPic(Current_value); //Change the frame to the right one
     }
 }

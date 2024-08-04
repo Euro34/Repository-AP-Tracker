@@ -96,7 +96,7 @@ public class Dot_render1 : MonoBehaviour
     {
         Vector2 position;
         position = Quaternion.Euler(0f, 0f, 0f) * canvasRectTransform.anchoredPosition; //Get the position from unity from the center
-        position[0] = (-1.2078179536743f - position[0]) / pan_Zoom.Zoom2; //Calculate x
+        position[0] = (-position[0]) / pan_Zoom.Zoom2; //Calculate x
         position[1] = (-position[1]) / pan_Zoom.Zoom2; //Calculate y
         CreateDotCopy(position[0], position[1], Convert.ToByte(vid_Select_Switch.Select_Vid), ref_Point.Current_value); //Render the dot
         Debug.Log("vid" + (vid_Select_Switch.Select_Vid ? 2 : 1) + "_" + ref_Point.Current_value + " : x = " + position[0] + ", y = " + position[1]);

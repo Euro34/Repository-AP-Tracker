@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
 using System.Collections;
+using System;
 
 public class Frame_ext : MonoBehaviour
 {
@@ -9,50 +10,36 @@ public class Frame_ext : MonoBehaviour
     public VideoPlayer videoPlayer2;
     public RawImage rawImage1;
     public RawImage rawImage2;
-    public static double duration;
-    private bool bool1 = false;
-    private bool bool2 = false;
-    void Vid_title(VideoPlayer player, RawImage rawImage)
+    public static double[] fps = new double[2];
+    public static double[] duration = new double[2];
+    public static int[] framecount = new int[2];
+    void Thumbnail(VideoPlayer player, RawImage rawImage, int vid)
     {
         player.prepareCompleted += (source => //Wait until there is a path to call PreparationComplete() method
         {
-            PreparationComplete(player, rawImage);
+            PreparationComplete(player, rawImage, vid);
         });
     }
-    void PreparationComplete(VideoPlayer player, RawImage rawImage)
+    void PreparationComplete(VideoPlayer player, RawImage rawImage, int vid)
     {
         rawImage.color = Color.white; //Remove the tint
-        StartCoroutine(SetVideoTime(player));
+        StartCoroutine(SetVideoTime(player, vid));
     }
-    IEnumerator SetVideoTime(VideoPlayer player)
+    IEnumerator SetVideoTime(VideoPlayer player, int vid)
     {
-        yield return new WaitForSeconds(0.1f);
-        player.time = player.length / 2; //Set thumbnail to the middle of the video
+        yield return new WaitForSeconds(0.001f);
+        player.frame = 1; //Set the time on the vid to be the first frame of the video
+        fps[vid] = player.frameRate; //Calculate and collect the fps of each video
+        duration[vid] = player.length;
+        framecount[vid] = (int)player.frameCount;
         player.Pause();
-        duration_compare();
     }
     public void button1()
     {
-        Vid_title(videoPlayer1, rawImage1);
-        bool1 = true;
+        Thumbnail(videoPlayer1, rawImage1, 0);
     }
     public void button2()
     {
-        Vid_title(videoPlayer2, rawImage2);
-        bool2 = true;
-    }
-    void duration_compare() //Set the variable "duration" = the duration of the shortest between them
-    {
-        if(bool1 && bool2)
-        {
-            if (videoPlayer1.length < videoPlayer2.length)
-            {
-                duration = videoPlayer1.length;
-            }
-            else
-            {
-                duration = videoPlayer2.length;
-            }
-        }
+        Thumbnail(videoPlayer2, rawImage2, 1);
     }
 }

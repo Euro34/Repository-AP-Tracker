@@ -2,72 +2,73 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.Video;
-using System;
 using Unity.VisualScripting;
 
 public class Vid_select_Switch2 : MonoBehaviour
 {
-    public bool Select_Vid;
+    public static bool Select_Vid;
+    public static double time;
     public TextMeshProUGUI Output;
+    public TextMeshProUGUI time_txt;
     public RawImage RawImage_Img;
-    public VideoPlayer[] Videoplayers = new VideoPlayer[2];
+    public VideoPlayer Videoplayer;
     public Dot_render2 dot_render;
-    public RenderTexture[] renderTexture = new RenderTexture[2];
-    private int[] width = new int[2];
-    private double multiplier = 0;
+    public Frame_select frame_select;
 
-    void Start()
+    void Start() //Set the start video to vid1
     {
-        Select_Vid = false;
+        Videoplayer.sendFrameReadyEvents = true; //To enable Videoplayer.frameReady method
         Output.text = "Vid_1";
-        Videoplayers[0].url = FilePicker.Vid1_path;
-        Videoplayers[1].url = FilePicker.Vid2_path;
-        Videoplayers[0].prepareCompleted += (source =>
-        {
-            multiplier = Videoplayers[Convert.ToByte(0)].frameRate / Ref_Point_Select2.fps;
-            RawImage_Img.color = Color.white;
-            width[0] = (int)((Videoplayers[0].width * 4032) / Videoplayers[0].height);
-            RawImage_Img.rectTransform.sizeDelta = new Vector2(width[0], 4032);
-            AssignPic(0);
-        });
-        Videoplayers[1].prepareCompleted += (source =>
-        {
-            width[1] = (int)((Videoplayers[1].width * 4032) / Videoplayers[1].height);
-        });
-        RawImage_Img.transform.rotation = Quaternion.Euler(0, 0, FilePicker.rotation1);
+        Select_Vid = false;
+        Videoplayer.url = FilePicker.Vid1_path;
+        Videoplayer.prepareCompleted += source => AssignPic(0);
+        RawImage_Img.transform.rotation = Quaternion.Euler(0, 0, FilePicker.rotation1); //Rotate according to the metadata
     }
 
 
-    public void Switch()
+    public void Switch() //To switch between vid1 and vid2
     {
-        if (Output.text == "Vid_1")
+        if (!Select_Vid) //Set the correspoding video and dot
         {
-            multiplier = Videoplayers[Convert.ToByte(1)].frameRate / Ref_Point_Select2.fps;
             Output.text = "Vid_2";
-            Select_Vid = true;
-            RawImage_Img.rectTransform.sizeDelta = new Vector2(width[1], 4032);
-            AssignPic(0);
-            RawImage_Img.transform.rotation = Quaternion.Euler(0, 0, FilePicker.rotation2);
-            RawImage_Img.texture = renderTexture[1];
-            dot_render.Reset_(true);
+            Select_Vid = true; //To vid 2
+            Videoplayer.url = FilePicker.Vid2_path;
+            RawImage_Img.transform.rotation = Quaternion.Euler(0, 0, FilePicker.rotation2); //Rotate according to the metadata
         }
         else
         {
-            multiplier = Videoplayers[Convert.ToByte(0)].frameRate / Ref_Point_Select2.fps;
             Output.text = "Vid_1";
-            Select_Vid = false;
-            RawImage_Img.rectTransform.sizeDelta = new Vector2(width[0], 4032);
-            AssignPic(0);
-            RawImage_Img.transform.rotation = Quaternion.Euler(0, 0, FilePicker.rotation1);
-            RawImage_Img.texture = renderTexture[0];
-            dot_render.Reset_(false);
+            Select_Vid = false; //To vid 1
+            Videoplayer.url = FilePicker.Vid1_path;
+            RawImage_Img.transform.rotation = Quaternion.Euler(0, 0, FilePicker.rotation1); //Rotate according to the metadata
         }
+        Videoplayer.prepareCompleted += source => //Wait until the video is ready
+        {
+            frame_select.Current_value = 0; 
+            frame_select.value_change();//Set the frame
+        };
+        dot_render.Reset_(Select_Vid); //Re-render the dot
     }
 
-    public void AssignPic(int frame)
+    public void AssignPic(int frame) //Set the video to the frame
     {
-        byte sel = Convert.ToByte(Select_Vid);
-        Videoplayers[sel].frame = Mathf.RoundToInt((float)(frame * multiplier));
-        Debug.Log(Videoplayers[sel].frame);
+        Videoplayer.Pause();
+        Videoplayer.frame = frame; //Set the video to the right frame
+        Videoplayer.frameReady += (source, Lframe) => 
+        {
+            time = Videoplayer.time;
+            time_txt.text = time.ToString("F3") + " s";
+        };
+        RawImage_Img.color = Color.white; //Remove tint
+        int width = (int)(Videoplayer.width * 4032 / Videoplayer.height); //Scale the video for different resolution
+        RawImage_Img.rectTransform.sizeDelta = new Vector2(width, 4032);
+    }
+
+    void OnDisable() 
+    {
+        if (Videoplayer != null)
+        {
+            Videoplayer.sendFrameReadyEvents = false; //To disable Videoplayer.frameReady method (It could use a lot of gpu)
+        }
     }
 }

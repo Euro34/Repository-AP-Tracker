@@ -14,7 +14,7 @@ public class New_Ref_Obj : MonoBehaviour
     public RectTransform panel_add;
     public RectTransform panel_edit;
     public static List<Ref_dst> Ref_List = new List<Ref_dst>();
-    private float space = 262.5f;
+    private float space = 262.5f; //Distant between each button
     private string path;
     private string fileContent;
     public TMP_InputField textField_name;
@@ -31,13 +31,13 @@ public class New_Ref_Obj : MonoBehaviour
     void Start()
     {
         Load();
-        if(originalButton != null)
+        if(originalButton != null) //Happen in Reference_Object scene but not in Main scene
         {
-        originalButton.gameObject.SetActive(false); //Hide the original button
-        panel_add.gameObject.SetActive(false); //Hide the add window
-        panel_edit.gameObject.SetActive(false); //Hide the edit window
+            originalButton.gameObject.SetActive(false); //Hide the original button
+            panel_add.gameObject.SetActive(false); //Hide the add window
+            panel_edit.gameObject.SetActive(false); //Hide the edit window
+            Re_renderButton();
         }
-        Re_renderButton();
     }
     public void write() //Save the reference object data to json file
     {
@@ -243,18 +243,18 @@ public class Ref_dst //set each of the 8 point of a reference object
     }
     public override string ToString()
     {
-        return Name + "\n" + Width + "*" + Height + "*" + Length;
+        return Name + "\n X = " + Width.ToString("F2") + "\n Y = " + Height.ToString("F2") + "\n Z = " + Length.ToString("F2");
     }
-    public string Check()
+    public string Check() //To log
     {
         return Name + "," + Width + "," + Height + "," + Length;
     }
     public Point3d[] ToPoint3dList()
     {
         Point3d[] OutList = new Point3d[8];
+        SetPoint();
         for (int i = 0; i < 8; i++)
         {
-            Debug.Log(List_Ref_Pos[i]);
             OutList[i] = List_Ref_Pos[i].ToPoint3d();
         }
         return OutList;
