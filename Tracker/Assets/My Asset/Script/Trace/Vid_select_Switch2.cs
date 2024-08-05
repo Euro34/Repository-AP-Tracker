@@ -50,7 +50,7 @@ public class Vid_select_Switch2 : MonoBehaviour
             frame_select.Current_value = 0; 
             frame_select.value_change();//Set the frame
         };
-        dot_render.Reset_(Select_Vid); //Re-render the dot
+        dot_render.Re_render_dot(Select_Vid); //Re-render the dot
     }
 
     public void AssignPic(int frame) //Set the video to the frame

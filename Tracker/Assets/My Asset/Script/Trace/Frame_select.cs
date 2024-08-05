@@ -33,7 +33,7 @@ public class Frame_select : MonoBehaviour
     public void value_change()
     {
         Text.text = (Current_value + 1).ToString(); //To display frame number
-        dot_Render2.color_change(); //Set other frames opacity
+        dot_Render2.Color_change(); //Set other frames opacity
         vid_Select2.AssignPic(Current_value); //Change the frame to the right one
     }
 }

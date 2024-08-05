@@ -27,19 +27,21 @@ public class Dot_render2 : MonoBehaviour
         {
             dot_list[1] = new Point2f[Frame_ext.framecount[1]];
         }
-        Reset_(false); //Start at vid1
+        Re_render_dot(false); //Start at vid1
     }
     public void Save_Pos(float pos_x, float pos_y, int vid, int frame) //Render the dot
     {
         // Create a copy of the dot
-        if (GameObject.Find("dot:" + vid.ToString() + '_' + frame.ToString() + "_Border") != null)
+        if (GameObject.Find("dot:" + vid.ToString() + '_' + frame.ToString() + "_Border") != null) //Check if the dot for that frame and that video exist
         {
+            //Move the dot
             GameObject dotcopy_Border_obj = GameObject.Find("dot:" + vid.ToString() + '_' + frame.ToString() + "_Border");
             dotCopy_Border = dotcopy_Border_obj.GetComponent<Image>();
             dotCopy_Border.rectTransform.anchoredPosition = new Vector2(pos_x, pos_y);
         }
         else
         {
+            //Copy dot from original dot and namt it dot:<vid>_<frame> with border name similarly but with _border follow it and set it to the position
             dotCopy = Instantiate(dotImage, canvasRectTransform);
             dotCopy.gameObject.name = "dot:" + vid.ToString() + '_' + frame.ToString();
             dotCopy.rectTransform.sizeDelta = new Vector2(20f, 20f);
@@ -53,11 +55,11 @@ public class Dot_render2 : MonoBehaviour
             dotCopy.transform.SetParent(dotCopy_Border.transform);
             dotCopy.rectTransform.anchoredPosition = new Vector2(0, 0);
         }
-        dot_list[vid][frame] = new Point2f(pos_x, pos_y);
+        dot_list[vid][frame] = new Point2f(pos_x, pos_y); //Save the coordinate to dot_list
     }
-    public void color_change() //Chage the opacity of the dot depend on how far it is from current frame. The further the more transparent
+    public void Color_change() //Chage the opacity of the dot depend on how far it is from current frame. The further the more transparent
     {
-        int dot_selected = frame_select.Current_value;
+        int dot_selected = frame_select.Current_value; 
         byte Vid = Convert.ToByte(Vid_select_Switch2.Select_Vid);
         for (int i = -3; i <= 3; i++)
         {
@@ -83,7 +85,7 @@ public class Dot_render2 : MonoBehaviour
             }
         }
     }
-    public void Reset_(bool Selected_Vid) //Switch 
+    public void Re_render_dot(bool Selected_Vid) //Deal with opacity when switch between video
     {
         int Vid = Selected_Vid ? 1 : 0;
         for (int i = 0; i < Frame_ext.framecount[Vid]; i++)
@@ -93,7 +95,7 @@ public class Dot_render2 : MonoBehaviour
                 Save_Pos(dot_list[Vid][i].X, dot_list[Vid][i].Y, Vid, i);
             }
         }
-        for (int i = 0; i < Frame_ext.framecount[Vid ^ 1] ; i++)
+        for (int i = 0; i < Frame_ext.framecount[Vid ^ 1] ; i++) //Vid ^ 1 is opposite of vid (^ is XOR)
         {
             if (dot_list[Vid ^ 1][i] != new Point2f())
             {
@@ -102,7 +104,7 @@ public class Dot_render2 : MonoBehaviour
             }
         }
     }
-    public void Dot_del() //Delete that frame dot
+    public void Dot_del() //Delete the dot from that frame
     {
         int dot_selected = frame_select.Current_value;
         byte Vid = Convert.ToByte(Vid_select_Switch2.Select_Vid);
