@@ -35,24 +35,24 @@ public class Dot_render2 : MonoBehaviour
         if (GameObject.Find("dot:" + vid.ToString() + '_' + frame.ToString() + "_Border") != null) //Check if the dot for that frame and that video exist
         {
             //Move the dot
-            GameObject dotcopy_Border_obj = GameObject.Find("dot:" + vid.ToString() + '_' + frame.ToString() + "_Border");
-            dotCopy_Border = dotcopy_Border_obj.GetComponent<Image>();
-            dotCopy_Border.rectTransform.anchoredPosition = new Vector2(pos_x, pos_y);
+            GameObject dotcopy_obj = GameObject.Find("dot:" + vid.ToString() + '_' + frame.ToString());
+            dotCopy = dotcopy_obj.GetComponent<Image>();
+            dotCopy.rectTransform.anchoredPosition = new Vector2(pos_x, pos_y);
         }
         else
         {
             //Copy dot from original dot and namt it dot:<vid>_<frame> with border name similarly but with _border follow it and set it to the position
-            dotCopy = Instantiate(dotImage, canvasRectTransform);
-            dotCopy.gameObject.name = "dot:" + vid.ToString() + '_' + frame.ToString();
-            dotCopy.rectTransform.sizeDelta = new Vector2(20f, 20f);
+            dotCopy = Instantiate(dotImage, canvasRectTransform); //Copy a dot
+            dotCopy.gameObject.name = "dot:" + vid.ToString() + '_' + frame.ToString(); //Rename the dot
+            dotCopy.rectTransform.sizeDelta = new Vector2(20f, 20f); //Set dot size
             Color color = new Color32(255, 255, 255, 225);
-            dotCopy.color = color;
-            dotCopy_Border = Instantiate(dotImage, canvasRectTransform);
-            dotCopy_Border.gameObject.name = "dot:" + vid.ToString() + '_' + frame.ToString() + "_Border";
+            dotCopy.color = color; //Set dot color
+            dotCopy_Border = Instantiate(dotImage, canvasRectTransform); //Copy a border
+            dotCopy_Border.gameObject.name = "dot:" + vid.ToString() + '_' + frame.ToString() + "_Border"; //Rename a border
             dotCopy_Border.color = new Color32(56, 56, 56, 225);
-            dotCopy_Border.rectTransform.anchoredPosition = new Vector2(pos_x, pos_y);
+            dotCopy.rectTransform.anchoredPosition = new Vector2(pos_x, pos_y);
             dotCopy_Border.rectTransform.sizeDelta = new Vector2(25f, 25f);
-            dotCopy.transform.SetParent(dotCopy_Border.transform);
+            dotCopy_Border.transform.SetParent(dotCopy.transform);
             dotCopy.rectTransform.anchoredPosition = new Vector2(0, 0);
         }
         dot_list[vid][frame] = new Point2f(pos_x, pos_y); //Save the coordinate to dot_list
@@ -68,12 +68,12 @@ public class Dot_render2 : MonoBehaviour
             {
                 byte Transparency = (byte)(75 * (3 - Math.Abs(i)));
                 if (Transparency == 0) {Transparency = 35;}
-                if (GameObject.Find("dot:" + Vid.ToString() + '_' + img_no.ToString()) != null)
+                if (GameObject.Find("dot:" + Vid.ToString() + '_' + img_no.ToString() + "_Border") != null)
                 {
-                    GameObject dotCopy_border = GameObject.Find("dot:" + Vid.ToString() + '_' + img_no.ToString() + "_Border");
-                    Image dotCopy_Img_border = dotCopy_border.GetComponent<Image>();
                     GameObject dotCopy = GameObject.Find("dot:" + Vid.ToString() + '_' + img_no.ToString());
                     Image dotCopy_Img = dotCopy.GetComponent<Image>();
+                    GameObject dotCopy_border = GameObject.Find("dot:" + Vid.ToString() + '_' + img_no.ToString() + "_Border");
+                    Image dotCopy_Img_border = dotCopy_border.GetComponent<Image>();
                     Color color = new Color32(255, 255, 255, Transparency);
                     Color color_border = new Color32(56, 56, 56, Transparency);
                     if (dotCopy_Img != null)
@@ -92,14 +92,15 @@ public class Dot_render2 : MonoBehaviour
         {
             if (dot_list[Vid][i] != new Point2f())
             {
-                Save_Pos(dot_list[Vid][i].X, dot_list[Vid][i].Y, Vid, i);
+                GameObject dotcopy_Border_obj = GameObject.Find("dot:" + Convert.ToByte(Selected_Vid).ToString() + '_' + i.ToString());
+                dotcopy_Border_obj.SetActive(true);
             }
         }
         for (int i = 0; i < Frame_ext.framecount[Vid ^ 1] ; i++) //Vid ^ 1 is opposite of vid (^ is XOR)
         {
             if (dot_list[Vid ^ 1][i] != new Point2f())
             {
-                GameObject dotcopy_Border_obj = GameObject.Find("dot:" + Convert.ToByte(!Selected_Vid).ToString() + '_' + i.ToString() + "_Border");
+                GameObject dotcopy_Border_obj = GameObject.Find("dot:" + Convert.ToByte(!Selected_Vid).ToString() + '_' + i.ToString());
                 dotcopy_Border_obj.SetActive(false);
             }
         }
@@ -128,7 +129,7 @@ public class Dot_render2 : MonoBehaviour
         }
         else
         {
-            auto_track_rect.Auto_trace_rect();
+            auto_track_rect.Auto_trace_rect(); //Auto track function start from here
         }
     }
 }

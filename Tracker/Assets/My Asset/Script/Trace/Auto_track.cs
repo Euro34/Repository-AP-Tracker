@@ -40,7 +40,7 @@ public class Auto_track : MonoBehaviour
             Auto_Trace_Panel.gameObject.SetActive(false);
         }
     }
-    public IEnumerator start_track()
+    public IEnumerator Start_track()
     {
         yield return new WaitForSeconds((float)(1.0 / videoPlayer.frameRate));
         current_frame = OpenCvSharp.Unity.TextureToMat(rt_to_texture(input));
