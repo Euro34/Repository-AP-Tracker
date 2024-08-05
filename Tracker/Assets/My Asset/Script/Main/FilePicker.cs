@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.Video;
 using TMPro;
-using System;
 
 public class FilePicker : MonoBehaviour
 {
