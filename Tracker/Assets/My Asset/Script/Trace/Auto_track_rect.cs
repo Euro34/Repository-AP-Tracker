@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Auto_track_rect : MonoBehaviour
 {
@@ -8,11 +9,13 @@ public class Auto_track_rect : MonoBehaviour
     public Auto_track auto_track;
     public Image rect_image;
     public RectTransform canvasRectTransform;
+    public TextMeshProUGUI Guide_Text;
     private Vector2 curr_pos;
     private Vector2 initial_pos;
     private float diff_pos_x;
     private float diff_pos_y;
     private bool click_count = false;
+    
 
     private void Start()
     {
@@ -23,6 +26,7 @@ public class Auto_track_rect : MonoBehaviour
         click_count = !click_count;
         if (click_count)
         {
+            Guide_Text.color = new Color32(127, 255, 127, 255);
             //Middle of the object
             rect_image.gameObject.SetActive(true);
             //Deal with scale and transform
@@ -38,6 +42,7 @@ public class Auto_track_rect : MonoBehaviour
             //Edge of the object
             Start_auto_trace();
             rect_image.gameObject.SetActive(false);
+            Guide_Text.color = new Color32(255, 100, 100, 255);
         }
     }
     private IEnumerator start_resize()

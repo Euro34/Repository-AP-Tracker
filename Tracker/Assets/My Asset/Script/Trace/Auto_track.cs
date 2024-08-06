@@ -8,20 +8,22 @@ using System.Threading;
 
 public class Auto_track : MonoBehaviour
 {
+    public GameObject loop_button;
     public RectTransform Auto_Trace_Panel;
     public RenderTexture input;
     public RawImage output;
-    public Mat current_frame = null;
     public VideoPlayer videoPlayer;
-    public Frame_select ref_Point;
+    public Frame_select frame_Select;
     public Dot_render2 dot_Render2;
-    public int current_vid = 0;
-    public bool Auto_Trace_Toggel = false;
     public Rect2d boundingBox;
+    public int current_vid = 0;
+    public Mat current_frame = null;
+    public bool Auto_Trace_Toggel = false;
     public Vector2 initialPosition = new Vector2();
     public Vector2 size = new Vector2();
     private Tracker tracker;
     private bool isInitialized = false;
+    public bool Auto_Loop = false;
 
     private void Start()
     {
@@ -37,8 +39,8 @@ public class Auto_track : MonoBehaviour
         }
         else
         {
-            output.texture = input;
             Auto_Trace_Panel.gameObject.SetActive(false);
+            Stop_Track();
         }
     }
     public IEnumerator Start_track()
@@ -64,10 +66,32 @@ public class Auto_track : MonoBehaviour
             mid_pos.x = (float)(boundingBox.X + boundingBox.Width / 2);
             mid_pos.y = (float)(boundingBox.Y + boundingBox.Height / 2);
             mid_pos = Realpos_to_Visualpos(mid_pos);
-            dot_Render2.Save_Pos(mid_pos.x, mid_pos.y, current_vid, ref_Point.Current_value);
+            dot_Render2.Save_Pos(mid_pos.x, mid_pos.y, current_vid, frame_Select.Current_value);
         }
         output.texture = OpenCvSharp.Unity.MatToTexture(current_frame);
+        if (Auto_Loop)
+        {
+            frame_Select.up();
+        }
     }
+
+    public void Stop_Track()
+    {
+        output.texture = input;
+    }
+    public void Track_Loop()
+    {
+        Auto_Loop = !Auto_Loop;
+        if (Auto_Loop)
+        {
+            loop_button.GetComponent<Image>().color = new Color32(65, 65, 65, 255);
+        }
+        else
+        {
+            loop_button.GetComponent<Image>().color = new Color32(77, 77, 77, 255);
+        }
+    }
+
     Texture2D rt_to_texture(RenderTexture rt)
     {
         Texture2D texture = new Texture2D(rt.width, rt.height, TextureFormat.RGB24, false);

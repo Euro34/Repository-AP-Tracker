@@ -9,10 +9,9 @@ public class Dot_render1 : MonoBehaviour
     public GameObject[] panel_dot = new GameObject[2];
     public static Point2f[,] dot_list = new Point2f[8, 2];
     public Vid_select_Switch1 vid_Select_Switch;
-    public Ref_Select ref_Point;
+    public Ref_Select ref_Select;
     public Pan_Zoom pan_Zoom;
     public RectTransform canvasRectTransform;
-    private Color color = new Color32(255, 0, 0, 255);
 
     private void Start()
     {
@@ -28,8 +27,8 @@ public class Dot_render1 : MonoBehaviour
     }
     public void CreateDotCopy(float pos_x, float pos_y, int vid, int dot_no)
     {
-        Debug.Log("Calibrate : vid" + (vid_Select_Switch.Select_Vid ? 2 : 1) + "_" + ref_Point.Current_value + " : x = " + pos_x + ", y = " + pos_y);
-        RectTransform panel = panel_dot[vid].GetComponent<RectTransform>();;
+        Debug.Log("Calibrate : vid" + (vid_Select_Switch.Select_Vid ? 2 : 1) + "_" + (ref_Select.Current_value + 1) + " : x = " + pos_x + ", y = " + pos_y);
+        RectTransform panel = panel_dot[vid].GetComponent<RectTransform>();
         GameObject dotcopy_Border_obj = GameObject.Find("dot:" + vid.ToString() + '_' + dot_no.ToString() + "_Border"); //Find the dot
         if (dotcopy_Border_obj != null) //Check if the dot for that frame and that video exist
         {
@@ -70,19 +69,18 @@ public class Dot_render1 : MonoBehaviour
     }
     public void Dot_del() //Delete the dot
     {
-        int dot_selected = ref_Point.Current_value;
+        int dot_selected = ref_Select.Current_value;
         byte Vid = Convert.ToByte(vid_Select_Switch.Select_Vid);
         GameObject dotcopy_Border_obj = GameObject.Find("dot:" + Vid.ToString() + '_' + dot_selected.ToString() + "_Border"); //Get dot border
         Destroy(dotcopy_Border_obj); //Delete the render
         dot_list[dot_selected, Vid] = new Point2f(); //Delete the data
-        Debug.Log("Calibrate : Delete : vid" + (vid_Select_Switch.Select_Vid ? 2 : 1) + "_" + ref_Point.Current_value);
+        Debug.Log("Calibrate : Delete : vid" + (vid_Select_Switch.Select_Vid ? 2 : 1) + "_" + (ref_Select.Current_value + 1));
     }
     public void Pos_Capture()
     {
-        Vector2 position;
-        position = Quaternion.Euler(0f, 0f, 0f) * canvasRectTransform.anchoredPosition; //Get the position from unity from the center
+        Vector2 position = Quaternion.Euler(0f, 0f, 0f) * canvasRectTransform.anchoredPosition; //Get the position from unity from the center
         position[0] = (-position[0]) / pan_Zoom.Zoom2; //Calculate x
         position[1] = (-position[1]) / pan_Zoom.Zoom2; //Calculate y
-        CreateDotCopy(position[0], position[1], Convert.ToByte(vid_Select_Switch.Select_Vid), ref_Point.Current_value - 1); //Render the dot
+        CreateDotCopy(position[0], position[1], Convert.ToByte(vid_Select_Switch.Select_Vid), ref_Select.Current_value); //Render the dot
     }
 }

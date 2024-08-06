@@ -23,6 +23,7 @@ public class Vid_select_Switch2 : MonoBehaviour
         {
             time = Videoplayer.time;
             time_txt.text = time.ToString("F3") + " s";
+            Debug.Log(Lframe);
             if (auto_track.Auto_Trace_Toggel)
             {
                 auto_track.Tracking();
@@ -59,7 +60,7 @@ public class Vid_select_Switch2 : MonoBehaviour
             frame_select.Current_value = 0; 
             frame_select.value_change();//Set the frame
         };
-        dot_render.Re_render_dot(Select_Vid); //Re-render the dot
+        dot_render.Switch_dot(Select_Vid); //Re-render the dot
     }
 
     public void AssignPic(int frame) //Set the video to the frame

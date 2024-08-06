@@ -3883,7 +3883,7 @@ MonoBehaviour:
   - {fileID: 1256093021}
   - {fileID: 1971370080}
   vid_Select_Switch: {fileID: 654654443}
-  ref_Point: {fileID: 654654446}
+  ref_Select: {fileID: 654654446}
   pan_Zoom: {fileID: 2146498353}
   canvasRectTransform: {fileID: 2146498348}
 --- !u!114 &2146498353

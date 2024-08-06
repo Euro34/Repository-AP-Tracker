@@ -10,33 +10,33 @@ public class Ref_Select : MonoBehaviour
     private Image Del_Img;
     //public button color
     void Start(){ //Set the start point to 1
-        Current_value = 1;
+        Current_value = 0;
         Del_Img = Button_del.GetComponent<Image>();
         Color();
     }
     public void up()
     {
-        Current_value += 1;
-        if(Current_value >= 9)
+        Current_value++;
+        if(Current_value >= 8)
         {
-            Current_value = 1;
+            Current_value = 0;
         }
-        Text.text = Current_value.ToString();
+        Text.text = (Current_value + 1).ToString();
         Color();
     }
     public void down()
     {
-        Current_value -= 1;
-        if(Current_value <= 0)
+        Current_value--;
+        if(Current_value < 0)
         {
-            Current_value = 8;
+            Current_value = 7;
         }
-        Text.text = Current_value.ToString();
+        Text.text = (Current_value + 1).ToString();
         Color();
     }
     void Color() //Deal with color
     {
-        int Color_val = Current_value - 1;
+        int Color_val = Current_value;
         byte R = (byte)((Color_val & 1) * 100 + 150);
         byte G = (byte)(((Color_val >> 1) & 1) * 100 + 150);
         byte B = (byte)(((Color_val >> 2) & 1) * 100 + 150);
