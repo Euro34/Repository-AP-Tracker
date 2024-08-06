@@ -2,13 +2,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using OpenCvSharp;
 using System;
-using System.Collections.Generic;
 
 public class Dot_render2 : MonoBehaviour
 {
-    public Image dotImage;
-    private Image dotCopy;
-    private Image dotCopy_Border;
+    public Image dotImage; //Circle picture
+    public GameObject[] panel_dot = new GameObject[2];
     public static Point2f[][] dot_list = new Point2f[2][];
     public Vid_select_Switch2 vid_Select_Switch;
     public Frame_select frame_select;
@@ -31,29 +29,29 @@ public class Dot_render2 : MonoBehaviour
     }
     public void Save_Pos(float pos_x, float pos_y, int vid, int frame) //Render the dot
     {
+        RectTransform panel = panel_dot[vid].GetComponent<RectTransform>();;
         // Create a copy of the dot
         if (GameObject.Find("dot:" + vid.ToString() + '_' + frame.ToString() + "_Border") != null) //Check if the dot for that frame and that video exist
         {
-            //Move the dot
-            GameObject dotcopy_obj = GameObject.Find("dot:" + vid.ToString() + '_' + frame.ToString());
-            dotCopy = dotcopy_obj.GetComponent<Image>();
-            dotCopy.rectTransform.anchoredPosition = new Vector2(pos_x, pos_y);
+            GameObject dotcopy_obj = GameObject.Find("dot:" + vid.ToString() + '_' + frame.ToString()); //Find the dot
+            Image dotCopy = dotcopy_obj.GetComponent<Image>(); //Get the image component
+            dotCopy.rectTransform.anchoredPosition = new Vector2(pos_x, pos_y); //Move the dot
         }
         else
         {
-            //Copy dot from original dot and namt it dot:<vid>_<frame> with border name similarly but with _border follow it and set it to the position
-            dotCopy = Instantiate(dotImage, canvasRectTransform); //Copy a dot
-            dotCopy.gameObject.name = "dot:" + vid.ToString() + '_' + frame.ToString(); //Rename the dot
-            dotCopy.rectTransform.sizeDelta = new Vector2(20f, 20f); //Set dot size
-            Color color = new Color32(255, 255, 255, 225);
-            dotCopy.color = color; //Set dot color
-            dotCopy_Border = Instantiate(dotImage, canvasRectTransform); //Copy a border
+            Image dotCopy_Border = Instantiate(dotImage, canvasRectTransform); //Copy a border
             dotCopy_Border.gameObject.name = "dot:" + vid.ToString() + '_' + frame.ToString() + "_Border"; //Rename a border
-            dotCopy_Border.color = new Color32(56, 56, 56, 225);
-            dotCopy.rectTransform.anchoredPosition = new Vector2(pos_x, pos_y);
-            dotCopy_Border.rectTransform.sizeDelta = new Vector2(25f, 25f);
-            dotCopy_Border.transform.SetParent(dotCopy.transform);
-            dotCopy.rectTransform.anchoredPosition = new Vector2(0, 0);
+            dotCopy_Border.color = new Color32(56, 56, 56, 80); //Set border color
+            dotCopy_Border.rectTransform.sizeDelta = new Vector2(25f, 25f); //Set border size
+            dotCopy_Border.rectTransform.anchoredPosition = new Vector2(pos_x, pos_y); //Change border position
+            dotCopy_Border.transform.SetParent(panel); //Catagorize dot into vid1 and vid2
+
+            Image dotCopy = Instantiate(dotImage, canvasRectTransform); // Copy the dot
+            dotCopy.gameObject.name = "dot:" + vid.ToString() + '_' + frame.ToString(); //Rename the dot
+            dotCopy.color = new Color32(255, 255, 255, 225); //Change the dot color
+            dotCopy.rectTransform.sizeDelta = new Vector2(20f, 20f); //Change the dot size
+            dotCopy.transform.SetParent(dotCopy_Border.transform); //Set dot to be children of border
+            dotCopy.rectTransform.anchoredPosition = new Vector2(0, 0); //Change dot position
         }
         dot_list[vid][frame] = new Point2f(pos_x, pos_y); //Save the coordinate to dot_list
     }
@@ -68,48 +66,25 @@ public class Dot_render2 : MonoBehaviour
             {
                 byte Transparency = (byte)(75 * (3 - Math.Abs(i)));
                 if (Transparency == 0) {Transparency = 35;}
-                if (GameObject.Find("dot:" + Vid.ToString() + '_' + img_no.ToString() + "_Border") != null)
+                GameObject dotCopy = GameObject.Find("dot:" + Vid.ToString() + '_' + img_no.ToString()); //Find the dot
+                if (dotCopy != null) //Check if the dot exist
                 {
-                    GameObject dotCopy = GameObject.Find("dot:" + Vid.ToString() + '_' + img_no.ToString());
-                    Image dotCopy_Img = dotCopy.GetComponent<Image>();
-                    GameObject dotCopy_border = GameObject.Find("dot:" + Vid.ToString() + '_' + img_no.ToString() + "_Border");
-                    Image dotCopy_Img_border = dotCopy_border.GetComponent<Image>();
-                    Color color = new Color32(255, 255, 255, Transparency);
-                    Color color_border = new Color32(56, 56, 56, Transparency);
-                    if (dotCopy_Img != null)
-                    {
-                        dotCopy_Img_border.color = color_border;
-                        dotCopy_Img.color = color;
-                    }
+                    Image dotCopy_Img = dotCopy.GetComponent<Image>(); //Get the image and assign it to dot_Copy_Img
+                    dotCopy_Img.color = new Color32(255, 255, 255, Transparency); //Change the opacity
                 }
             }
         }
     }
-    public void Re_render_dot(bool Selected_Vid) //Deal with opacity when switch between video
+    public void Re_render_dot(bool Selected_Vid) //Deal with switching the dot when switch between video
     {
-        int Vid = Selected_Vid ? 1 : 0;
-        for (int i = 0; i < Frame_ext.framecount[Vid]; i++)
-        {
-            if (dot_list[Vid][i] != new Point2f())
-            {
-                GameObject dotcopy_Border_obj = GameObject.Find("dot:" + Convert.ToByte(Selected_Vid).ToString() + '_' + i.ToString());
-                dotcopy_Border_obj.SetActive(true);
-            }
-        }
-        for (int i = 0; i < Frame_ext.framecount[Vid ^ 1] ; i++) //Vid ^ 1 is opposite of vid (^ is XOR)
-        {
-            if (dot_list[Vid ^ 1][i] != new Point2f())
-            {
-                GameObject dotcopy_Border_obj = GameObject.Find("dot:" + Convert.ToByte(!Selected_Vid).ToString() + '_' + i.ToString());
-                dotcopy_Border_obj.SetActive(false);
-            }
-        }
+        panel_dot[0].SetActive(!Selected_Vid);
+        panel_dot[1].SetActive(Selected_Vid);
     }
     public void Dot_del() //Delete the dot from that frame
     {
         int dot_selected = frame_select.Current_value;
         byte Vid = Convert.ToByte(Vid_select_Switch2.Select_Vid);
-        GameObject dotcopy_Border_obj = GameObject.Find("dot:" + Vid.ToString() + '_' + dot_selected.ToString() + "_Border");
+        GameObject dotcopy_Border_obj = GameObject.Find("dot:" + Vid.ToString() + '_' + dot_selected.ToString() + "_Border"); //Find the dot
         Destroy(dotcopy_Border_obj); //Delete the render
         dot_list[Vid][dot_selected] = new Point2f(); //Delete the data
         Debug.Log("Delete : vid" + (Vid_select_Switch2.Select_Vid ? 2 : 1) + "_" + dot_selected);
@@ -124,7 +99,7 @@ public class Dot_render2 : MonoBehaviour
         if (!auto_track.Auto_Trace_Toggel)
         {
             Save_Pos(position[0], position[1], Convert.ToByte(Vid_select_Switch2.Select_Vid), frame_select.Current_value); //Save and render the dot
-            Debug.Log("vid" + (Vid_select_Switch2.Select_Vid ? 2 : 1) + "_" + frame_select.Current_value + " : x = " + position[0] + ", y = " + position[1]);
+            Debug.Log("Trace : vid" + (Vid_select_Switch2.Select_Vid ? 2 : 1) + "_" + frame_select.Current_value + " : x = " + position[0] + ", y = " + position[1]);
             frame_select.up(); //Advance the frame by 1
         }
         else
