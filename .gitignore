@@ -74,3 +74,7 @@ crashlytics-build.properties
 
 #/Tracker/Assets/OpenCV+Unity/
 #/Tracker/Library/
+
+#Try
+*.log
+*.cache
