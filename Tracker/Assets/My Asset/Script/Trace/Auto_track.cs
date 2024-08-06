@@ -37,12 +37,12 @@ public class Auto_track : MonoBehaviour
         }
         else
         {
+            output.texture = input;
             Auto_Trace_Panel.gameObject.SetActive(false);
         }
     }
     public IEnumerator Start_track()
     {
-        yield return new WaitForSeconds((float)(1.0 / videoPlayer.frameRate));
         current_frame = OpenCvSharp.Unity.TextureToMat(rt_to_texture(input));
         tracker = Tracker.Create(TrackerTypes.KCF);
         double width = (int)size.x;
@@ -50,6 +50,7 @@ public class Auto_track : MonoBehaviour
         boundingBox = new Rect2d(initialPosition.x, initialPosition.y, width, height);
         isInitialized = tracker.Init(current_frame, boundingBox);
         Tracking();
+        yield return null;
     }
     public void Tracking()
     {
@@ -62,7 +63,7 @@ public class Auto_track : MonoBehaviour
             Vector2 mid_pos = new Vector2();
             mid_pos.x = (float)(boundingBox.X + boundingBox.Width / 2);
             mid_pos.y = (float)(boundingBox.Y + boundingBox.Height / 2);
-            mid_pos = realpos_to_visualpos(mid_pos);
+            mid_pos = Realpos_to_Visualpos(mid_pos);
             dot_Render2.Save_Pos(mid_pos.x, mid_pos.y, current_vid, ref_Point.Current_value);
         }
         output.texture = OpenCvSharp.Unity.MatToTexture(current_frame);
@@ -82,7 +83,7 @@ public class Auto_track : MonoBehaviour
 
         return texture;
     }
-    public Vector2 visualpos_to_realpos(Vector2 pos)
+    public Vector2 Visualpos_to_Realpos(Vector2 pos)
     {
         Vector2 realpos = new Vector2();
         Vector2 rawimg_size = output.rectTransform.sizeDelta;
@@ -92,7 +93,7 @@ public class Auto_track : MonoBehaviour
         realpos.y = (height/2) - (pos.y*height/rawimg_size.y);
         return realpos;
     }
-    public Vector2 realpos_to_visualpos(Vector2 pos)
+    public Vector2 Realpos_to_Visualpos(Vector2 pos)
     {
         Vector2 visualpos = new Vector2();
         Vector2 rawimg_size = output.rectTransform.sizeDelta;
@@ -101,14 +102,5 @@ public class Auto_track : MonoBehaviour
         visualpos.x = (pos.x - (width / 2))*rawimg_size.x/width;
         visualpos.y = ((height / 2) - pos.y)*rawimg_size.y/height;
         return visualpos;
-    }
-
-    public void update_track()
-    {
-        if (Auto_Trace_Toggel)
-        {
-            Thread.Sleep((int)(1000 / videoPlayer.frameRate));
-            Tracking();
-        }
     }
 }

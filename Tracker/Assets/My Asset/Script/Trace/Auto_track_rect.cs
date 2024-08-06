@@ -20,7 +20,8 @@ public class Auto_track_rect : MonoBehaviour
     }
     public void Auto_trace_rect() //Draw a box //Auto track function start from here
     {
-        if (!click_count)
+        click_count = !click_count;
+        if (click_count)
         {
             //Middle of the object
             rect_image.gameObject.SetActive(true);
@@ -38,7 +39,6 @@ public class Auto_track_rect : MonoBehaviour
             Start_auto_trace();
             rect_image.gameObject.SetActive(false);
         }
-        click_count = !click_count;
     }
     private IEnumerator start_resize()
     {
@@ -61,9 +61,9 @@ public class Auto_track_rect : MonoBehaviour
         }
         yield return null;
     }
-    private void Start_auto_trace()
+    public void Start_auto_trace()
     {
-        auto_track.initialPosition = auto_track.visualpos_to_realpos(new Vector2(initial_pos[0] - diff_pos_x, initial_pos[1] + diff_pos_y));
+        auto_track.initialPosition = auto_track.Visualpos_to_Realpos(new Vector2(initial_pos[0] - diff_pos_x, initial_pos[1] + diff_pos_y));
         auto_track.size = new Vector2(diff_pos_x, diff_pos_y);
         StartCoroutine(auto_track.Start_track());
     }

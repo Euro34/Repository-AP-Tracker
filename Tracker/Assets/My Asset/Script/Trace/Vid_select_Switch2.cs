@@ -19,6 +19,15 @@ public class Vid_select_Switch2 : MonoBehaviour
     void Start() //Set the start video to vid1
     {
         Videoplayer.sendFrameReadyEvents = true; //To enable Videoplayer.frameReady method
+        Videoplayer.frameReady += (source, Lframe) => //Trigger everytime when frame is ready
+        {
+            time = Videoplayer.time;
+            time_txt.text = time.ToString("F3") + " s";
+            if (auto_track.Auto_Trace_Toggel)
+            {
+                auto_track.Tracking();
+            }
+        };
         Output.text = "Vid_1";
         Select_Vid = false;
         Videoplayer.url = FilePicker.Vid1_path;
@@ -57,15 +66,9 @@ public class Vid_select_Switch2 : MonoBehaviour
     {
         Videoplayer.Pause();
         Videoplayer.frame = frame; //Set the video to the right frame
-        Videoplayer.frameReady += (source, Lframe) => 
-        {
-            time = Videoplayer.time;
-            time_txt.text = time.ToString("F3") + " s";
-        };
         RawImage_Img.color = Color.white; //Remove tint
         int width = (int)(Videoplayer.width * 4032 / Videoplayer.height); //Scale the video for different resolution
         RawImage_Img.rectTransform.sizeDelta = new Vector2(width, 4032);
-        auto_track.update_track();
     }
 
     void OnDisable() 

@@ -17,9 +17,18 @@ public class Dot_render1 : MonoBehaviour
     private void Start()
     {
         Reset_(false); //Set the start to vid1
+        for (int i = 0; i < 8; i++)
+        {
+            Point2f point1 = dot_list[i, 0];
+            Point2f point2 = dot_list[i, 1];
+            Point2f pointnull = new Point2f();
+            if (point1 != pointnull) {CreateDotCopy(point1.X, point1.Y, 0, i);}
+            if (point1 != pointnull) {CreateDotCopy(point2.X, point2.Y, 1, i);}
+        }
     }
     public void CreateDotCopy(float pos_x, float pos_y, int vid, int dot_no)
     {
+        Debug.Log("Calibrate : vid" + (vid_Select_Switch.Select_Vid ? 2 : 1) + "_" + ref_Point.Current_value + " : x = " + pos_x + ", y = " + pos_y);
         RectTransform panel = panel_dot[vid].GetComponent<RectTransform>();;
         GameObject dotcopy_Border_obj = GameObject.Find("dot:" + vid.ToString() + '_' + dot_no.ToString() + "_Border"); //Find the dot
         if (dotcopy_Border_obj != null) //Check if the dot for that frame and that video exist
@@ -38,12 +47,12 @@ public class Dot_render1 : MonoBehaviour
 
             Image dotCopy = Instantiate(dotImage, canvasRectTransform); // Copy the dot
             dotCopy.gameObject.name = "dot:" + vid.ToString() + '_' + dot_no.ToString(); //Rename the dot
-            dotCopy.color = Color_change((byte)(dot_no - 1)); //Change the dot color
+            dotCopy.color = Color_change((byte)(dot_no)); //Change the dot color
             dotCopy.rectTransform.sizeDelta = new Vector2(15f, 15f); //Change the dot size
             dotCopy.transform.SetParent(dotCopy_Border.transform); //Set dot to be children of border
             dotCopy.rectTransform.anchoredPosition = new Vector2(0, 0); //Change dot position
         }
-        dot_list[dot_no - 1, vid] = new Point2f(pos_x, pos_y); //Add position in point 2f to a 2d array of reference point number and vid number
+        dot_list[dot_no, vid] = new Point2f(pos_x, pos_y); //Add position in point 2f to a 2d array of reference point number and vid number
     }
     private Color32 Color_change(byte Name_Color) //Deal with color of the dot
     {
@@ -65,8 +74,8 @@ public class Dot_render1 : MonoBehaviour
         byte Vid = Convert.ToByte(vid_Select_Switch.Select_Vid);
         GameObject dotcopy_Border_obj = GameObject.Find("dot:" + Vid.ToString() + '_' + dot_selected.ToString() + "_Border"); //Get dot border
         Destroy(dotcopy_Border_obj); //Delete the render
-        dot_list[dot_selected - 1, Vid] = new Point2f(); //Delete the data
-        Debug.Log("Delete : vid" + (vid_Select_Switch.Select_Vid ? 2 : 1) + "_" + ref_Point.Current_value);
+        dot_list[dot_selected, Vid] = new Point2f(); //Delete the data
+        Debug.Log("Calibrate : Delete : vid" + (vid_Select_Switch.Select_Vid ? 2 : 1) + "_" + ref_Point.Current_value);
     }
     public void Pos_Capture()
     {
@@ -74,7 +83,6 @@ public class Dot_render1 : MonoBehaviour
         position = Quaternion.Euler(0f, 0f, 0f) * canvasRectTransform.anchoredPosition; //Get the position from unity from the center
         position[0] = (-position[0]) / pan_Zoom.Zoom2; //Calculate x
         position[1] = (-position[1]) / pan_Zoom.Zoom2; //Calculate y
-        CreateDotCopy(position[0], position[1], Convert.ToByte(vid_Select_Switch.Select_Vid), ref_Point.Current_value); //Render the dot
-        Debug.Log("Calibrate : vid" + (vid_Select_Switch.Select_Vid ? 2 : 1) + "_" + ref_Point.Current_value + " : x = " + position[0] + ", y = " + position[1]);
+        CreateDotCopy(position[0], position[1], Convert.ToByte(vid_Select_Switch.Select_Vid), ref_Point.Current_value - 1); //Render the dot
     }
 }

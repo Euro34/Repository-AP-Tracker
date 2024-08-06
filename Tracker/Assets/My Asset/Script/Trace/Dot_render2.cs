@@ -26,9 +26,17 @@ public class Dot_render2 : MonoBehaviour
             dot_list[1] = new Point2f[Frame_ext.framecount[1]];
         }
         Re_render_dot(false); //Start at vid1
+        foreach (var dotlist in dot_list)
+        {
+            for (int i = 0; i < dotlist.Length; i++)
+            {
+                if (dotlist[i] != new Point2f()) { Save_Pos(dotlist[i].X, dotlist[i].Y, 0, i);}
+            }
+        }
     }
     public void Save_Pos(float pos_x, float pos_y, int vid, int frame) //Render the dot
     {
+        Debug.Log("Trace : vid" + (Vid_select_Switch2.Select_Vid ? 2 : 1) + "_" + frame_select.Current_value + " : x = " + pos_x + ", y = " + pos_y);
         RectTransform panel = panel_dot[vid].GetComponent<RectTransform>();;
         // Create a copy of the dot
         if (GameObject.Find("dot:" + vid.ToString() + '_' + frame.ToString() + "_Border") != null) //Check if the dot for that frame and that video exist
@@ -87,7 +95,7 @@ public class Dot_render2 : MonoBehaviour
         GameObject dotcopy_Border_obj = GameObject.Find("dot:" + Vid.ToString() + '_' + dot_selected.ToString() + "_Border"); //Find the dot
         Destroy(dotcopy_Border_obj); //Delete the render
         dot_list[Vid][dot_selected] = new Point2f(); //Delete the data
-        Debug.Log("Delete : vid" + (Vid_select_Switch2.Select_Vid ? 2 : 1) + "_" + dot_selected);
+        Debug.Log("Trace : Delete : vid" + (Vid_select_Switch2.Select_Vid ? 2 : 1) + "_" + dot_selected);
     }
     public void Pos_Capture()
     {
@@ -99,7 +107,6 @@ public class Dot_render2 : MonoBehaviour
         if (!auto_track.Auto_Trace_Toggel)
         {
             Save_Pos(position[0], position[1], Convert.ToByte(Vid_select_Switch2.Select_Vid), frame_select.Current_value); //Save and render the dot
-            Debug.Log("Trace : vid" + (Vid_select_Switch2.Select_Vid ? 2 : 1) + "_" + frame_select.Current_value + " : x = " + position[0] + ", y = " + position[1]);
             frame_select.up(); //Advance the frame by 1
         }
         else
