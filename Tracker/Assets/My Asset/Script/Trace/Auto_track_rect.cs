@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,17 +20,9 @@ public class Auto_track_rect : MonoBehaviour
     }
     public void Auto_trace_rect() //Draw a box //Auto track function start from here
     {
-        if (click_count)
-        {
-            //Edge of the object
-            click_count = false;
-            Start_auto_trace();
-            rect_image.gameObject.SetActive(false);
-        }
-        else
+        if (!click_count)
         {
             //Middle of the object
-            click_count = true;
             rect_image.gameObject.SetActive(true);
             //Deal with scale and transform
             initial_pos = Quaternion.Euler(0f, 0f, 0f) * canvasRectTransform.anchoredPosition; //Get the coordinate from unity
@@ -41,6 +32,13 @@ public class Auto_track_rect : MonoBehaviour
             rect_image.rectTransform.anchoredPosition = initial_pos; //Center the box at the first point
             StartCoroutine(start_resize()); //Continuously resize the box
         }
+        else
+        {
+            //Edge of the object
+            Start_auto_trace();
+            rect_image.gameObject.SetActive(false);
+        }
+        click_count = !click_count;
     }
     private IEnumerator start_resize()
     {

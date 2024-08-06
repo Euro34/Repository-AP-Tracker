@@ -29,9 +29,9 @@ public class Frame_ext : MonoBehaviour
     {
         yield return new WaitForSeconds(0.001f);
         player.frame = 1; //Set the time on the vid to be the first frame of the video
-        fps[vid] = player.frameRate; //Calculate and collect the fps of each video
-        duration[vid] = player.length;
-        framecount[vid] = (int)player.frameCount;
+        fps[vid] = player.frameRate; //Collect the fps of each video
+        duration[vid] = player.length; //Collect duration of each video
+        framecount[vid] = (int)player.frameCount; //Collect frame count of each video
         player.Pause();
     }
     public void button1()

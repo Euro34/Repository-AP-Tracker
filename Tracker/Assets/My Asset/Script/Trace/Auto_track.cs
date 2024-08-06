@@ -45,8 +45,8 @@ public class Auto_track : MonoBehaviour
         yield return new WaitForSeconds((float)(1.0 / videoPlayer.frameRate));
         current_frame = OpenCvSharp.Unity.TextureToMat(rt_to_texture(input));
         tracker = Tracker.Create(TrackerTypes.KCF);
-        double width = (double)((int)size.x);
-        double height = (double)((int)size.y);
+        double width = (int)size.x;
+        double height = (int)size.y;
         boundingBox = new Rect2d(initialPosition.x, initialPosition.y, width, height);
         isInitialized = tracker.Init(current_frame, boundingBox);
         Tracking();

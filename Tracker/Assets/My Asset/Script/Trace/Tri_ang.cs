@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using System;
-using Unity.VisualScripting.FullSerializer;
-using Accord.Math;
 
 public class Tri_ang : MonoBehaviour
 {
@@ -17,38 +15,42 @@ public class Tri_ang : MonoBehaviour
         {
             if (Dot_render2.dot_list[0] == null || Dot_render2.dot_list[1] == null){Debug.Log("Not enough info");return;}
             Point2f null_point = new Point2f(); //Use to compare to the value in the dot_list to know if it have been capture
-            int primary_vid = Frame_ext.fps[0] <= Frame_ext.fps[1] ? 0 : 1;
+            int primary_vid = Frame_ext.fps[0] <= Frame_ext.fps[1] ? 0 : 1; //Set primary vid as a video that have lower framerate (minimize error)
             for (int i = 0; i < Frame_ext.framecount[primary_vid]; i++) //Loop thru every frame
             {
-                if (Dot_render2.dot_list[primary_vid][i] != null_point)
+                if (Dot_render2.dot_list[primary_vid][i] != null_point) //Only try to calculate if there is a point recorded in the primary video
                 {
                     double time = i / Frame_ext.fps[primary_vid];
-                    double[] imgPoint1 = new double[2]{ Dot_render2.dot_list[primary_vid][i].X, Dot_render2.dot_list[primary_vid][i].Y };
-                    Point2f Point2 = Estimate_imgPoint(Frame_ext.fps[0] <= Frame_ext.fps[1], time);
-                    if (Point2 != null_point)
+                    double[] imgPoint1 = new double[2]{ Dot_render2.dot_list[primary_vid][i].X, Dot_render2.dot_list[primary_vid][i].Y }; //Prepare coord of primary vid
+                    Point2f Point2 = Estimate_imgPoint(Frame_ext.fps[0] <= Frame_ext.fps[1], time); //Estimate coord and set coord of secondary vid
+                    if (Point2 != null_point) //If the secondary vid doesn't have a coord
                     {
-                        double[] imgPoint2 = new double[2]{ Point2.X, Point2.Y };
-                        double[] result = tri_cal(imgPoint1, imgPoint2);
-                        tri_List.Add(new double[] {time, result[0], result[1], result[2]});
+                        double[] imgPoint2 = new double[2]{ Point2.X, Point2.Y }; //Prepare coord of secondary vid
+                        double[] result = tri_cal(imgPoint1, imgPoint2); //Calculate
+                        tri_List.Add(new double[] {time, result[0], result[1], result[2]}); //Save the result
                     }
                 }
             }
         }
     }
-    private Point2f Estimate_imgPoint(bool pri_vid, double time) 
+    private Point2f Estimate_imgPoint(bool pri_vid, double time) //Estimate coord from frame before and after the ideal
     {
         int sec_vid = pri_vid ? 1 : 0;
         Point2f[] list = Dot_render2.dot_list[sec_vid];
         Point2f coord = new Point2f();
+
+        //Find the ratio 
         int frame_before = (int)Math.Floor(time * Frame_ext.fps[sec_vid]);
         int frame_after = (int)Math.Ceiling(time * Frame_ext.fps[sec_vid]);
-        if (frame_before == frame_after) {return list[frame_before];}
-        if (list[frame_before] != null && list[frame_after] != null)
+
+        if (frame_before == frame_after) {return list[frame_before];} //Incase the time is equal
+
+        if (list[frame_before] != null && list[frame_after] != null) //Check if the coord of frame before and after exist
         {
             double dt = 1 / Frame_ext.fps[sec_vid];
             double r1 = (time - (frame_before / Frame_ext.fps[sec_vid]))/dt;
             double r2 = 1 - r1;
-            coord = (list[frame_before] * r2) + (list[frame_after] * r1);
+            coord = (list[frame_before] * r2) + (list[frame_after] * r1); //Calculate
         }
         return coord;
     }
@@ -68,7 +70,7 @@ public class Tri_ang : MonoBehaviour
         writer.WriteLine("Time(s),Pos_X,Pos_Y,Pos_Z");
         writer.Close();
         writer = new StreamWriter(path, true);
-        foreach(double[] Tri in Tri_ang.tri_List)
+        foreach(double[] Tri in tri_List)
         {
             writer.WriteLine(Tri[0].ToString() + "," + Tri[1].ToString() + "," + Tri[2].ToString() + "," + Tri[3].ToString());
         }

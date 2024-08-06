@@ -88,7 +88,6 @@ public class New_Ref_Obj : MonoBehaviour
         obj.SetPos(width, height, length, name);
         Ref_List.Add(obj);
         RenderButton(Ref_List.IndexOf(obj));
-
         panel_add.gameObject.SetActive(false);
     }
 
@@ -129,7 +128,7 @@ public class New_Ref_Obj : MonoBehaviour
     {
         Button newButton = Instantiate(originalButton, buttonParent);
         RectTransform buttonRect = newButton.GetComponent<RectTransform>();
-        buttonRect.localPosition = buttonRect.localPosition + new Vector3((((index + 1) % 3) - 1) * (space), (float)(int)((index + 1) / 3) * (-space), 0f);
+        buttonRect.localPosition = buttonRect.localPosition + new Vector3((((index + 1) % 3) - 1) * space, (index + 1) / 3 * (-space), 0f);
         newButton.name = index.ToString();
         TextMeshProUGUI buttonText = newButton.GetComponentInChildren<TextMeshProUGUI>();
         buttonText.text = Ref_List[index].ToString();
@@ -150,13 +149,7 @@ public class New_Ref_Obj : MonoBehaviour
         }
         for (int index = 0; index < Ref_List.Count; index++)
         {
-            Button newButton = Instantiate(originalButton, buttonParent);
-            RectTransform buttonRect = newButton.GetComponent<RectTransform>();
-            buttonRect.localPosition = buttonRect.localPosition + new Vector3((((index + 1) % 3) - 1) * (space), (float)(int)((index + 1) / 3) * (-space), 0f);
-            newButton.name = index.ToString();
-            TextMeshProUGUI buttonText = newButton.GetComponentInChildren<TextMeshProUGUI>();
-            buttonText.text = Ref_List[index].ToString();
-            newButton.gameObject.SetActive(true);
+            RenderButton(index);
         }
     }
 
@@ -187,7 +180,7 @@ public class Name_Pos3d //Collect pos in x y z and have methods to return differ
     public double pos_x { get; set; }
     public double pos_y { get; set; }
     public double pos_z { get; set; }
-    public void SetPos(double x, double y, double z)
+    public void SetCoord(double x, double y, double z)
     {
         pos_x = x;
         pos_y = y;
@@ -228,7 +221,7 @@ public class Ref_dst //set each of the 8 point of a reference object
         SetPoint();
     }
 
-    public void SetPoint()
+    public void SetPoint() //Translate from Width Height Length of the box to x y z coordinate of each point
     {
         for (short i = 0; i < 8; i++)
         {
@@ -236,7 +229,7 @@ public class Ref_dst //set each of the 8 point of a reference object
             double y = (int)((i >> 1) & 1) * Height;
             double z = (int)((i >> 2) & 1) * Length;
             Name_Pos3d obj = new Name_Pos3d();
-            obj.SetPos(x, y, z);
+            obj.SetCoord(x, y, z);
             List_Ref_Pos[i] = obj;
         }
     }
