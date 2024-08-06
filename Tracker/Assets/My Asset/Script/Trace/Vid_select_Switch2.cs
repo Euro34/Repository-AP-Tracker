@@ -23,7 +23,6 @@ public class Vid_select_Switch2 : MonoBehaviour
         {
             time = Videoplayer.time;
             time_txt.text = time.ToString("F3") + " s";
-            Debug.Log(Lframe);
             if (auto_track.Auto_Trace_Toggel)
             {
                 auto_track.Tracking();

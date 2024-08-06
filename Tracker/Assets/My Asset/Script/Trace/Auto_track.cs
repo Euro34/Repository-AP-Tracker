@@ -4,30 +4,34 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
-using System.Threading;
+using TMPro;
 
 public class Auto_track : MonoBehaviour
 {
     public GameObject loop_button;
     public RectTransform Auto_Trace_Panel;
+    public RectTransform Bounding_Panel;
     public RenderTexture input;
     public RawImage output;
     public VideoPlayer videoPlayer;
     public Frame_select frame_Select;
     public Dot_render2 dot_Render2;
-    public Rect2d boundingBox;
-    public int current_vid = 0;
+    public TextMeshProUGUI Guide_Text;
+    private Tracker tracker;
     public Mat current_frame = null;
-    public bool Auto_Trace_Toggel = false;
+    public Rect2d boundingBox;
     public Vector2 initialPosition = new Vector2();
     public Vector2 size = new Vector2();
-    private Tracker tracker;
-    private bool isInitialized = false;
+    public int current_vid = 0;
+    public bool Auto_Trace_Toggel = false;
     public bool Auto_Loop = false;
+    private int factor = 3;
+    private bool isInitialized = false;
 
     private void Start()
     {
         Auto_Trace_Panel.gameObject.SetActive(false);
+        Bounding_Panel.gameObject.SetActive(false);
     }
 
     public void Auto_trace_start()
@@ -47,11 +51,12 @@ public class Auto_track : MonoBehaviour
     {
         current_frame = OpenCvSharp.Unity.TextureToMat(rt_to_texture(input));
         tracker = Tracker.Create(TrackerTypes.KCF);
-        double width = (int)size.x;
-        double height = (int)size.y;
+        double width = (int)(size.x/factor);
+        double height = (int)(size.y/factor);
         boundingBox = new Rect2d(initialPosition.x, initialPosition.y, width, height);
         isInitialized = tracker.Init(current_frame, boundingBox);
         Tracking();
+        Bounding_Panel.gameObject.SetActive(true);
         yield return null;
     }
     public void Tracking()
@@ -66,18 +71,20 @@ public class Auto_track : MonoBehaviour
             mid_pos.x = (float)(boundingBox.X + boundingBox.Width / 2);
             mid_pos.y = (float)(boundingBox.Y + boundingBox.Height / 2);
             mid_pos = Realpos_to_Visualpos(mid_pos);
+            Bounding_Panel.anchoredPosition = mid_pos;
             dot_Render2.Save_Pos(mid_pos.x, mid_pos.y, current_vid, frame_Select.Current_value);
-        }
-        output.texture = OpenCvSharp.Unity.MatToTexture(current_frame);
-        if (Auto_Loop)
-        {
-            frame_Select.up();
+            if (Auto_Loop)
+            {
+                frame_Select.up();
+            }
         }
     }
 
     public void Stop_Track()
     {
-        output.texture = input;
+        Bounding_Panel.gameObject.SetActive(false);
+        Guide_Text.color = new Color32(255, 100, 100, 255);
+        isInitialized = false;
     }
     public void Track_Loop()
     {
@@ -85,6 +92,7 @@ public class Auto_track : MonoBehaviour
         if (Auto_Loop)
         {
             loop_button.GetComponent<Image>().color = new Color32(65, 65, 65, 255);
+            frame_Select.up();
         }
         else
         {
@@ -94,19 +102,25 @@ public class Auto_track : MonoBehaviour
 
     Texture2D rt_to_texture(RenderTexture rt)
     {
-        Texture2D texture = new Texture2D(rt.width, rt.height, TextureFormat.RGB24, false);
+        RenderTexture tempRT = RenderTexture.GetTemporary(rt.width / factor, rt.height / factor, 0, rt.format);
+
+        // Copy and resize the original RenderTexture to the temporary one
+        Graphics.Blit(rt, tempRT);
+
+        Texture2D texture = new Texture2D(tempRT.width, tempRT.height, TextureFormat.RGB24, false);
 
         RenderTexture currentActiveRT = RenderTexture.active;
 
-        RenderTexture.active = rt;
+        RenderTexture.active = tempRT;
 
-        texture.ReadPixels(new UnityEngine.Rect(0, 0, rt.width, rt.height), 0, 0);
+        texture.ReadPixels(new UnityEngine.Rect(0, 0, tempRT.width, tempRT.height), 0, 0);
         texture.Apply();
 
         RenderTexture.active = currentActiveRT;
 
         return texture;
     }
+    
     public Vector2 Visualpos_to_Realpos(Vector2 pos)
     {
         Vector2 realpos = new Vector2();
@@ -115,16 +129,18 @@ public class Auto_track : MonoBehaviour
         int height = output.texture.height;
         realpos.x = (pos.x*width/rawimg_size.x) + (width/2);
         realpos.y = (height/2) - (pos.y*height/rawimg_size.y);
-        return realpos;
+        return realpos / factor;
     }
     public Vector2 Realpos_to_Visualpos(Vector2 pos)
     {
         Vector2 visualpos = new Vector2();
         Vector2 rawimg_size = output.rectTransform.sizeDelta;
+        pos *= factor;
         int width = output.texture.width;
         int height = output.texture.height;
         visualpos.x = (pos.x - (width / 2))*rawimg_size.x/width;
         visualpos.y = ((height / 2) - pos.y)*rawimg_size.y/height;
         return visualpos;
     }
+    
 }
