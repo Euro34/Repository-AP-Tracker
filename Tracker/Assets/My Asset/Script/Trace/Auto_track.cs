@@ -85,6 +85,10 @@ public class Auto_track : MonoBehaviour
         Bounding_Panel.gameObject.SetActive(false);
         Guide_Text.color = new Color32(255, 100, 100, 255);
         isInitialized = false;
+        if (Auto_Loop)
+        {
+            Track_Loop();
+        }
     }
     public void Track_Loop()
     {

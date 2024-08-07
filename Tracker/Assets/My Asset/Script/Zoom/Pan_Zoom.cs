@@ -11,25 +11,25 @@ public class Pan_Zoom : MonoBehaviour
     public float Zoom, Zoom2;
     private void Awake()
     {
-        initialScale = transform.localScale;
-        startPos = transform.position;
+        initialScale = transform.localScale; //Get the start scale
+        startPos = transform.position; //Get the start position
         Zoom2 = 1;
     }
 
-    public void SetScale()
+    public void SetScale() //Deal with zoom
     {
         initialPos = transform.position;
-        Zoom = (zoom_slider.Zoom) / 100;
-        transform.position = startPos + ((initialPos - startPos) * (Zoom / Zoom2));
-        Zoom2 = Zoom;
-        transform.localScale = initialScale * Zoom;
+        Zoom = (zoom_slider.Zoom) / 100; //Calculate the zoom
+        transform.position = startPos + ((initialPos - startPos) * (Zoom / Zoom2)); //Calculate the position after zoom
+        Zoom2 = Zoom; //Set the 
+        transform.localScale = initialScale * Zoom; //Set the new scale
     }
 
     public void Reset_()
     {
-        slider.value = Mathf.Sqrt(200);
-        transform.localScale = initialScale;
-        transform.position = startPos;
+        slider.value = Mathf.Sqrt(200); //Set the value on the slider
+        transform.localScale = initialScale; //Set the scale back to original
+        transform.position = startPos; //Set the position back to original
         Zoom2 = 1;
     }
 }

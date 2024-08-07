@@ -24,7 +24,7 @@ public class New_Ref_Obj : MonoBehaviour
     public TMP_InputField edit_textField_width;
     public TMP_InputField edit_textField_height;
     public TMP_InputField edit_textField_length;
-    public static int Sel_Ref_i;
+    public static int Sel_Ref_i = -1;
     public int latest_button_index;
 
     void Start()
@@ -40,17 +40,17 @@ public class New_Ref_Obj : MonoBehaviour
     }
     public void write() //Save the reference object data to json file
     {
-        Ref_dst_Array ref_Dst_Array = new Ref_dst_Array { Ref_dst_list = Ref_List};
+        Ref_dst_Array ref_Dst_Array = new Ref_dst_Array { Ref_dst_list = Ref_List}; //Change fromm list of ref to array of ref
         string json = JsonUtility.ToJson(ref_Dst_Array);
-        File.WriteAllText(path, json);
+        File.WriteAllText(path, json); //Save them to a json file
     }
     public void Load() //Read the json file. If it empty, create a rubik object.
     {
-        path = Application.persistentDataPath + "/Obj.json";
-        Ref_List = new List<Ref_dst>();
-        if (File.Exists(path))
+        path = Application.persistentDataPath + "/Obj.json"; //Locate the json file
+        Ref_List = new List<Ref_dst>(); //Clear Ref_List
+        if (File.Exists(path)) //If the path exist
         {
-            //Read file
+            //Read file and save it to Ref_List
             StreamReader reader = new StreamReader(path);
             fileContent = reader.ReadToEnd();
             reader.Close();
@@ -68,67 +68,82 @@ public class New_Ref_Obj : MonoBehaviour
 
     public void CreateRef() //Show the add window
     {
+        //Clear text field
         textField_name.text = "";
         textField_width.text = "";
         textField_height.text = "";
         textField_length.text = "";
 
-        panel_add.gameObject.SetActive(true);
+        panel_add.gameObject.SetActive(true); //Show the panel
     }
 
     public void Set_Ref() //Save the reference object to the Ref_list and set it as the selected
     {
-        Tuple<float, float, float, string> windowSetValues = Window_Set();
+        //Read from the text field
+        Tuple<float, float, float, string> windowSetValues = Window_Set(
+            textField_name.text, textField_width.text, textField_length.text, textField_height.text
+            ); //Change the type to the correct one
+        float width = windowSetValues.Item1; 
+        float height = windowSetValues.Item2;
+        float length = windowSetValues.Item3;
+        string name = windowSetValues.Item4;
+
+        Ref_dst obj = new Ref_dst();
+        obj.SetPos(width, height, length, name); //Convert the value to Ref_dst(class)
+        Ref_List.Add(obj); //Save the reference object in a list
+        int Sel_Ref_i = Ref_List.IndexOf(obj);
+        RenderButton(Sel_Ref_i);
+        Debug.Log("Reference object : " + Ref_List[Sel_Ref_i].Name);
+        panel_add.gameObject.SetActive(false); //Hide the window
+    }
+
+    public void EditRef(Button clickedButton) //Show the edit window
+    {
+        latest_button_index = int.Parse(clickedButton.name); //Save which button is clicked
+        panel_edit.gameObject.SetActive(true); //Show the edit window
+        edit_textField_name.text = Ref_List[latest_button_index].Name; //Show the old name
+        edit_textField_width.text = Ref_List[latest_button_index].Width.ToString(); //Show the old width
+        edit_textField_height.text = Ref_List[latest_button_index].Height.ToString(); //Show the old height
+        edit_textField_length.text = Ref_List[latest_button_index].Length.ToString(); //Show the old length
+    }
+
+    public void EditRef_Set() //Save the edit value and set it as the selected
+    {
+        //Read from the text field
+        Tuple<float, float, float, string> windowSetValues = Window_Set(
+            edit_textField_name.text, edit_textField_width.text, edit_textField_length.text, edit_textField_height.text
+            ); //Change the type to the correct one
         float width = windowSetValues.Item1;
         float height = windowSetValues.Item2;
         float length = windowSetValues.Item3;
         string name = windowSetValues.Item4;
 
         Ref_dst obj = new Ref_dst();
-        obj.SetPos(width, height, length, name);
-        Ref_List.Add(obj);
-        RenderButton(Ref_List.IndexOf(obj));
-        panel_add.gameObject.SetActive(false);
-    }
-
-    public void EditRef(Button clickedButton) //Show the edit window
-    {
-        latest_button_index = int.Parse(clickedButton.name);
-        panel_edit.gameObject.SetActive(true);
-        edit_textField_name.text = Ref_List[latest_button_index].Name;
-        edit_textField_width.text = Ref_List[latest_button_index].Width.ToString();
-        edit_textField_height.text = Ref_List[latest_button_index].Height.ToString();
-        edit_textField_length.text = Ref_List[latest_button_index].Length.ToString();
-    }
-
-    public void EditRef_Set() //Save the edit value and set it as the selected
-    {
-        float width = float.Parse(edit_textField_width.text);
-        float height = float.Parse(edit_textField_height.text);
-        float length = float.Parse(edit_textField_length.text);
-        string name = edit_textField_name.text;
-
-        Ref_dst obj = new Ref_dst();
-        obj.SetPos(width, height, length, name);
-        Ref_List[latest_button_index] = obj;
+        obj.SetPos(width, height, length, name); //Convert the value to Ref_dst(class)
+        Ref_List[latest_button_index] = obj; //Save the new value
         Re_renderButton();
-        Sel_Ref_i = latest_button_index;
+        Sel_Ref_i = latest_button_index; //Change the selected reference object
         Debug.Log("Reference object : " + Ref_List[Sel_Ref_i].Name);
-        panel_edit.gameObject.SetActive(false);
+        panel_edit.gameObject.SetActive(false); //Hide the window
     }
 
     public void Edit_Del() //Delete the object
     {
-        Ref_List.RemoveAt(latest_button_index);
+        Ref_List.RemoveAt(latest_button_index); //Delete the ref data
+
+        //Change the select reference object index
+        if (latest_button_index < Sel_Ref_i){Sel_Ref_i--;}
+        if (latest_button_index == Sel_Ref_i){Sel_Ref_i = -1;}
+
         Re_renderButton();
-        panel_edit.gameObject.SetActive(false);
+        panel_edit.gameObject.SetActive(false); //Hide the panel
     }
 
     public void RenderButton(int index) //Create a button for an object and set it in the right position
     {
         Button newButton = Instantiate(originalButton, buttonParent);
         RectTransform buttonRect = newButton.GetComponent<RectTransform>();
-        buttonRect.localPosition = buttonRect.localPosition + new Vector3((((index + 1) % 3) - 1) * space, (index + 1) / 3 * (-space), 0f);
+        buttonRect.localPosition = buttonRect.localPosition + new Vector3((((index + 1) % 3) - 1) * space, (index + 1) / 3 * (-space), 0f); //Calculate the position
         newButton.name = index.ToString();
         TextMeshProUGUI buttonText = newButton.GetComponentInChildren<TextMeshProUGUI>();
         buttonText.text = Ref_List[index].ToString();
@@ -153,14 +168,14 @@ public class New_Ref_Obj : MonoBehaviour
         }
     }
 
-    public Tuple<float, float, float, string> Window_Set() //Set the value in the window to the according object in Ref_list
+    public Tuple<float, float, float, string> Window_Set(string N, string w, string h, string l) //Set the value in the window to the according object in Ref_list
     {
         try
         {
-            string name = textField_name.text;
-            float width = float.Parse(textField_width.text);
-            float height = float.Parse(textField_height.text);
-            float length = float.Parse(textField_length.text);
+            string name = N;
+            float width = float.Parse(w);
+            float height = float.Parse(h);
+            float length = float.Parse(l);
             return new Tuple<float, float, float, string>(width, height, length, name);
         }
         catch //Catch error from entering nonnumerical number in width height or length field
@@ -169,7 +184,7 @@ public class New_Ref_Obj : MonoBehaviour
         }
     }
 
-    public void Close() //Close the window
+    public void Close() //Close the window //Trigger by the button behind both panel
     {
         panel_add.gameObject.SetActive(false);
         panel_edit.gameObject.SetActive(false);

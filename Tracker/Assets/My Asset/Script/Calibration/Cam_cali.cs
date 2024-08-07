@@ -46,7 +46,11 @@ public class Cam_cali : MonoBehaviour
     }
     public void Assign() //Prepare the data before triangulate all the point //This method is call when calculate button is pressed
     {
-        New_Ref_Obj.Ref_List[New_Ref_Obj.Sel_Ref_i].SetPoint();
+        if (New_Ref_Obj.Sel_Ref_i == -1) //Deal with invalid reference object
+        {
+            Debug.Log("The reference object is invalid");
+            return; 
+        }
         OutList = New_Ref_Obj.Ref_List[New_Ref_Obj.Sel_Ref_i].ToPoint3dList(); //Call for an array of Point3D of a reference object
         proj1 = Cal_Proj(0); //Find Projection matrix of vid1
         proj2 = Cal_Proj(1); //Find Projection matrix of vid2

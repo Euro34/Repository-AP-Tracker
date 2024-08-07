@@ -17,20 +17,22 @@ public class Dot_render2 : MonoBehaviour
 
     private void Start()
     {
+        //Create variable to collect dot in dot list
         if (dot_list[0] == null || dot_list[0].Length == 0)
         {
-            dot_list[0] = new Point2f[Frame_ext.framecount[0]];
+            dot_list[0] = new Point2f[Frame_ext.framecount[0]]; 
         }
         if (dot_list[1] == null || dot_list[1].Length == 0)
         {
             dot_list[1] = new Point2f[Frame_ext.framecount[1]];
         }
+
         Switch_dot(false); //Start at vid1
         foreach (var dotlist in dot_list)
         {
             for (int i = 0; i < dotlist.Length; i++)
             {
-                if (dotlist[i] != new Point2f()) { Save_Pos(dotlist[i].X, dotlist[i].Y, 0, i);}
+                if (dotlist[i] != new Point2f()) { Save_Pos(dotlist[i].X, dotlist[i].Y, 0, i);} //Redraw every dot //Happen when switch scene
             }
         }
     }
@@ -73,13 +75,13 @@ public class Dot_render2 : MonoBehaviour
             int img_no = dot_selected + i;
             if (img_no >= 0)
             {
-                byte Transparency = (byte)(75 * (3 - Math.Abs(i)));
-                if (Transparency == 0) {Transparency = 35;}
+                byte Opacity = (byte)(75 * (3 - Math.Abs(i))); //Calculate the opacity
+                if (Opacity == 0) {Opacity = 35;}
                 GameObject dotCopy = GameObject.Find("dot:" + Vid.ToString() + '_' + img_no.ToString()); //Find the dot
                 if (dotCopy != null) //Check if the dot exist
                 {
                     Image dotCopy_Img = dotCopy.GetComponent<Image>(); //Get the image and assign it to dot_Copy_Img
-                    dotCopy_Img.color = new Color32(255, 255, 255, Transparency); //Change the opacity
+                    dotCopy_Img.color = new Color32(255, 255, 255, Opacity); //Change the opacity
                 }
             }
         }

@@ -38,6 +38,7 @@ public class Vid_select_Switch2 : MonoBehaviour
 
     public void Switch() //To switch between vid1 and vid2
     {
+        auto_track.Stop_Track();
         if (!Select_Vid) //Set the correspoding video and dot
         {
             Output.text = "Vid_2";
