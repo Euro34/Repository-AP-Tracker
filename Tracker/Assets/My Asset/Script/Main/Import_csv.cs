@@ -14,6 +14,7 @@ public class Import_csv : MonoBehaviour //Want the rewrite
         {
             if (source != null)
             {
+                Debug.Log("Import : " + source);
                 StreamReader reader = new StreamReader(source);
                 int line_no = 0;
                 int line_ref = 0;
