@@ -5,7 +5,7 @@ public class Movement : MonoBehaviour
 {
     bool up = false;
     bool down = false;
-    public float move_speed = 500f;
+    public int move_speed = 50;
     public Rigidbody Body;
     public Camera cam;
     public PlayerInput playerinput;
@@ -17,13 +17,13 @@ public class Movement : MonoBehaviour
         pos_holder = quaternion * pos_holder;
         if (up)
         {
-            pos_holder = pos_holder + new Vector3(0, move_speed * 0.7f, 0);
+            pos_holder = pos_holder + new Vector3(0,  0.7f, 0);
         }
         if (down)
         {
-            pos_holder = pos_holder + new Vector3(0, -move_speed * 0.7f, 0);
+            pos_holder = pos_holder + new Vector3(0, -0.7f, 0);
         }
-        Body.AddForce(pos_holder.normalized * 10f,ForceMode.Force);
+        Body.velocity = pos_holder * move_speed;
         cam.transform.position = Body.position;
     }
     public void Down_Down()
