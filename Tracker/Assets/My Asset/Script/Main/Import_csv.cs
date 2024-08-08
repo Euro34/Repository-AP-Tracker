@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public class Import_csv : MonoBehaviour
+public class Import_csv : MonoBehaviour //Want the rewrite
 {
     public New_Ref_Obj new_ref_obj;
     public static double spf;

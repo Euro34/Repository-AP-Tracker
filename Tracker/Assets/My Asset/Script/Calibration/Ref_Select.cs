@@ -8,7 +8,6 @@ public class Ref_Select : MonoBehaviour
     public TextMeshProUGUI Text;
     public Button Button_del;
     private Image Del_Img;
-    //public button color
     void Start(){ //Set the start point to 1
         Current_value = 0;
         Del_Img = Button_del.GetComponent<Image>();

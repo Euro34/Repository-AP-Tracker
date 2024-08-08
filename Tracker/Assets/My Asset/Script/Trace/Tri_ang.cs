@@ -21,11 +21,11 @@ public class Tri_ang : MonoBehaviour
                 if (Dot_render2.dot_list[primary_vid][i] != null_point) //Only try to calculate if there is a point recorded in the primary video
                 {
                     double time = i / Frame_ext.fps[primary_vid];
-                    double[] imgPoint1 = new double[2]{ Dot_render2.dot_list[primary_vid][i].X, Dot_render2.dot_list[primary_vid][i].Y }; //Prepare coord of primary vid
-                    Point2f Point2 = Estimate_imgPoint(Frame_ext.fps[0] <= Frame_ext.fps[1], time); //Estimate coord and set coord of secondary vid
-                    if (Point2 != null_point) //If the secondary vid doesn't have a coord
+                    double[] imgPoint1 = new double[2]{ Dot_render2.dot_list[primary_vid][i].X, Dot_render2.dot_list[primary_vid][i].Y }; //Prepare cord of primary vid
+                    Point2f Point2 = Estimate_imgPoint(Frame_ext.fps[0] <= Frame_ext.fps[1], time); //Estimate cord and set cord of secondary vid
+                    if (Point2 != null_point) //If the secondary vid doesn't have a cord
                     {
-                        double[] imgPoint2 = new double[2]{ Point2.X, Point2.Y }; //Prepare coord of secondary vid
+                        double[] imgPoint2 = new double[2]{ Point2.X, Point2.Y }; //Prepare cord of secondary vid
                         double[] result = tri_cal(imgPoint1, imgPoint2); //Calculate
                         tri_List.Add(new double[] {time, result[0], result[1], result[2]}); //Save the result
                     }
@@ -33,11 +33,11 @@ public class Tri_ang : MonoBehaviour
             }
         }
     }
-    private Point2f Estimate_imgPoint(bool pri_vid, double time) //Estimate coord from frame before and after the ideal
+    private Point2f Estimate_imgPoint(bool pri_vid, double time) //Estimate cord from frame before and after the ideal
     {
         int sec_vid = pri_vid ? 1 : 0;
         Point2f[] list = Dot_render2.dot_list[sec_vid];
-        Point2f coord = new Point2f();
+        Point2f cord = new Point2f();
 
         //Find the ratio 
         int frame_before = (int)Math.Floor(time * Frame_ext.fps[sec_vid]);
@@ -45,14 +45,14 @@ public class Tri_ang : MonoBehaviour
 
         if (frame_before == frame_after) {return list[frame_before];} //Incase the time is equal
 
-        if (list[frame_before] != null && list[frame_after] != null) //Check if the coord of frame before and after exist
+        if (list[frame_before] != null && list[frame_after] != null) //Check if the cord of frame before and after exist
         {
             double dt = 1 / Frame_ext.fps[sec_vid];
             double r1 = (time - (frame_before / Frame_ext.fps[sec_vid]))/dt;
             double r2 = 1 - r1;
-            coord = (list[frame_before] * r2) + (list[frame_after] * r1); //Calculate
+            cord = (list[frame_before] * r2) + (list[frame_after] * r1); //Calculate
         }
-        return coord;
+        return cord;
     }
     private double[] tri_cal(double[] imgPoint1, double[] imgPoint2)
     {
@@ -63,7 +63,7 @@ public class Tri_ang : MonoBehaviour
         //Calculate and return as list of double that include x, y, z
         return new double[] {tri.Get<double>(0, 0), tri.Get<double>(1, 0), tri.Get<double>(2, 0)};
     }
-    public void Write_csv() //Export to csv file
+    public void Write_csv() //Export to csv file //Want to rewrite
     {
         path = Application.persistentDataPath + "/Untitle.csv";
         TextWriter writer = new StreamWriter(path, false);

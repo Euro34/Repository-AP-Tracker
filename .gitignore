@@ -78,3 +78,8 @@ crashlytics-build.properties
 #Try
 *.log
 *.cache
+*.backup
+*.props
+*.targets
+*.editorconfig
+*.asset

@@ -195,7 +195,7 @@ public class Name_Pos3d //Collect pos in x y z and have methods to return differ
     public double pos_x { get; set; }
     public double pos_y { get; set; }
     public double pos_z { get; set; }
-    public void SetCoord(double x, double y, double z)
+    public void Setcord(double x, double y, double z)
     {
         pos_x = x;
         pos_y = y;
@@ -244,7 +244,7 @@ public class Ref_dst //set each of the 8 point of a reference object
             double y = (int)((i >> 1) & 1) * Height;
             double z = (int)((i >> 2) & 1) * Length;
             Name_Pos3d obj = new Name_Pos3d();
-            obj.SetCoord(x, y, z);
+            obj.Setcord(x, y, z);
             List_Ref_Pos[i] = obj;
         }
     }

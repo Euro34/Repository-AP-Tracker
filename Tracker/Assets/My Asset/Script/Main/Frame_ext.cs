@@ -15,10 +15,10 @@ public class Frame_ext : MonoBehaviour
     public static int[] framecount = new int[2];
     void Thumbnail(VideoPlayer player, RawImage rawImage, int vid)
     {
-        player.prepareCompleted += (source => //Wait until there is a path to call PreparationComplete() method
+        player.prepareCompleted += source => //Wait until there is a path to call PreparationComplete() method
         {
             PreparationComplete(player, rawImage, vid);
-        });
+        };
     }
     void PreparationComplete(VideoPlayer player, RawImage rawImage, int vid)
     {

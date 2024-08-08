@@ -63,6 +63,7 @@ public class Cam_cali : MonoBehaviour
         worldPoints = new Point3d[0]; 
         for (int i = 0; i < 8;i++)
         {
+            //Set the dot that is marked to 2 array, one is point int the image, another is point in 3D space //The index represent the same point in both array
             if (Dot_render1.dot_list[i,Vid] != new Point2f())
             {
                 Array.Resize(ref imgPoints, j + 1);
