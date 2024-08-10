@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using TMPro;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
@@ -40,7 +41,8 @@ public class Trace_Repos : MonoBehaviour
                 copy = Instantiate(Object);
                 copy.name = "Object_frame_" + i.ToString();
                 copy.transform.SetParent(group);
-                copy.transform.position = listtovector3(Tri_ang.tri_List[video_Slider.frames.IndexOf(i)]) / cube_Resize.scale;
+                copy.transform.position = listtovector3(Tri_ang.tri_List[video_Slider.frames.IndexOf(i)]) * cube_Resize.scale;
+                Debug.Log(listtovector3(Tri_ang.tri_List[video_Slider.frames.IndexOf(i)]));
             }
         }
         color_change();

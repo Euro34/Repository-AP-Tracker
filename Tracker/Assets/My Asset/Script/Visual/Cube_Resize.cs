@@ -8,8 +8,8 @@ public class Cube_Resize : MonoBehaviour
     public Vector3 cube_size;
     private List<double[]> pos_list;
     public float scale = 0;
-    private float scale_ref = 1.0f;
-    private float scale_trace = 1.0f;
+    private float scale_ref = 10.0f;
+    private float scale_trace = 10.0f;
     void Start()
     {
         pos_list = Tri_ang.tri_List;
@@ -44,7 +44,7 @@ public class Cube_Resize : MonoBehaviour
 
     void Set_Cube()
     {
-        cube_size = cube_size / scale;
+        cube_size = cube_size * scale;
         Cube.transform.localScale = cube_size;
         Cube.transform.position = cube_size / 2;
     }
