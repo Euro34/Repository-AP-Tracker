@@ -81,7 +81,7 @@ public class New_Ref_Obj : MonoBehaviour
     {
         //Read from the text field
         Tuple<float, float, float, string> windowSetValues = Window_Set(
-            textField_name.text, textField_width.text, textField_length.text, textField_height.text
+            textField_name.text, textField_width.text, textField_height.text, textField_length.text
             ); //Change the type to the correct one
         float width = windowSetValues.Item1; 
         float height = windowSetValues.Item2;
@@ -111,7 +111,7 @@ public class New_Ref_Obj : MonoBehaviour
     {
         //Read from the text field
         Tuple<float, float, float, string> windowSetValues = Window_Set(
-            edit_textField_name.text, edit_textField_width.text, edit_textField_length.text, edit_textField_height.text
+            edit_textField_name.text, edit_textField_width.text, edit_textField_height.text, edit_textField_length.text
             ); //Change the type to the correct one
         float width = windowSetValues.Item1;
         float height = windowSetValues.Item2;
